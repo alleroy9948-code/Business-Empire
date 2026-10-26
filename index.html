@@ -194,6 +194,7 @@ html{background:#d4e4ed}body{background:#e5eef2;color:#163b55}
 @media(max-width:759px){.topbar{border-radius:0 0 11px 11px}.selected-card{border-radius:17px}}
 @media(prefers-reduced-motion:reduce){.map-loc,.map-loc *{transition:none!important;animation:none!important}}
 
+.citymap{background:#b4dfb2!important}.map-loc{transition:filter .18s ease}.map-loc .lot-tag{filter:drop-shadow(0 2px 1px rgba(18,47,37,.22))}.map-loc.selected-lot{filter:drop-shadow(0 4px 4px rgba(26,70,51,.25)) saturate(1.12)}.map-loc.selected-lot .lot-tag{filter:drop-shadow(0 2px 2px rgba(22,54,43,.32))}.map-loc.selected-lot .lot-shadow{opacity:.28!important}@media(prefers-reduced-motion:reduce){.map-loc,.map-loc *{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
@@ -254,7 +255,7 @@ html{background:#d4e4ed}body{background:#e5eef2;color:#163b55}
     <button class="nav-btn" data-tab="finance" type="button"><span class="nav-icon">📊</span><span>Финансы</span></button>
     <button class="nav-btn" data-tab="research" type="button"><span class="nav-icon">🔬</span><span>Развитие</span></button>
   </nav>
-  <div class="footnote">Версия 0.6 · Изометрический город · Интерфейс для смартфонов · Офлайн</div>
+  <div class="footnote">Версия 0.7 · Изометрический город · Подробная архитектура · Офлайн</div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><div class="modal-handle"></div><h3 id="modalTitle">Подтвердить действие</h3><p id="modalText"></p><div class="modal-actions"><button class="btn btn-secondary" type="button" id="modalCancel">Отмена</button><button class="btn btn-primary" type="button" id="modalConfirm">Подтвердить</button></div></div></div>
@@ -320,7 +321,8 @@ function svgBuilding(loc,biz,index){
  const title=owned?biz.name:(landOwned?'Свободный участок':'Земля на продажу');
  const short=title.length>15?title.slice(0,14)+'…':title;
  const baseY=cy-13;
- const height=owned?(biz.type==='factory'?46:(biz.type==='club'?43:39)):0;
+ const level=owned?Math.max(1,Number(biz.level)||1):1;
+ const height=owned?Math.min(68,(biz.type==='factory'?48:(biz.type==='club'?45:42))+Math.min(6,level-1)*4):0;
  const A=[cx-25,baseY-14], B=[cx,baseY], C=[cx+25,baseY-14], D=[cx,baseY-28];
  const At=[A[0],A[1]-height], Bt=[B[0],B[1]-height], Ct=[C[0],C[1]-height], Dt=[D[0],D[1]-height];
  let art='';
@@ -343,6 +345,27 @@ function svgBuilding(loc,biz,index){
    art+=`<path d="M${cx-21} ${baseY-height+10} L${cx-6} ${baseY-height+18} L${cx-6} ${baseY-1} L${cx-21} ${baseY-9} Z" fill="#a9ccd8" stroke="#f3ffff" stroke-width="1"/><path d="M${cx-18} ${baseY-height+15} l9 5 M${cx-18} ${baseY-height+20} l9 5 M${cx-18} ${baseY-height+25} l9 5" stroke="#537c91" stroke-width="1.2"/><circle cx="${cx+12}" cy="${baseY-height+4}" r="4" fill="${t.accent}" stroke="#fff1c9" stroke-width=".8"/>`;
   }else{
    art+=`<path d="M${cx-21} ${baseY-height+10} L${cx-6} ${baseY-height+18} L${cx-6} ${baseY-2} L${cx-21} ${baseY-10} Z" fill="${t.glass}" stroke="#dbf3e9" stroke-width=".8"/><path d="M${cx-18} ${baseY-height+17} h8 M${cx-18} ${baseY-height+22} h8 M${cx-18} ${baseY-height+27} h8" stroke="#a8ddca" stroke-width="1.2"/><path d="M${cx+11} ${baseY-height+4} L${cx+20} ${baseY-height-2} L${cx+20} ${baseY-height-17} L${cx+11} ${baseY-height-11} Z" fill="#6a8985" stroke="#d9e9dc" stroke-width=".8"/><path d="M${cx+16} ${baseY-height-15} q-4 -5 0 -9 q5 4 1 9" fill="#b2d1ce" opacity=".7"/>`;
+  }
+  // Extra facade layers: repeated windows, lit shopfronts, floor bands and roof equipment.
+  if(owned){
+   const floors=Math.max(2,Math.min(4,Math.ceil(height/15)));
+   const step=(height-4)/floors;
+   for(let r=0;r<floors;r++){
+    const yy=baseY-height+5+r*step;
+    if(yy>baseY-17)continue;
+    const winH=Math.max(5,Math.min(8,step-2));
+    art+=`<path d="M${cx-20} ${yy} l7 4 v${winH} l-7 -4 Z" fill="${t.glass}" stroke="#d7faff" stroke-width=".8"/>
+      <path d="M${cx-18} ${yy+2} l3 2 M${cx-18} ${yy+5} l3 2" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+      <path d="M${cx+5} ${yy+4} l8 -4 v${winH} l-8 4 Z" fill="${t.glass}" stroke="#d7faff" stroke-width=".8"/>
+      <path d="M${cx+7} ${yy+6} v3" stroke="#ffffff" stroke-opacity=".7" stroke-width=".7"/>`;
+    if(r<floors-1)art+=`<path d="M${cx-24} ${yy+step-1} L${cx} ${yy+step+14} L${cx+24} ${yy+step-1}" stroke="#ffffff" stroke-opacity=".35" stroke-width="1.1" fill="none"/>`;
+   }
+   // Rooftop air-conditioning, solar panels and ducts create a busier tycoon skyline.
+   if(biz.type==='electronics')art+=`<path d="M${cx-2} ${baseY-height-14} l9 -5 l10 5 l-9 5 Z" fill="#153a54" stroke="#b3f2ff" stroke-width=".8"/><path d="M${cx+1} ${baseY-height-14} l7 4 M${cx+5} ${baseY-height-16} l7 4" stroke="#67d8f2" stroke-width=".8"/>`;
+   else if(biz.type==='cafe')art+=`<path d="M${cx-13} ${baseY-height-9} l8 -4 l8 4 l-8 4 Z" fill="#ffe4a1" stroke="#ffffff" stroke-width=".8"/><circle cx="${cx-5}" cy="${baseY-height-9}" r="2" fill="#dd6347"/>`;
+   else if(biz.type==='club')art+=`<path d="M${cx-7} ${baseY-height-10} l8 -4 l8 4 l-8 4 Z" fill="#ff77e0" stroke="#b4ffff" stroke-width=".8"/><circle cx="${cx+1}" cy="${baseY-height-10}" r="2" fill="#aaffff"/>`;
+   else if(biz.type==='garage')art+=`<path d="M${cx-13} ${baseY-height-9} l8 -4 l8 4 l-8 4 Z" fill="#c8f1fc" stroke="#ffffff" stroke-width=".8"/><path d="M${cx-10} ${baseY-height-9} h10" stroke="#4b91b7" stroke-width="1"/>`;
+   else art+=`<path d="M${cx-14} ${baseY-height-10} l7 -4 l7 4 l-7 4 Z" fill="#d8eee5" stroke="#ffffff" stroke-width=".8"/><path d="M${cx-12} ${baseY-height-10} v5 M${cx-8} ${baseY-height-12} v5" stroke="#507d76" stroke-width=".8"/>`;
   }
   // A bold storefront sign, plus an individual level marker.
   art+=`<path d="M${cx-23} ${baseY-height+4} L${cx-5} ${baseY-height+14} L${cx-5} ${baseY-height+20} L${cx-23} ${baseY-height+10} Z" fill="${t.roof2}" stroke="#fff" stroke-opacity=".55" stroke-width=".65"/><text x="${cx-15}" y="${baseY-height+9}" transform="rotate(29 ${cx-15} ${baseY-height+9})" font-size="4.7" font-weight="1000" fill="#fff">${t.sign}</text>`;
@@ -389,10 +412,10 @@ function renderCity(){
  let base=`<defs>
   <linearGradient id="isoGround" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d8e9c7"/><stop offset=".5" stop-color="#b8d8a5"/><stop offset="1" stop-color="#91be93"/></linearGradient>
   <linearGradient id="isoRoad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#657d8b"/><stop offset=".5" stop-color="#425c70"/><stop offset="1" stop-color="#31495f"/></linearGradient>
-  <pattern id="grassSpeckle" width="24" height="24" patternUnits="userSpaceOnUse"><rect width="24" height="24" fill="url(#isoGround)"/><circle cx="4" cy="5" r="1" fill="#f7f5cd" opacity=".5"/><circle cx="17" cy="15" r="1.2" fill="#6ba57c" opacity=".4"/><path d="M8 20 l3 -2 M19 4 l2 1" stroke="#7fb28d" stroke-width=".8" opacity=".5"/></pattern>
-  <g id="isoTree"><ellipse cx="1" cy="12" rx="10" ry="3" fill="#315847" opacity=".22"/><path d="M0 3 l-1 13 h4 L2 4" fill="#99744f"/><path d="M0 4 L-9 0 L-4 -10 L2 -13 L10 -5 L9 2 Z" fill="#33895b" stroke="#28744b" stroke-width="1"/><path d="M-4 -8 L2 -13 L9 -5 L3 -2 Z" fill="#6dc77c"/><circle cx="-4" cy="-4" r="4" fill="#a7df84"/><circle cx="5" cy="-7" r="3.5" fill="#73c979"/></g>
-  <g id="isoCar"><path d="M-15 0 L-3 -7 L13 -1 L3 6 Z" fill="#233c4c" opacity=".3" transform="translate(0 3)"/><path d="M-14 -1 L-3 -7 L13 -1 L2 5 Z" fill="#e9eff1" stroke="#425969" stroke-width="1"/><path d="M-7 -2 L-2 -5 L6 -1 L1 2 Z" fill="#65a7c0"/><path d="M-2 -5 L6 -1" stroke="#f6fbff" stroke-width=".8"/><circle cx="-8" cy="2" r="2" fill="#253845"/><circle cx="6" cy="3" r="2" fill="#253845"/></g>
- </defs><rect width="${W}" height="${H}" fill="url(#grassSpeckle)"/>`;
+  <pattern id="grassSpeckle" width="36" height="34" patternUnits="userSpaceOnUse"><circle cx="5" cy="8" r="1.2" fill="#f8ffdc" opacity=".58"/><circle cx="26" cy="22" r="1.1" fill="#5f9f71" opacity=".46"/><path d="M12 29 l3 -2 M30 5 l2 1 M2 31 l3 -1" stroke="#75ae7a" stroke-width="1" opacity=".42"/><circle cx="33" cy="12" r=".8" fill="#ffffff" opacity=".4"/></pattern>
+  <g id="isoTree"><ellipse cx="1" cy="13" rx="12" ry="4" fill="#285444" opacity=".22"/><path d="M-1 2 L-2 16 L3 16 L2 2 Z" fill="#9a7049"/><path d="M0 7 L-11 2 L-8 -8 L-1 -14 L9 -8 L12 1 L4 7 Z" fill="#2a8558" stroke="#25764b" stroke-width="1"/><path d="M-1 -11 L7 -7 L10 0 L3 2 Z" fill="#69c67a"/><path d="M-7 -7 L-1 -14 L3 -7 L-3 -2 Z" fill="#a0df80"/><circle cx="-5" cy="-3" r="4.5" fill="#77ce78"/><circle cx="5" cy="-7" r="3.5" fill="#3fab65"/><circle cx="3" cy="1" r="3" fill="#8ddd75"/></g><g id="isoShrub"><ellipse cx="0" cy="4" rx="9" ry="3" fill="#275444" opacity=".15"/><circle cx="-5" cy="0" r="5" fill="#3d9c5d"/><circle cx="1" cy="-2" r="6" fill="#72c76b"/><circle cx="6" cy="1" r="4.5" fill="#258c58"/><circle cx="-2" cy="-4" r="2" fill="#b9e884"/></g><g id="isoLamp"><path d="M0 0 v-17" stroke="#49677a" stroke-width="2"/><path d="M0 -17 l5 -3" stroke="#49677a" stroke-width="2"/><path d="M3 -21 l6 2 l-2 4 l-6 -2 Z" fill="#f8e89c" stroke="#6e8994" stroke-width=".8"/><circle cx="4" cy="-18" r="4" fill="#ffefac" opacity=".24"/></g>
+  <g id="isoCar"><path d="M-18 0 L-4 -8 L15 -1 L3 7 Z" fill="#1b3544" opacity=".35" transform="translate(0 3)"/><path d="M-16 -2 L-4 -9 L14 -2 L2 6 Z" fill="#f7f9f6" stroke="#334d5b" stroke-width="1"/><path d="M-8 -3 L-4 -7 L3 -4 L-1 0 Z" fill="#57a5c5" stroke="#d5f7ff" stroke-width=".6"/><path d="M3 -4 L8 -2 L4 1 L-1 0 Z" fill="#2e6785"/><path d="M-14 -1 L-8 -3" stroke="#ffc45f" stroke-width="1.4"/><circle cx="-8" cy="4" r="2" fill="#263944"/><circle cx="7" cy="4" r="2" fill="#263944"/></g>
+ </defs><rect width="${W}" height="${H}" fill="url(#isoGround)"/><rect width="${W}" height="${H}" fill="url(#grassSpeckle)" opacity=".85"/>`;
  const roads=wide||landscape?[
   ['M 40 -55 L 1260 455',72, '#c3c7b6'],['M 40 -55 L 1260 455',59,'url(#isoRoad)'],['M -30 400 L 920 -40',70,'#c3c7b6'],['M -30 400 L 920 -40',57,'url(#isoRoad)'],['M 430 -40 L 1000 420',40,'#d7d8c5'],['M 430 -40 L 1000 420',30,'url(#isoRoad)']
  ]:[
@@ -402,6 +425,16 @@ function renderCity(){
  // Raised sidewalks and lane markers make the road network readable as a miniature city.
  const lanes=wide||landscape?['M 40 -55 L 1260 455','M -30 400 L 920 -40','M 430 -40 L 1000 420']:['M -55 -20 L 500 600','M -70 510 L 440 0','M -40 185 L 460 185'];
  lanes.forEach(d=>base+=`<path d="${d}" stroke="#d8e0d9" stroke-width="1.6" stroke-dasharray="9 11" opacity=".88" fill="none"/>`);
+ // Road furniture and crosswalk paint: miniature street-level detail, not just empty asphalt.
+ if(!landscape){
+  base+=Array.from({length:7},(_,i)=>`<path d="M${158+i*7} 169 l8 -8" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" opacity=".95"/>`).join('');
+  base+=Array.from({length:6},(_,i)=>`<path d="M${171+i*7} 207 l8 8" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" opacity=".9"/>`).join('');
+  [[24,295],[385,380],[35,440],[359,515]].forEach(([x,y])=>base+=`<use href="#isoLamp" x="${x}" y="${y}"/>`);
+  [[102,294],[323,116],[355,290],[110,460],[300,520]].forEach(([x,y])=>base+=`<use href="#isoShrub" x="${x}" y="${y}"/>`);
+ }else{
+  [[100,145],[1190,165],[640,40],[760,365]].forEach(([x,y])=>base+=`<use href="#isoLamp" x="${x}" y="${y}"/>`);
+  [[140,335],[410,48],[1100,316],[770,345],[310,60]].forEach(([x,y])=>base+=`<use href="#isoShrub" x="${x}" y="${y}"/>`);
+ }
  // Neighborhood park and scattered streetscape props.
  if(!landscape){
   base+=`<g opacity=".98"><path d="M16 475 L57 454 L95 474 L54 496 Z" fill="#a1d29a" stroke="#70b77f" stroke-width="1.3"/><path d="M28 475 l26 -13 l26 13 l-26 13 Z" fill="#cee7a9"/><path d="M28 475 L54 488 L80 475" fill="none" stroke="#f4e8b7" stroke-width="2"/><text x="54" y="475" text-anchor="middle" font-size="7" font-weight="1000" fill="#386b53">ПАРК</text></g>`;
@@ -415,7 +448,7 @@ function renderCity(){
  }
  // Distant, decorative city blocks around the edges, kept behind the interactive lots.
  if(!landscape){
-  const deco=[{x:4,y:18,c:'#80abb2'},{x:356,y:18,c:'#d27c55'},{x:0,y:390,c:'#7384bc'},{x:348,y:420,c:'#5f9e9b'}];
+  const deco=[{x:4,y:18,c:'#80abb2'},{x:356,y:18,c:'#d27c55'},{x:0,y:390,c:'#7384bc'},{x:348,y:420,c:'#5f9e9b'},{x:12,y:260,c:'#79b5c5'},{x:370,y:275,c:'#e5a36c'},{x:10,y:85,c:'#d68e73'}];
   deco.forEach(d=>{base+=`<g opacity=".82"><path d="M${d.x} ${d.y+20} l21 -12 l20 12 l-21 13 Z" fill="#49616c"/><path d="M${d.x} ${d.y+20} l21 13 v18 l-21 -12 Z" fill="${d.c}"/><path d="M${d.x+21} ${d.y+33} l20 -13 v18 l-20 13 Z" fill="#3a596b"/><path d="M${d.x+6} ${d.y+24} l11 7 v8 l-11 -7 Z" fill="#bce4ea"/><path d="M${d.x+25} ${d.y+33} l9 -6 v8 l-9 6 Z" fill="#c7eaf0"/></g>`});
  }
  const facades=locations.slice().sort((a,b)=>a.cy-b.cy).map((loc,i)=>{const biz=state.businesses.find(b=>b.location===loc.id);return svgBuilding(loc,biz,i)}).join('');
@@ -461,7 +494,7 @@ document.getElementById('cityMap').addEventListener('keydown',e=>{if((e.key==='E
 let mapResizeTimer=null;window.addEventListener('resize',()=>{clearTimeout(mapResizeTimer);mapResizeTimer=setTimeout(renderCity,80)});
 document.getElementById('nextDayBtn').addEventListener('click',nextDay);document.getElementById('financeNextBtn').addEventListener('click',nextDay);document.getElementById('businessNextBtn').addEventListener('click',()=>{switchTab('business');document.getElementById('businessMarket').scrollIntoView({behavior:'smooth',block:'start'})});document.getElementById('hireBtn').addEventListener('click',()=>openModal('Нанять управляющего','Разовая комиссия — 45 000 ₽. Зарплата — 5 500 ₽ в день. Управляющий повышает выручку выбранного предприятия на 12%.','Нанять',hireManager));document.getElementById('resetBtn').addEventListener('click',()=>openModal('Начать новую игру?','Текущий прогресс будет удалён. Начнёшь заново со стартовым капиталом 100 000 ₽.','Сбросить',()=>{state=initialState();save();render();toast('Новая игра началась.')}));document.getElementById('modalCancel').addEventListener('click',closeModal);document.getElementById('modalConfirm').addEventListener('click',()=>{const action=pendingAction;closeModal();if(action)action()});document.getElementById('modalBackdrop').addEventListener('click',e=>{if(e.target.id==='modalBackdrop')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 // Event delegation for action buttons inserted by render().
-// Version 0.6: isometric cartoon city, richer architectural silhouettes, colorful mobile tycoon UI. Core economy and saves retained.
+// Version 0.7: richer isometric storefronts, level-scaled buildings, street furniture, continuous ground texture and skyline detail. Saves and economy retained.
 const oldRender=render;render=function(){oldRender();};
 // Patch the manager confirmation for explicit insufficient-funds handling.
 const baseHire=hireManager;hireManager=function(){if(state.cash<45000){toast('Для найма управляющего нужно '+fmt(45000)+'.');return}baseHire()};
