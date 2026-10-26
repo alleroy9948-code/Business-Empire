@@ -1,0 +1,35 @@
+name: Validate Business Empire
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check inline JavaScript syntax
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          html = Path("index.html").read_text(encoding="utf-8")
+          if "<script>" not in html or "</script>" not in html:
+              raise SystemExit("Inline script not found")
+          js = html.split("<script>", 1)[1].split("</script>", 1)[0]
+          Path("/tmp/business-empire.js").write_text(js, encoding="utf-8")
+          print(f"Extracted {len(js)} characters of JavaScript")
+          PY
+          node --check /tmp/business-empire.js
+      - name: Check key map markers
+        run: |
+          grep -q 'function svgBuilding' index.html
+          grep -q 'function renderCity' index.html
+          grep -q 'business_empire_v06' index.html
+          echo "City renderer and saved-game key found."
