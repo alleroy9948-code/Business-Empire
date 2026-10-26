@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#13262d">
-<title>Бизнес-империя — версия 0.7</title>
+<title>Бизнес-империя — версия 0.8</title>
 <style>
 :root{--ink:#172a31;--muted:#718188;--paper:#f4f6f3;--panel:#fff;--line:#e3e9e5;--green:#baf36d;--green-dark:#2e5d3e;--orange:#f3a45d;--blue:#4d7d8a;--shadow:0 8px 24px rgba(27,48,53,.08)}
 *{box-sizing:border-box} html{background:#e8eeea} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);min-height:100vh} button{font:inherit;cursor:pointer;border:0} button:focus-visible{outline:3px solid #7ba7f7;outline-offset:2px} .app{max-width:1060px;margin:0 auto;min-height:100vh;background:var(--paper);padding-bottom:28px}.topbar{background:var(--ink);color:white;padding:18px 18px 17px;border-radius:0 0 24px 24px;position:relative;overflow:hidden}.topbar:after{content:"";position:absolute;width:220px;height:220px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-70px;top:-130px;box-shadow:0 0 0 23px rgba(255,255,255,.025),0 0 0 47px rgba(255,255,255,.025)}.toprow{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:1}.brand{display:flex;align-items:center;gap:11px}.brandmark{height:42px;width:42px;border-radius:14px;background:var(--green);color:#193324;display:grid;place-items:center;font-size:24px;font-weight:900}.eyebrow{text-transform:uppercase;font-size:10px;letter-spacing:.15em;color:#a6b5b8;font-weight:800}.brand h1{font-size:19px;letter-spacing:-.03em;margin:1px 0 0}.datepill{font-size:11px;border:1px solid #385057;background:#203940;color:#e4efea;padding:8px 10px;border-radius:999px;white-space:nowrap}.welcome{margin-top:18px;position:relative;z-index:1}.welcome .greeting{font-size:12px;color:#a6b5b8;margin-bottom:4px}.welcome .headline{font-size:25px;line-height:1.1;letter-spacing:-.04em;font-weight:850}.welcome .headline span{color:var(--green)}.topstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:18px;position:relative;z-index:1}.topstat{background:#203940;border:1px solid #304950;border-radius:15px;padding:11px 10px;min-width:0}.topstat .label{font-size:10px;color:#a6b5b8;display:flex;align-items:center;gap:5px}.topstat .value{font-size:clamp(15px,3.4vw,21px);font-weight:850;letter-spacing:-.04em;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.topstat .sub{font-size:10px;color:#99aaa9;margin-top:3px}.positive{color:var(--green)!important}.negative{color:#ffad95!important}.main{padding:17px 14px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:4px 2px 12px}.section-head h2{font-size:19px;letter-spacing:-.035em;margin:0}.section-head p{font-size:11px;color:var(--muted);margin:4px 0 0}.small-action{font-size:11px;font-weight:800;color:var(--green-dark);background:#e4f5d7;padding:9px 11px;border-radius:10px;white-space:nowrap}.city-card,.content-card{background:var(--panel);border:1px solid var(--line);border-radius:21px;box-shadow:var(--shadow);overflow:hidden}.city-head{display:flex;justify-content:space-between;align-items:center;padding:14px 15px 9px}.city-title{font-size:13px;font-weight:850}.city-weather{font-size:10px;color:var(--muted);background:#f3f6f3;border-radius:999px;padding:6px 8px}.citymap{display:block;width:100%;height:auto;max-height:385px;background:#dce6dc}.map-legend{display:flex;flex-wrap:wrap;gap:12px;padding:10px 15px 13px;font-size:10px;color:var(--muted)}.legend-item{display:flex;align-items:center;gap:6px}.dot{width:8px;height:8px;border-radius:3px;display:inline-block}.dot.owned{background:#8dcc62}.dot.free{background:#f1b36f}.dot.other{background:#89a5ad}.hint{font-size:11px;color:var(--muted);margin:10px 4px 17px;line-height:1.45}.selected-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px;box-shadow:0 4px 14px rgba(27,48,53,.04)}.selected-top{display:flex;gap:11px;align-items:center}.biz-icon{width:47px;height:47px;display:grid;place-items:center;border-radius:15px;font-size:23px;background:#e7f3dc;flex-shrink:0}.biz-title{font-weight:850;font-size:14px;letter-spacing:-.02em}.biz-caption{font-size:10px;color:var(--muted);margin-top:4px}.status{font-size:9px;letter-spacing:.05em;font-weight:900;padding:6px 7px;border-radius:999px;margin-left:auto;align-self:flex-start;white-space:nowrap}.status.owned{background:#e4f5d7;color:#35633e}.status.free{background:#fff0dd;color:#8b5529}.selected-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 12px}.metric{background:#f6f8f5;padding:10px;border-radius:12px;min-width:0}.metric .m-label{color:var(--muted);font-size:9px}.metric .m-value{font-weight:850;font-size:14px;letter-spacing:-.03em;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.button-row{display:flex;gap:8px}.btn{border-radius:12px;padding:12px 13px;font-size:12px;font-weight:850;min-height:43px;transition:transform .12s ease,filter .12s ease}.btn:active{transform:scale(.98)}.btn-primary{background:var(--green);color:#1a3425;flex:1}.btn-secondary{background:#edf1ed;color:#40545a}.btn-danger{background:#fff0eb;color:#994e3b}.nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;background:#fff;border-top:1px solid var(--line);padding:9px 7px calc(9px + env(safe-area-inset-bottom));position:sticky;bottom:0;z-index:10;margin-top:18px}.nav-btn{background:transparent;color:#849296;border-radius:13px;padding:8px 2px 7px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:9px;font-weight:800}.nav-btn .nav-icon{font-size:19px;line-height:1.1}.nav-btn.active{background:#edf6e6;color:#315b39}.tab-pane{display:none}.tab-pane.active{display:block}.content-card{padding:15px;margin-bottom:12px}.card-title{font-weight:900;font-size:15px;letter-spacing:-.03em;margin:0}.muted{color:var(--muted)}.small{font-size:11px;line-height:1.45}.business-row{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid #edf0ed}.business-row:last-child{border-bottom:0;padding-bottom:0}.business-row:first-child{padding-top:0}.business-row .biz-icon{width:43px;height:43px}.row-main{min-width:0;flex:1}.row-name{font-size:12px;font-weight:850}.row-sub{font-size:10px;color:var(--muted);margin-top:4px}.row-profit{text-align:right;font-size:12px;font-weight:900;white-space:nowrap}.row-profit span{display:block;color:var(--muted);font-size:9px;font-weight:600;margin-top:4px}.pill{font-size:9px;padding:5px 7px;border-radius:7px;background:#f0f3f0;color:#627277;display:inline-block}.shop-card{border:1px solid var(--line);border-radius:16px;padding:13px;margin-top:10px;background:#fbfcfa}.shop-top{display:flex;gap:10px;align-items:center}.shop-card .price{font-size:13px;font-weight:900;margin-left:auto;white-space:nowrap}.shop-desc{font-size:10px;line-height:1.5;color:var(--muted);margin:9px 0 11px}.shop-meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:11px}.shop-meta span{font-size:9px;padding:5px 7px;background:#f0f3ef;border-radius:7px;color:#627277}.section-label{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:#8a999b;margin:17px 0 7px}.progress-track{height:7px;border-radius:99px;background:#edf1ec;overflow:hidden;margin:9px 0 5px}.progress-fill{height:100%;background:var(--green-dark);border-radius:99px;transition:width .2s}.team-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #edf0ed}.team-row:last-child{border:0}.avatar{height:39px;width:39px;border-radius:13px;background:#e8eef0;display:grid;place-items:center;font-size:18px}.team-info{flex:1;min-width:0}.team-info strong{display:block;font-size:12px}.team-info span{display:block;font-size:10px;color:var(--muted);margin-top:4px}.salary{font-size:11px;font-weight:850;white-space:nowrap}.finance-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.finance-tile{padding:13px;background:#f5f8f4;border-radius:14px}.finance-tile .label{font-size:10px;color:var(--muted)}.finance-tile strong{display:block;font-size:20px;letter-spacing:-.04em;margin-top:7px}.ledger{margin-top:8px}.ledger-row{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid #edf0ed;font-size:11px}.ledger-row:last-child{border:0}.ledger-row .desc{color:var(--muted);margin-top:3px;font-size:9px}.research-card{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #edf0ed}.research-card:last-child{border:0}.research-icon{width:43px;height:43px;border-radius:14px;background:#e8eef7;display:grid;place-items:center;font-size:21px;flex-shrink:0}.research-info{flex:1;min-width:0}.research-info strong{font-size:12px;display:block}.research-info p{font-size:10px;color:var(--muted);line-height:1.4;margin:5px 0 9px}.research-price{font-weight:900;font-size:11px;margin-right:7px}.notice{padding:11px 12px;background:#f0f7e9;border-radius:12px;color:#446443;font-size:10px;line-height:1.45;margin-top:12px}.toast{position:fixed;z-index:50;bottom:90px;left:50%;transform:translate(-50%,14px);opacity:0;pointer-events:none;background:#1a3036;color:#fff;border-radius:13px;padding:12px 15px;box-shadow:var(--shadow);font-size:12px;font-weight:750;max-width:calc(100vw - 32px);transition:all .22s ease;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-backdrop{position:fixed;inset:0;background:rgba(14,31,35,.48);z-index:40;display:none;align-items:flex-end;justify-content:center;padding:12px}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:24px 24px 18px 18px;width:min(560px,100%);padding:18px;box-shadow:0 20px 70px rgba(0,0,0,.2)}.modal-handle{width:34px;height:4px;background:#dfe5df;border-radius:99px;margin:0 auto 16px}.modal h3{font-size:18px;letter-spacing:-.03em;margin:0 0 7px}.modal p{font-size:11px;line-height:1.5;color:var(--muted);margin:0 0 14px}.modal-actions{display:flex;gap:8px;margin-top:16px}.modal-actions button{flex:1}.footnote{color:#94a0a0;text-align:center;font-size:9px;padding:12px 20px 0}.empty-state{padding:22px 8px;text-align:center}.empty-state .emoji{font-size:27px}.empty-state strong{display:block;font-size:13px;margin-top:8px}.empty-state p{font-size:10px;color:var(--muted);line-height:1.5;max-width:260px;margin:7px auto 0}
@@ -195,6 +195,22 @@ html{background:#d4e4ed}body{background:#e5eef2;color:#163b55}
 @media(prefers-reduced-motion:reduce){.map-loc,.map-loc *{transition:none!important;animation:none!important}}
 
 .citymap{background:#b4dfb2!important}.map-loc{transition:filter .18s ease}.map-loc .lot-tag{filter:drop-shadow(0 2px 1px rgba(18,47,37,.22))}.map-loc.selected-lot{filter:drop-shadow(0 4px 4px rgba(26,70,51,.25)) saturate(1.12)}.map-loc.selected-lot .lot-tag{filter:drop-shadow(0 2px 2px rgba(22,54,43,.32))}.map-loc.selected-lot .lot-shadow{opacity:.28!important}@media(prefers-reduced-motion:reduce){.map-loc,.map-loc *{transition:none!important;animation:none!important}}
+
+.city3d-map{position:relative;height:clamp(390px,78vw,560px);max-height:none;background:linear-gradient(145deg,#c4e9ec,#90c99e);overflow:hidden;isolation:isolate;touch-action:pan-y}
+.city3d-map.city3d-ready{background:#b9e0e8}
+.city3d-canvas-wrap{position:absolute;inset:0;z-index:0}
+.city3d-canvas-wrap canvas{width:100%;height:100%;display:block}
+.city3d-status{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%);font-size:12px;font-weight:850;color:#244852;background:rgba(255,255,255,.88);padding:12px 16px;border-radius:13px;box-shadow:0 5px 20px rgba(34,73,77,.12);text-align:center}
+.city3d-status[hidden]{display:none}
+.city3d-badge{position:absolute;top:12px;left:12px;z-index:2;background:rgba(22,48,57,.82);color:#fff;padding:8px 10px;border-radius:10px;font-size:9px;font-weight:900;letter-spacing:.08em;box-shadow:0 3px 12px rgba(27,56,60,.12);pointer-events:none}
+.city3d-controls{position:absolute;right:11px;top:11px;z-index:3;display:flex;gap:5px}
+.city3d-controls button{height:38px;min-width:38px;border-radius:11px;background:rgba(255,255,255,.94);color:#24454e;font-size:19px;font-weight:900;box-shadow:0 3px 12px rgba(27,56,60,.15);border:1px solid rgba(36,69,78,.1)}
+.city3d-controls button:active{transform:scale(.94)}
+.city3d-accessible{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;left:-9999px}
+.city3d-accessible button:focus{position:fixed;left:10px;bottom:10px;width:auto;height:auto;clip-path:none;white-space:normal;z-index:999;background:#fff;color:#17333b;padding:12px;border:2px solid #477d8b;border-radius:8px}
+.citymap-fallback{display:block;width:100%;height:auto;max-height:385px;background:#dce6dc}
+@media(min-width:780px){.city3d-map{height:500px}}
+@media(prefers-reduced-motion:reduce){.city3d-controls button{transition:none}}
 </style>
 </head>
 <body>
@@ -217,7 +233,16 @@ html{background:#d4e4ed}body{background:#e5eef2;color:#163b55}
       <div id="cityExploreArea" class="city-explore">
       <div class="city-card">
         <div class="city-head"><div class="city-title">📍 Центральный район</div><div class="city-weather">☀️ Деловая активность: стабильная</div></div>
-        <svg class="citymap" id="cityMap" viewBox="0 0 420 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Карта города: нажми на здание или участок, чтобы управлять бизнесом"></svg>
+        <div class="citymap city3d-map" id="city3dMap" role="group" aria-label="Объёмная 3D-карта города">
+          <div class="city3d-status" role="status" aria-live="polite">Создаём город…</div>
+          <div class="city3d-badge">🏙️ ГОРОД · 3D</div>
+          <div class="city3d-controls" aria-label="Управление камерой">
+            <button type="button" data-city3d="zoom-in" aria-label="Приблизить карту">+</button>
+            <button type="button" data-city3d="zoom-out" aria-label="Отдалить карту">−</button>
+            <button type="button" data-city3d="reset" aria-label="Вернуть камеру в центр">↺</button>
+          </div>
+        </div>
+        <div id="city3dAccessibleLots" class="city3d-accessible" aria-label="Список участков города"></div>
         <div class="map-legend"><span class="legend-item"><i class="dot owned"></i> Твой бизнес</span><span class="legend-item"><i class="dot free"></i> Твой участок</span><span class="legend-item"><i class="dot other"></i> Земля на продажу</span></div>
       </div>
       <p class="hint">Нажми на здание, чтобы открыть его управление. Земельные участки сначала нужно приобрести; затем на них можно строить новые предприятия.</p>
@@ -255,7 +280,7 @@ html{background:#d4e4ed}body{background:#e5eef2;color:#163b55}
     <button class="nav-btn" data-tab="finance" type="button"><span class="nav-icon">📊</span><span>Финансы</span></button>
     <button class="nav-btn" data-tab="research" type="button"><span class="nav-icon">🔬</span><span>Развитие</span></button>
   </nav>
-  <div class="footnote">Версия 0.7 · Изометрический город · Подробная архитектура · Офлайн</div>
+  <div class="footnote">Версия 0.8 · 3D-город · Динамический транспорт · Управление камерой</div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><div class="modal-handle"></div><h3 id="modalTitle">Подтвердить действие</h3><p id="modalText"></p><div class="modal-actions"><button class="btn btn-secondary" type="button" id="modalCancel">Отмена</button><button class="btn btn-primary" type="button" id="modalConfirm">Подтвердить</button></div></div></div>
@@ -391,12 +416,412 @@ function svgBuilding(loc,biz,index){
   <path d="M${cx} ${cy-25} L${cx+50} ${cy} L${cx} ${cy+25} L${cx-50} ${cy} Z" fill="${glow?'#c7ee86':(owned?'#9bd18a':(landOwned?'#acd997':'#e4c488'))}" stroke="${glow?'#ffe45c':(owned?'#74b976':(landOwned?'#6daf72':'#d6aa68'))}" stroke-width="${glow?'2.4':'1'}"/>
   <path d="M${cx-38} ${cy} L${cx} ${cy+19} L${cx+38} ${cy} M${cx} ${cy-19} L${cx} ${cy+19}" stroke="#ffffff" stroke-opacity=".2" stroke-width="1.1" fill="none"/>
   ${art}
-  <g class="lot-tag"><path d="M${cx-29} ${cy+6} L${cx} ${cy+12} L${cx+29} ${cy+6} L${cx+29} ${cy+15} L${cx} ${cy+21} L${cx-29} ${cy+15} Z" fill="${badgeFill}" stroke="#fff" stroke-opacity=".9" stroke-width=".8"/><text x="${cx}" y="${cy+14.4}" text-anchor="middle" font-size="${owned?'5.9':'6.3'}" font-weight="1000" letter-spacing=".12" fill="${nameFill}">${escSvg(badgeText)}</text></g>
-  ${glow?`<circle cx="${cx+49}" cy="${cy-25}" r="7" fill="#ffd945" stroke="#fff8c8" stroke-width="1.4"/><path d="M${cx+46} ${cy-25} l2 2 l4 -4" fill="none" stroke="#65501a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>`:''}
- </g>`;
-}
+  <g class="lot-tag"><path d="M${cx-29} ${cy+6} L${cx} ${cy+12} L${cx+29} ${cy+6} 
+let city3D=null, city3DLoading=false, city3DFailed=false, city3DAnimFrame=0;
+const cityReducedMotion=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function renderCity(){
- const svg=document.getElementById('cityMap');
+ const mount=document.getElementById('city3dMap');
+ if(!mount)return;
+ renderCityAccessibleLots();
+ if(city3D){syncCity3D();resizeCity3D();return;}
+ if(city3DFailed){renderCityFallback();return;}
+ if(city3DLoading)return;
+ city3DLoading=true;
+ const status=mount.querySelector('.city3d-status');
+ if(status)status.textContent='Загружаем объёмный город…';
+ import('https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js')
+  .then(THREE=>initCity3D(THREE,mount))
+  .catch(err=>{
+   console.warn('3D map failed to load; using SVG fallback.',err);
+   city3DFailed=true;city3DLoading=false;
+   if(status)status.textContent='3D недоступно — включена облегчённая карта';
+   renderCityFallback();
+  });
+}
+function renderCityAccessibleLots(){
+ const box=document.getElementById('city3dAccessibleLots');
+ if(!box)return;
+ box.innerHTML=LOCATIONS.map((l,i)=>{
+  const b=state.businesses.find(x=>x.location===l.id);
+  const label=b?b.name:(state.land.includes(l.id)?'Свободный участок':'Участок на продажу');
+  return '<button type="button" data-location="'+escSvg(l.id)+'" aria-label="'+escSvg(label)+'">'+(i+1)+'. '+escSvg(label)+'</button>';
+ }).join('');
+}
+function initCity3D(THREE,mount){
+ try{
+  const scene=new THREE.Scene();
+  scene.background=new THREE.Color('#c8e8ef');
+  scene.fog=new THREE.Fog('#c8e8ef',34,70);
+  const camera=new THREE.OrthographicCamera(-15,15,16,-16,.1,120);
+  camera.position.set(24,31,27);
+  const target=new THREE.Vector3(0,0,0);camera.lookAt(target);
+  const renderer=new THREE.WebGLRenderer({antialias:window.devicePixelRatio<=1.5,alpha:false,powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.6));
+  renderer.shadowMap.enabled=true;
+  renderer.shadowMap.type=THREE.PCFShadowMap;
+  renderer.outputColorSpace=THREE.SRGBColorSpace;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=1.08;
+  renderer.domElement.setAttribute('aria-label','Объёмная 3D-карта города. Нажми на участок или здание, чтобы выбрать.');
+  renderer.domElement.style.cssText='position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab;outline:none;';
+  renderer.domElement.tabIndex=0;
+  mount.querySelectorAll('.city3d-status').forEach(el=>el.remove());
+  mount.querySelectorAll('.city3d-canvas-wrap').forEach(el=>el.remove());
+  const wrap=document.createElement('div');wrap.className='city3d-canvas-wrap';wrap.style.cssText='position:absolute;inset:0;overflow:hidden;';
+  wrap.appendChild(renderer.domElement);mount.prepend(wrap);
+  const status=mount.querySelector('.city3d-status');
+  if(status)status.hidden=true;
+  mount.classList.add('city3d-ready');
+  const hemi=new THREE.HemisphereLight('#f6ffff','#71996b',2.0);scene.add(hemi);
+  const sun=new THREE.DirectionalLight('#fff1d2',3.2);
+  sun.position.set(-16,27,18);sun.castShadow=true;
+  sun.shadow.mapSize.set(1536,1536);
+  sun.shadow.camera.left=-24;sun.shadow.camera.right=24;sun.shadow.camera.top=24;sun.shadow.camera.bottom=-24;
+  sun.shadow.camera.near=.5;sun.shadow.camera.far=90;sun.shadow.bias=-.0004;sun.shadow.normalBias=.025;
+  scene.add(sun);scene.add(sun.target);
+  const fill=new THREE.DirectionalLight('#b5e5ff',.8);fill.position.set(17,12,-16);scene.add(fill);
+  const mat=(color,roughness=.85,metalness=0,extra={})=>new THREE.MeshStandardMaterial(Object.assign({color,roughness,metalness},extra));
+  const grass=mat('#8fca82'), grassLight=mat('#a5d98f'), curb=mat('#c7d2c1'), road=mat('#495d6d',.98), lane=mat('#f6eac0'), concrete=mat('#d3d9c7'), white=mat('#f7f7e9'), dark=mat('#334654'), glass=mat('#86d3e8',.24,.1,{emissive:'#174a5b',emissiveIntensity:.15}), windowLit=mat('#ffdf97',.25,.05,{emissive:'#a46e23',emissiveIntensity:.25});
+  function box(parent,w,h,d,material,x,y,z,opts={}){
+   const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);
+   mesh.position.set(x,y,z);mesh.castShadow=!!opts.cast;mesh.receiveShadow=opts.receive!==false;
+   if(opts.rotY)mesh.rotation.y=opts.rotY;
+   if(opts.name)mesh.name=opts.name;
+   parent.add(mesh);return mesh;
+  }
+  function flat(parent,w,h,d,color,x,y,z){return box(parent,w,h,d,mat(color,.95),x,y,z,{cast:false});}
+  function textureLabel(text,bg,fg){
+   const canvas=document.createElement('canvas');canvas.width=512;canvas.height=128;
+   const ctx=canvas.getContext('2d');
+   ctx.fillStyle=bg;ctx.fillRect(0,0,512,128);
+   ctx.fillStyle='rgba(255,255,255,.18)';ctx.fillRect(0,0,512,8);
+   ctx.fillStyle=fg;ctx.font='900 55px system-ui, sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+   let t=String(text||'BUSINESS').toUpperCase();if(t.length>16)t=t.slice(0,15)+'…';
+   ctx.fillText(t,256,66);
+   ctx.strokeStyle='rgba(255,255,255,.55)';ctx.lineWidth=5;ctx.strokeRect(3,3,506,122);
+   const tex=new THREE.CanvasTexture(canvas);tex.colorSpace=THREE.SRGBColorSpace;tex.anisotropy=4;return tex;
+  }
+  function addLabel(parent,text,color,fg,width=2.3){
+   const tex=textureLabel(text,color,fg);
+   const m=new THREE.Mesh(new THREE.PlaneGeometry(width,.52),new THREE.MeshBasicMaterial({map:tex,transparent:false,side:THREE.DoubleSide}));
+   parent.add(m);return m;
+  }
+  const groundTexCanvas=document.createElement('canvas');groundTexCanvas.width=256;groundTexCanvas.height=256;
+  const gctx=groundTexCanvas.getContext('2d');gctx.fillStyle='#8fca82';gctx.fillRect(0,0,256,256);
+  let seed=7391;function rnd(){seed=(seed*16807)%2147483647;return(seed-1)/2147483646;}
+  for(let i=0;i<2300;i++){
+   const x=rnd()*256,y=rnd()*256,alpha=.05+rnd()*.18;
+   gctx.fillStyle=rnd()>.5?'rgba(245,255,203,'+alpha+')':'rgba(49,122,72,'+alpha+')';
+   gctx.fillRect(x,y,1+rnd()*2,1+rnd()*2);
+  }
+  const gtex=new THREE.CanvasTexture(groundTexCanvas);gtex.wrapS=gtex.wrapT=THREE.RepeatWrapping;gtex.repeat.set(5,5);gtex.colorSpace=THREE.SRGBColorSpace;
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(80,80),new THREE.MeshStandardMaterial({map:gtex,roughness:1}));
+  ground.rotation.x=-Math.PI/2;ground.position.y=-.14;ground.receiveShadow=true;scene.add(ground);
+  box(scene,31,.35,29,mat('#73b56e'),0,-.28,0,{cast:false});
+  // A low-poly park and water feature soften the edge of the business district.
+  const park=new THREE.Group();park.position.set(-14,-.03,10);scene.add(park);
+  box(park,5,.16,5,mat('#6fbd77'),0,0,0,{cast:false});
+  const pond=new THREE.Mesh(new THREE.CylinderGeometry(1.05,1.18,.12,12),mat('#74cfe8',.2,.1));pond.position.set(0,.14,0);pond.receiveShadow=true;park.add(pond);
+  const fountain=new THREE.Mesh(new THREE.CylinderGeometry(.16,.24,.55,8),mat('#f6e9c9'));fountain.position.set(0,.42,0);park.add(fountain);
+  const fountainJet=new THREE.Mesh(new THREE.CylinderGeometry(.045,.07,.62,7),mat('#a4e9f7',.25,.1));fountainJet.position.set(0,.8,0);park.add(fountainJet);
+  const lots=[],pickables=[],moving=[],leafGroups=[],smokeGroups=[],people=[],cars=[];
+  const lotMaterial=mat('#a8d98f'), lotOwned=mat('#89d37e'), lotFree=mat('#f4cf8a');
+  function addTree(x,z,scale=1){
+   const group=new THREE.Group();group.position.set(x,0,z);group.scale.setScalar(scale);scene.add(group);
+   box(group,.2,1.0,.2,mat('#8d6846'),0,.49,0,{cast:true});
+   const crown1=new THREE.Mesh(new THREE.DodecahedronGeometry(.73,0),mat('#2f8a59'));crown1.position.set(0,1.35,0);crown1.castShadow=true;group.add(crown1);
+   const crown2=new THREE.Mesh(new THREE.DodecahedronGeometry(.52,0),mat('#57b96b'));crown2.position.set(.22,1.75,.02);crown2.castShadow=true;group.add(crown2);
+   const crown3=new THREE.Mesh(new THREE.DodecahedronGeometry(.38,0),mat('#8bd77b'));crown3.position.set(-.22,1.72,.08);crown3.castShadow=true;group.add(crown3);
+   leafGroups.push({group,phase:rnd()*6});return group;
+  }
+  function addLamp(x,z){
+   const group=new THREE.Group();group.position.set(x,0,z);scene.add(group);
+   box(group,.09,1.65,.09,dark,0,.82,0,{cast:false});
+   box(group,.43,.09,.12,mat('#667e8b'),.15,1.65,0,{cast:false});
+   const bulb=new THREE.Mesh(new THREE.SphereGeometry(.13,8,6),mat('#fff2b7',.18,0,{emissive:'#ffce70',emissiveIntensity:.9}));bulb.position.set(.33,1.56,0);group.add(bulb);
+   return group;
+  }
+  // Road surfaces have curbs, lane dashes and pedestrian crossings.
+  function roadAlongX(z){
+   box(scene,33,.13,2.65,curb,0,-.055,z,{cast:false});
+   box(scene,33,.08,2.2,road,0,.015,z,{cast:false});
+   for(let x=-15.5;x<16;x+=2.5)box(scene,.95,.025,.065,lane,x,.069,z,{cast:false});
+   for(let x=-15.2;x<16;x+=2.5){flat(scene,.75,.025,.045, '#fff6dc',x,.07,z-0.88);flat(scene,.75,.025,.045,'#fff6dc',x,.07,z+.88);}
+  }
+  function roadAlongZ(x){
+   box(scene,2.65,.13,28,curb,x,-.055,0,{cast:false});
+   box(scene,2.2,.08,27.5,road,x,.015,0,{cast:false});
+   for(let z=-13;z<14;z+=2.4)box(scene,.065,.025,.92,lane,x,.069,z,{cast:false});
+  }
+  roadAlongX(-3.55);roadAlongX(3.55);roadAlongZ(-3.75);roadAlongZ(3.75);
+  // Painted crosswalks mark the four intersections.
+  for(const z of [-3.55,3.55])for(let i=-3;i<=3;i++)box(scene,.33,.026,.95,white,i*.43,.075,z+(z<0?1.25:-1.25),{cast:false});
+  for(const x of [-3.75,3.75])for(let i=-3;i<=3;i++)box(scene,.95,.026,.33,white,x+(x<0?1.25:-1.25),.075,i*.43,{cast:false});
+  // Distant low-poly blocks establish a real city silhouette behind the playable district.
+  const skylineColors=['#9fc6c5','#d9a18a','#8eaccc','#e7c889','#79b1aa','#b2c3a0'];
+  for(let i=0;i<18;i++){
+   const side=i%4;let x,z;
+   if(side===0){x=-16.5-rnd()*3;z=-10+rnd()*20;}
+   else if(side===1){x=16.5+rnd()*3;z=-10+rnd()*20;}
+   else if(side===2){x=-14+rnd()*28;z=-15-rnd()*2;}
+   else{x=-14+rnd()*28;z=15+rnd()*2;}
+   const w=1.4+rnd()*2.1,d=1.5+rnd()*2.0,h=1.5+rnd()*5;
+   const color=skylineColors[i%skylineColors.length],grp=new THREE.Group();grp.position.set(x,0,z);scene.add(grp);
+   box(grp,w,.22,d,mat('#e4e5d2'),0,.11,0,{cast:false});
+   box(grp,w,h,d,mat(color),0,h/2,0,{cast:true});
+   box(grp,w+.12,.16,d+.12,mat(skylineColors[(i+2)%skylineColors.length]),0,h+.08,0,{cast:false});
+   const wc=mat(i%3===0?'#f8e1a0':'#7ab6ca',.3,0,{emissive:i%3===0?'#8c6325':'#214b62',emissiveIntensity:.12});
+   for(let yy=.55;yy<h-.1;yy+=.8)for(let xx=-w/2+.35;xx<w/2-.15;xx+=.6){
+    box(grp,.18,.28,.035,wc,xx,yy,d/2+.025,{cast:false});
+   }
+  }
+  const themes={
+   electronics:{wall:'#d9e8ee',side:'#9cbac8',roof:'#127e9b',roof2:'#35c2cf',accent:'#8cf2ec',glass:'#264e63',sign:'TECH'},
+   cafe:{wall:'#f4d3a5',side:'#cf9a6f',roof:'#d85e3f',roof2:'#ffb35a',accent:'#ffe08a',glass:'#397d86',sign:'CAFE'},
+   club:{wall:'#c7c9f4',side:'#777ac1',roof:'#483e9e',roof2:'#9e7aff',accent:'#ff9ced',glass:'#1d315d',sign:'GAME'},
+   garage:{wall:'#cbdfe6',side:'#849fac',roof:'#47768e',roof2:'#8bc6dd',accent:'#ffd177',glass:'#244e64',sign:'AUTO'},
+   factory:{wall:'#c7dcd1',side:'#7e9a8e',roof:'#48766d',roof2:'#91c4b3',accent:'#ffd17f',glass:'#234d54',sign:'WORKS'}
+  };
+  function createBuilding(loc,biz){
+   const group=new THREE.Group();group.position.set(loc.x,.12,loc.z);
+   const t=themes[biz.type]||themes.electronics;
+   const level=Math.max(1,Number(biz.level)||1);
+   const h=Math.min(4.9,(biz.type==='factory'?2.65:(biz.type==='club'?2.4:2.25))+Math.min(6,level-1)*.32);
+   const w=biz.type==='factory'?3.9:(biz.type==='club'?3.5:3.25),d=biz.type==='factory'?3.25:2.9;
+   const wall=mat(t.wall),side=mat(t.side),roofMat=mat(t.roof),accent=mat(t.accent,.55,.05);
+   box(group,w,h,d,wall,0,h/2,0,{cast:true});
+   box(group,w+.22,.16,d+.22,side,0,.19,0,{cast:true});
+   box(group,w+.34,.18,d+.34,roofMat,0,h+.02,0,{cast:true});
+   box(group,w+.12,.12,d+.12,mat(t.roof2),0,h+.16,0,{cast:false});
+   // Facade windows on the main street-facing and right-side walls.
+   const rows=Math.max(2,Math.min(4,Math.floor(h/.75)));
+   const cols=biz.type==='factory'?4:3;
+   const winMat=mat(t.glass,.22,.08,{emissive:t.glass,emissiveIntensity:.14});
+   const winH=.32,winW=.38;
+   for(let row=0;row<rows;row++){
+    const yy=.56+row*(h-.8)/Math.max(1,rows-1);
+    for(let col=0;col<cols;col++){
+     const xx=(col-(cols-1)/2)*(w/(cols+.25));
+     box(group,winW,winH,.045,winMat,xx,yy,d/2+.035,{cast:false});
+     box(group,.045,winH+.03,.052,mat('#eff5df'),xx,yy,d/2+.062,{cast:false});
+     const sx=(col-(cols-1)/2)*(d/(cols+.4));
+     box(group,.04,winH,.045,winMat,w/2+.035,yy,sx,{cast:false});
+    }
+   }
+   // Glazed storefront, door and illuminated fascia.
+   const doorMat=mat('#30566a',.32,.05,{emissive:'#183b50',emissiveIntensity:.18});
+   box(group,.48,.95,.07,doorMat,-.92,.66,d/2+.07,{cast:false});
+   box(group,1.12,.7,.065,glass,.43,.83,d/2+.075,{cast:false});
+   box(group,1.18,.08,.09,accent,.43,1.22,d/2+.12,{cast:false});
+   const signPlane=addLabel(group,t.sign,t.roof2,'#ffffff',1.75);signPlane.position.set(.23,Math.min(h-.22,1.72),d/2+.105);
+   // Strongly differentiated silhouettes make each business readable at a glance.
+   if(biz.type==='electronics'){
+    box(group,1.05,.14,.78,mat('#314d5b'),-.7,h+.3,-.12,{cast:false});
+    box(group,.92,.08,.67,mat('#5dd4e3',.28,.1,{emissive:'#2ac5e6',emissiveIntensity:.35}),-.7,h+.39,-.12,{cast:false});
+    box(group,.25,.25,.25,mat('#f1fcf6'),1.05,h+.28,-.55,{cast:false});
+   }else if(biz.type==='cafe'){
+    for(let i=0;i<6;i++)box(group,.38,.12,.58,mat(i%2?'#fff2cf':'#df6744'),.24+i*.4,1.32,d/2+.3,{cast:false});
+    const cup=new THREE.Group();cup.position.set(1.25,h+.38,.25);group.add(cup);
+    const body=new THREE.Mesh(new THREE.CylinderGeometry(.19,.23,.32,10),mat('#fff0d0'));body.position.y=0;cup.add(body);
+    const coffee=new THREE.Mesh(new THREE.CylinderGeometry(.16,.16,.025,10),mat('#7c4e32'));coffee.position.y=.17;cup.add(coffee);
+    const handle=new THREE.Mesh(new THREE.TorusGeometry(.1,.035,6,10,Math.PI*1.65),mat('#fff0d0'));handle.rotation.x=Math.PI/2;handle.position.set(.2,.02,0);cup.add(handle);
+    moving.push({kind:'cupsteam',obj:cup,baseY:cup.position.y,phase:rnd()*6});
+   }else if(biz.type==='club'){
+    for(let i=0;i<3;i++)box(group,2.6,.07,.1,mat(i%2?'#55f2fd':'#f270e5',.22,0,{emissive:i%2?'#26d9fb':'#f270e5',emissiveIntensity:.9}),0,h-.38-i*.3,d/2+.08,{cast:false});
+    box(group,.95,.12,.55,mat('#9d7aff',.28,.08,{emissive:'#6a47ed',emissiveIntensity:.4}),.7,h+.3,-.3,{cast:false});
+   }else if(biz.type==='garage'){
+    box(group,1.25,1.16,.08,mat('#3d697e'),.52,.85,d/2+.07,{cast:false});
+    for(let i=0;i<5;i++)box(group,1.22,.035,.09,mat('#a9d5e3'),.52,.4+i*.2,d/2+.125,{cast:false});
+    const tyreMat=mat('#293943');
+    for(let i=0;i<2;i++){const tyre=new THREE.Mesh(new THREE.TorusGeometry(.22,.08,8,12),tyreMat);tyre.position.set(-1.2+i*.45,.34,d/2+.3);tyre.rotation.y=Math.PI/2;group.add(tyre);}
+   }else{
+    // Factory roof, chimney stacks and periodically rising exhaust puffs.
+    box(group,1.1,.16,.75,side,.75,h+.3,-.35,{cast:false});
+    for(let i=0;i<2;i++){
+     const cx=.75+i*.48;
+     box(group,.3,.95,.3,side,cx,h+.73,-.45,{cast:false});
+     box(group,.34,.13,.34,roofMat,cx,h+1.25,-.45,{cast:false});
+     const puff=new THREE.Mesh(new THREE.SphereGeometry(.17,8,6),new THREE.MeshStandardMaterial({color:'#e9f3f1',transparent:true,opacity:.48,roughness:1}));
+     puff.position.set(cx,h+1.45,-.45);group.add(puff);smokeGroups.push({obj:puff,baseY:puff.position.y,phase:rnd()*6});
+    }
+   }
+   // Roof vents, air conditioners and top trim add depth to every silhouette.
+   for(let i=0;i<2;i++){
+    box(group,.28,.24,.31,side,-.75+i*.48,h+.34,-.65,{cast:false});
+    box(group,.2,.035,.23,mat('#eef4e9'),-.75+i*.48,h+.47,-.65,{cast:false});
+   }
+   const badge=addLabel(group,'LVL '+level,'#f7d76d','#5c4314',.9);
+   badge.position.set(.9,h+.68,d/2+.08);
+   return group;
+  }
+  function makeCar(color,x,z,axis,dir,speed,phase){
+   const group=new THREE.Group();const bodymat=mat(color,.34,.1),cabinmat=mat('#a8dbea',.2,.05,{emissive:'#23566b',emissiveIntensity:.12}),wheelmat=mat('#273943');
+   box(group,.84,.32,1.38,bodymat,0,.37,0,{cast:true});
+   box(group,.62,.3,.68,bodymat,0,.66,-.04,{cast:true});
+   box(group,.56,.22,.045,cabinmat,0,.68,.31,{cast:false});
+   box(group,.56,.22,.045,cabinmat,0,.68,-.38,{cast:false});
+   box(group,.19,.08,.05,mat('#ffe9aa',.25,0,{emissive:'#ffdb7a',emissiveIntensity:.8}),-.23,.41,.7,{cast:false});
+   box(group,.19,.08,.05,mat('#ff7c68',.25,0,{emissive:'#b83225',emissiveIntensity:.5}),.23,.41,-.7,{cast:false});
+   for(const xx of [-.43,.43])for(const zz of [-.44,.44]){
+    const wheel=new THREE.Mesh(new THREE.CylinderGeometry(.16,.16,.105,10),wheelmat);wheel.rotation.z=Math.PI/2;wheel.position.set(xx,.2,zz);group.add(wheel);
+   }
+   scene.add(group);const car={group,axis,dir,speed,phase,x,z,wheels:group.children.filter(o=>o.geometry&&o.geometry.type==='CylinderGeometry')};cars.push(car);return car;
+  }
+  makeCar('#f3fbf7',-3.75,-12,'z',1,3.6,0);makeCar('#ee8a57',3.75,11,'z',-1,2.8,3);
+  makeCar('#4da9c1',-13,-3.55,'x',1,4.0,2);makeCar('#f0c65a',12,3.55,'x',-1,3.1,5);
+  makeCar('#8f85d7',-3.75,2,'z',-1,2.5,1.5);makeCar('#70bd79',4, -1,'z',1,2.1,4.5);
+  // Each lot has a selectable raised footprint, a landscaped verge and its own 3D building model.
+  const positions=LOCATIONS.map((loc,i)=>Object.assign({},loc,{x:(i%3-1)*7.5,z:(Math.floor(i/3)-1)*7.0}));
+  for(let i=0;i<positions.length;i++){
+   const loc=positions[i],root=new THREE.Group();root.position.set(loc.x,0,loc.z);root.userData.location=loc.id;scene.add(root);
+   const plot=new THREE.Mesh(new THREE.BoxGeometry(5.2,.16,4.9),lotMaterial.clone());plot.position.y=-.015;plot.receiveShadow=true;root.add(plot);pickables.push(plot);plot.userData.location=loc.id;
+   const frame=new THREE.Group();root.add(frame);
+   const frameParts=[];
+   frameParts.push(box(root,5.25,.055,.075,mat('#70b66a'),0,.12,-2.45,{cast:false}));
+   frameParts.push(box(root,5.25,.055,.075,mat('#70b66a'),0,.12,2.45,{cast:false}));
+   frameParts.push(box(root,.075,.055,4.9,mat('#70b66a'),-2.59,.12,0,{cast:false}));
+   frameParts.push(box(root,.075,.055,4.9,mat('#70b66a'),2.59,.12,0,{cast:false}));
+   const content=new THREE.Group();root.add(content);
+   const lot={loc,root,plot,frameParts,content,signature:'',building:null};lots.push(lot);
+  }
+  // Trees and streetlights are deliberately placed along the sidewalks, never blocking lots.
+  [[-13,-13],[-11,12],[12,-12],[13,12],[-13,3],[13,-4],[-1,-13],[2,13],[-11,-4],[11,5],[-15,0],[15,0]].forEach((p,i)=>addTree(p[0],p[1],i%3===0?1.05:.78));
+  [[-5.1,-5.1],[5.1,-5.1],[-5.1,5.1],[5.1,5.1],[-14,0],[14,0],[0,-13],[0,13]].forEach(p=>addLamp(p[0],p[1]));
+  // Small strolling citizens follow sidewalk paths and gently bob as the city runs.
+  function makePerson(x,z,phase,color){
+   const group=new THREE.Group();group.position.set(x,0,z);
+   const coat=mat(color,.8),skin=mat('#f1c4a1',.8),leg=mat('#41586a');
+   const body=new THREE.Mesh(new THREE.CylinderGeometry(.12,.17,.48,7),coat);body.position.y=.48;body.castShadow=true;group.add(body);
+   const head=new THREE.Mesh(new THREE.SphereGeometry(.13,8,6),skin);head.position.y=.82;head.castShadow=true;group.add(head);
+   const legs=[];
+   for(let i=0;i<2;i++){const l=new THREE.Mesh(new THREE.BoxGeometry(.07,.28,.09),leg);l.position.set(i?.075:-.075,.18,0);group.add(l);legs.push(l);}
+   scene.add(group);people.push({group,phase,color,legs,baseX:x,baseZ:z});
+  }
+  makePerson(-5,-6.1,0,'#e98063');makePerson(5,5.9,1.8,'#5d8ed0');makePerson(11,-5.9,2.8,'#edc363');makePerson(-11,5.9,4.0,'#b47bd5');makePerson(5,-6.1,5.2,'#f1f0e9');
+  const lotsById=new Map(lots.map(l=>[l.loc.id,l]));
+  function clearGroup(g){while(g.children.length){const c=g.children.pop();g.remove(c);c.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material){if(Array.isArray(o.material))o.material.forEach(m=>m.dispose());else o.material.dispose();}});}}
+  function syncCity3D(){
+   if(!city3D)return;
+   for(const lot of city3D.lots){
+    const b=state.businesses.find(x=>x.location===lot.loc.id);
+    const signature=b?(b.id+'|'+b.type+'|'+b.level):('empty|'+(state.land.includes(lot.loc.id)?'owned':'free'));
+    if(signature!==lot.signature){
+     clearGroup(lot.content);lot.signature=signature;lot.building=null;
+     if(b){
+      lot.building=createBuilding(lot.loc,b);lot.content.add(lot.building);
+      for(const obj of lot.building.children){if(obj.isMesh){obj.userData.location=lot.loc.id;city3D.pickables.push(obj);}}
+      // A tiny public-facing plaque doubles as a readable shopfront sign at phone scale.
+      const plaque=addLabel(lot.content,b.name,'#fff7d5','#3b4b4c',2.65);plaque.position.set(0,.75,2.48);
+      plaque.userData.location=lot.loc.id;city3D.pickables.push(plaque);
+     }else{
+      const isOwned=state.land.includes(lot.loc.id);
+      const stake=box(lot.content,1.0,.18,.68,mat(isOwned?'#c8a86d':'#dd9a49'),0,.17,0,{cast:false});
+      box(lot.content,.14,.9,.14,mat('#f2e3b9'),0,.65,0,{cast:false});
+      box(lot.content,.7,.12,.14,mat('#f2e3b9'),0,.98,0,{cast:false});
+      const sign=addLabel(lot.content,isOwned?'BUILD':'FOR SALE',isOwned?'#54a96c':'#d58b42','#ffffff',1.65);sign.position.set(0,1.18,.62);
+      city3D.pickables.push(stake);stake.userData.location=lot.loc.id;sign.userData.location=lot.loc.id;
+     }
+    }
+    const bOwned=!!b;
+    lot.plot.material.color.set(state.selected=== (b&&b.id)||state.selectedSlot===lot.loc.id?'#d3f27e':(bOwned?'#91d88a':(state.land.includes(lot.loc.id)?'#a7dc91':'#edc983')));
+    lot.plot.material.emissive.set(state.selected=== (b&&b.id)||state.selectedSlot===lot.loc.id?'#58853a':'#000000');
+    lot.plot.material.emissiveIntensity=state.selected=== (b&&b.id)||state.selectedSlot===lot.loc.id?.25:0;
+    const frameColor=state.selected=== (b&&b.id)||state.selectedSlot===lot.loc.id?'#fff2a6':(bOwned?'#4baf66':(state.land.includes(lot.loc.id)?'#62b66b':'#cf9a48'));
+    lot.frameParts.forEach(o=>o.material.color.set(frameColor));
+   }
+  }
+  function resizeCity3D(){
+   if(!city3D)return;
+   const width=Math.max(1,mount.clientWidth),height=Math.max(1,mount.clientHeight),aspect=width/height;
+   const frustum=aspect>1.5?23.5:30.5;
+   camera.left=-frustum*aspect/2;camera.right=frustum*aspect/2;camera.top=frustum/2;camera.bottom=-frustum/2;camera.updateProjectionMatrix();
+   renderer.setSize(width,height,false);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.6));
+   renderer.render(scene,camera);
+  }
+  const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
+  let down=null,dragged=false,pointers=new Map(),baseTarget=target.clone(),zoom=30.5;
+  function updateCamera(){camera.position.set(target.x+24,target.y+31,target.z+27);camera.lookAt(target);resizeCity3D();}
+  renderer.domElement.addEventListener('pointerdown',e=>{
+   down={x:e.clientX,y:e.clientY,px:e.clientX,py:e.clientY,target:target.clone()};dragged=false;renderer.domElement.style.cursor='grabbing';renderer.domElement.setPointerCapture?.(e.pointerId);
+  });
+  renderer.domElement.addEventListener('pointermove',e=>{
+   if(!down)return;
+   const dx=e.clientX-down.x,dy=e.clientY-down.y;
+   if(Math.abs(dx)+Math.abs(dy)>7)dragged=true;
+   if(dragged){
+    const unit=zoom/Math.max(1,mount.clientHeight);
+    target.x=down.target.x-dx*unit*.72;
+    target.z=down.target.z+dy*unit*.72;
+    updateCamera();
+   }
+  });
+  renderer.domElement.addEventListener('pointerup',e=>{
+   renderer.domElement.style.cursor='grab';
+   if(down&&!dragged){
+    const rect=renderer.domElement.getBoundingClientRect();pointer.x=((e.clientX-rect.left)/rect.width)*2-1;pointer.y=-((e.clientY-rect.top)/rect.height)*2+1;
+    raycaster.setFromCamera(pointer,camera);
+    const hits=raycaster.intersectObjects(city3D.pickables,true);
+    for(const hit of hits){
+     let o=hit.object;while(o&&!o.userData.location)o=o.parent;
+     if(o&&o.userData.location){selectSlot(o.userData.location);break;}
+    }
+   }
+   down=null;dragged=false;
+  });
+  renderer.domElement.addEventListener('pointercancel',()=>{down=null;dragged=false;renderer.domElement.style.cursor='grab';});
+  renderer.domElement.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(22,Math.min(42,zoom+Math.sign(e.deltaY)*1.8));const a=mount.clientWidth/Math.max(1,mount.clientHeight),fr=zoom;camera.left=-fr*a/2;camera.right=fr*a/2;camera.top=fr/2;camera.bottom=-fr/2;camera.updateProjectionMatrix();resizeCity3D();},{passive:false});
+  mount.addEventListener('click',e=>{
+   const btn=e.target.closest('[data-city3d]');if(!btn)return;
+   if(btn.dataset.city3d==='zoom-in')zoom=Math.max(22,zoom-2.2);
+   else if(btn.dataset.city3d==='zoom-out')zoom=Math.min(42,zoom+2.2);
+   else if(btn.dataset.city3d==='reset'){target.set(0,0,0);zoom=aspectSafeZoom();camera.position.set(24,31,27);camera.lookAt(target);}
+   updateCamera();
+  });
+  function aspectSafeZoom(){return mount.clientWidth/Math.max(1,mount.clientHeight)>1.5?23.5:30.5;}
+  zoom=aspectSafeZoom();updateCamera();
+  city3D={THREE,scene,camera,renderer,root:mount,lots,pickables,moving,leafGroups,smokeGroups,people,cars,lights:{sun},resize:resizeCity3D,sync:syncCity3D};
+  syncCity3D();renderCityAccessibleLots();
+  if(status)status.hidden=true;
+  let last=performance.now();
+  function animate(now){
+   city3DAnimFrame=requestAnimationFrame(animate);
+   const dt=Math.min(.05,(now-last)/1000);last=now;
+   if(!document.hidden&&!cityReducedMotion){
+    for(const car of cars){
+     if(car.axis==='z'){car.group.position.set(car.x,.02,((car.z+12+now/1000*car.speed*car.dir)%24+24)%24-12);car.group.rotation.y=car.dir>0?0:Math.PI;}
+     else{car.group.position.set(((car.x+14+now/1000*car.speed*car.dir)%28+28)%28-14,.02,car.z);car.group.rotation.y=car.dir>0?Math.PI/2:-Math.PI/2;}
+     car.wheels.forEach(w=>{w.rotation.x+=dt*car.speed*5;});
+    }
+    people.forEach(p=>{
+     p.group.position.x=p.baseX+Math.sin(now/2600+p.phase)*.5;
+     p.group.position.z=p.baseZ+Math.cos(now/2100+p.phase)*.24;
+     p.group.position.y=.025+Math.abs(Math.sin(now/190+p.phase))*.035;
+     p.legs.forEach((l,i)=>l.rotation.x=Math.sin(now/180+p.phase+i*Math.PI)*.28);
+    });
+    leafGroups.forEach(t=>{t.group.rotation.z=Math.sin(now/1550+t.phase)*.035;});
+    smokeGroups.forEach(p=>{const q=(now/900+p.phase)%2;p.obj.position.y=p.baseY+q*.5;p.obj.material.opacity=.42*(1-q/2);p.obj.scale.setScalar(.7+q*.6);});
+    moving.forEach(m=>{if(m.kind==='cupsteam')m.obj.rotation.y=Math.sin(now/900+m.phase)*.04;});
+    if(Math.floor(now/1800)!==Math.floor((now-dt*1000)/1800))sun.position.x=-16+Math.sin(now/13000)*2;
+   }
+   renderer.render(scene,camera);
+  }
+  animate(performance.now());
+  const ro=new ResizeObserver(()=>resizeCity3D());ro.observe(mount);
+  city3D.resizeObserver=ro;
+ }catch(err){
+  console.error('Could not initialise 3D city',err);city3DFailed=true;city3DLoading=false;renderCityFallback();
+ }
+}
+function resizeCity3D(){if(city3D)city3D.resize();}
+function syncCity3D(){if(city3D)city3D.sync();}
+function renderCityFallback(){
+ const mount=document.getElementById('city3dMap');
+ if(!mount)return;
+ let svg=mount.querySelector('#cityMap');
+ if(!svg){
+  mount.innerHTML='<svg id="cityMap" class="citymap-fallback" viewBox="0 0 420 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Схематичная резервная карта города"></svg>';
+  svg=mount.querySelector('#cityMap');
+ }
  const wide=window.innerWidth>window.innerHeight&&window.innerHeight<520;
  const landscape=window.innerWidth>window.innerHeight;
  const locations=LOCATIONS.map((loc,i)=>{
@@ -455,6 +880,10 @@ function renderCity(){
  const citySign=landscape?`<g transform="translate(650 340)"><path d="M-70 0 L0 35 L70 0 L0 -35 Z" fill="#80b77c" stroke="#d6ecc4" stroke-width="2" opacity=".92"/><path d="M-52 0 L0 26 L52 0 L0 -26 Z" fill="#a5d28d"/><text x="0" y="4" text-anchor="middle" font-size="12" font-weight="1000" letter-spacing="1.2" fill="#285b48">ДЕЛОВОЙ ЦЕНТР</text></g>`:'';
  svg.innerHTML=base+facades+citySign;
 }
+onst facades=locations.slice().sort((a,b)=>a.cy-b.cy).map((loc,i)=>{const biz=state.businesses.find(b=>b.location===loc.id);return svgBuilding(loc,biz,i)}).join('');
+ const citySign=landscape?`<g transform="translate(650 340)"><path d="M-70 0 L0 35 L70 0 L0 -35 Z" fill="#80b77c" stroke="#d6ecc4" stroke-width="2" opacity=".92"/><path d="M-52 0 L0 26 L52 0 L0 -26 Z" fill="#a5d28d"/><text x="0" y="4" text-anchor="middle" font-size="12" font-weight="1000" letter-spacing="1.2" fill="#285b48">ДЕЛОВОЙ ЦЕНТР</text></g>`:'';
+ svg.innerHTML=base+facades+citySign;
+}
 function enterBusiness(id){const b=getBiz(id);if(!b){toast('Предприятие не найдено.');return}state.selected=b.id;state.selectedSlot=null;state.visitingBusinessId=id;render();save();toast('Открыто управление предприятием: '+b.name+'.')}
 function interiorScene(type){let items='';if(type==='electronics'){items=`<g><rect x="28" y="32" width="74" height="78" rx="5" fill="#d8e4dc" stroke="#829a8a"/><path d="M36 47 H94 M36 69 H94 M36 91 H94" stroke="#8ca698" stroke-width="5"/><rect x="126" y="39" width="91" height="53" rx="4" fill="#d9e2e9" stroke="#758e98"/><rect x="134" y="47" width="75" height="37" rx="2" fill="#31515b"/><path d="M148 80 L160 60 L172 75 L185 55 L197 80" fill="none" stroke="#baf36d" stroke-width="3"/><rect x="150" y="93" width="45" height="6" rx="3" fill="#87999b"/><rect x="251" y="35" width="102" height="73" rx="4" fill="#e1d8c7" stroke="#9e927d"/><path d="M258 50 H346 M258 67 H346 M258 84 H346" stroke="#c0b39c" stroke-width="5"/><rect x="280" y="48" width="18" height="13" rx="2" fill="#719cbb"/><rect x="306" y="48" width="18" height="13" rx="2" fill="#d6a36a"/></g>`}else if(type==='cafe'){items=`<g fill="#d6b895" stroke="#977958" stroke-width="2"><circle cx="75" cy="65" r="23"/><circle cx="205" cy="58" r="23"/><circle cx="327" cy="68" r="23"/></g><g fill="#7c9984"><circle cx="53" cy="65" r="7"/><circle cx="97" cy="65" r="7"/><circle cx="183" cy="58" r="7"/><circle cx="227" cy="58" r="7"/><circle cx="305" cy="68" r="7"/><circle cx="349" cy="68" r="7"/></g><path d="M25 120 H395" stroke="#b4c1b3" stroke-width="8"/><rect x="145" y="105" width="130" height="22" rx="5" fill="#8b9e90"/><rect x="156" y="109" width="29" height="13" rx="3" fill="#f2dfb9"/><rect x="196" y="109" width="29" height="13" rx="3" fill="#f2dfb9"/><rect x="236" y="109" width="29" height="13" rx="3" fill="#f2dfb9"/>` }else if(type==='club'){items=`<g>${[0,1,2,3].map(i=>`<g transform="translate(${27+i*91} 38)"><rect width="75" height="41" rx="4" fill="#7f929b"/><rect x="5" y="5" width="65" height="30" rx="2" fill="#233e48"/><path d="M12 26 L24 13 L36 21 L51 9 L63 25" fill="none" stroke="#aeea72" stroke-width="2"/><rect x="28" y="41" width="18" height="7" fill="#778e91"/><rect x="-2" y="49" width="79" height="9" rx="3" fill="#adbdbe"/><rect x="8" y="58" width="10" height="16" rx="3" fill="#71858b"/><rect x="58" y="58" width="10" height="16" rx="3" fill="#71858b"/></g>`).join('')}</g>`}else if(type==='garage'){items=`<rect x="48" y="28" width="324" height="99" rx="7" fill="#d5ddd9" stroke="#97a7a0"/><rect x="65" y="40" width="20" height="75" rx="3" fill="#9faeaa"/><rect x="335" y="40" width="20" height="75" rx="3" fill="#9faeaa"/><path d="M95 100 L114 72 Q122 61 145 61 H250 Q272 63 283 80 L299 100 Z" fill="#628e9a" stroke="#38565f" stroke-width="2"/><rect x="137" y="67" width="44" height="19" rx="4" fill="#bad0d3"/><rect x="190" y="67" width="47" height="19" rx="4" fill="#bad0d3"/><circle cx="132" cy="101" r="14" fill="#314148"/><circle cx="262" cy="101" r="14" fill="#314148"/><circle cx="132" cy="101" r="6" fill="#b9c5c6"/><circle cx="262" cy="101" r="6" fill="#b9c5c6"/><rect x="16" y="30" width="25" height="90" rx="4" fill="#bf9e68"/><path d="M20 42 H37 M20 55 H37 M20 68 H37 M20 81 H37" stroke="#7e6849" stroke-width="3"/>` }else{items=`<path d="M20 100 H400" stroke="#839b8e" stroke-width="12"/><path d="M30 100 L56 83 L82 100 L108 83 L134 100 L160 83 L186 100 L212 83 L238 100 L264 83 L290 100 L316 83 L342 100 L368 83 L394 100" fill="none" stroke="#baf36d" stroke-width="4"/><g>${[0,1,2,3].map(i=>`<g transform="translate(${38+i*91} 25)"><rect width="64" height="49" rx="5" fill="#b9cbc0" stroke="#70877a"/><rect x="9" y="8" width="46" height="20" rx="3" fill="#49676c"/><circle cx="21" cy="39" r="4" fill="#f1b36f"/><circle cx="43" cy="39" r="4" fill="#f1b36f"/></g>`).join('')}</g><rect x="156" y="112" width="110" height="12" rx="5" fill="#8a9f92"/>`}
 return `<svg class="interior-scene" viewBox="0 0 420 155" role="img" aria-label="Схематичный интерьер предприятия"><defs><pattern id="floorTiles" width="22" height="18" patternUnits="userSpaceOnUse"><rect width="22" height="18" fill="#e6ebe5"/><path d="M0 18 H22 M22 0 V18" stroke="#d3ddd3" stroke-width="1"/></pattern></defs><rect width="420" height="155" fill="#eff2eb"/><rect y="18" width="420" height="137" fill="url(#floorTiles)"/><rect x="0" y="0" width="420" height="18" fill="#d7e1d7"/><path d="M0 18 H420" stroke="#a6b7ab" stroke-width="2"/><rect x="15" y="5" width="60" height="7" rx="3" fill="#91a99b"/><rect x="337" y="5" width="68" height="7" rx="3" fill="#91a99b"/>${items}<text x="400" y="146" text-anchor="end" font-size="8" font-weight="800" fill="#6a8075">ПЛАН ПОМЕЩЕНИЯ · СХЕМАТИЧНО</text></svg>`}
@@ -490,11 +919,11 @@ function nextDay(){const t=dailyTotals();state.day++;state.cash+=t.profit;state.
 function hireManager(){const cost=45000;if(state.cash<cost){toast('Для найма управляющего нужно '+fmt(cost)+'.');return}if(!state.businesses.length){toast('Сначала открой предприятие.');return}const b=getBiz(state.selected)||state.businesses[0];state.cash-=cost;state.employees.push({id:'emp'+Date.now(),name:'Алексей',role:'Управляющий',icon:'🧑‍💼',salary:5500,businessId:b.id,skill:1});addLedger('Найм управляющего',b.name+' · разовая комиссия',-cost,'expense');state.reputation=Math.min(100,state.reputation+1);save();render();toast('Управляющий назначен: выручка предприятия увеличена на 12%.')}
 function handleAction(btn){const a=btn.dataset.action;if(a==='enter'){enterBusiness(btn.dataset.id);return}if(a==='exit'){state.visitingBusinessId=null;render();save();toast('Возврат к карте активов.');return}if(a==='train'){trainEmployee(btn.dataset.id);return}if(a==='marketing'){launchMarketing();return}if(a==='goto-market'){switchTab('business');return}if(a==='upgrade'){upgradeBusiness(btn.dataset.id);return}if(a==='manage'){state.selected=btn.dataset.id;state.selectedSlot=null;state.visitingBusinessId=null;switchTab('business');return}if(a==='select-biz'){setSelected(btn.dataset.id);switchTab('city');return}if(a==='buy'){buyBusiness(btn.dataset.type,btn.dataset.location);return}if(a==='buy-land'){buyLand(btn.dataset.location);return}if(a==='contract'){createSupplyContract(btn.dataset.supplierId,btn.dataset.targetId);return}if(a==='cancel-contract'){cancelSupplyContract(btn.dataset.id);return}if(a==='price-adjust'){adjustFactoryPrice(btn.dataset.id,Number(btn.dataset.delta));return}if(a==='research'){research(btn.dataset.id);return}}
 document.addEventListener('click',e=>{const tab=e.target.closest('.nav-btn');if(tab){switchTab(tab.dataset.tab);return}const action=e.target.closest('[data-action]');if(action){handleAction(action);return}const mapLoc=e.target.closest('[data-location]');if(mapLoc){selectSlot(mapLoc.dataset.location);return}});
-document.getElementById('cityMap').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-location]')){e.preventDefault();selectSlot(e.target.dataset.location)}});
+document.getElementById('city3dMap').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-location]')){e.preventDefault();selectSlot(e.target.dataset.location)}});
 let mapResizeTimer=null;window.addEventListener('resize',()=>{clearTimeout(mapResizeTimer);mapResizeTimer=setTimeout(renderCity,80)});
 document.getElementById('nextDayBtn').addEventListener('click',nextDay);document.getElementById('financeNextBtn').addEventListener('click',nextDay);document.getElementById('businessNextBtn').addEventListener('click',()=>{switchTab('business');document.getElementById('businessMarket').scrollIntoView({behavior:'smooth',block:'start'})});document.getElementById('hireBtn').addEventListener('click',()=>openModal('Нанять управляющего','Разовая комиссия — 45 000 ₽. Зарплата — 5 500 ₽ в день. Управляющий повышает выручку выбранного предприятия на 12%.','Нанять',hireManager));document.getElementById('resetBtn').addEventListener('click',()=>openModal('Начать новую игру?','Текущий прогресс будет удалён. Начнёшь заново со стартовым капиталом 100 000 ₽.','Сбросить',()=>{state=initialState();save();render();toast('Новая игра началась.')}));document.getElementById('modalCancel').addEventListener('click',closeModal);document.getElementById('modalConfirm').addEventListener('click',()=>{const action=pendingAction;closeModal();if(action)action()});document.getElementById('modalBackdrop').addEventListener('click',e=>{if(e.target.id==='modalBackdrop')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 // Event delegation for action buttons inserted by render().
-// Version 0.7: richer isometric storefronts, level-scaled buildings, street furniture, continuous ground texture and skyline detail. Saves and economy retained.
+// Version 0.8: Three.js 3D city map, lit volumetric buildings, soft shadows, animated traffic and pedestrians; existing economy and local saves retained.
 const oldRender=render;render=function(){oldRender();};
 // Patch the manager confirmation for explicit insufficient-funds handling.
 const baseHire=hireManager;hireManager=function(){if(state.cash<45000){toast('Для найма управляющего нужно '+fmt(45000)+'.');return}baseHire()};
