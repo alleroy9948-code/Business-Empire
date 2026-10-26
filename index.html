@@ -701,7 +701,7 @@ function initCity3D(THREE,mount){
   }
   makePerson(-5,-6.1,0,'#e98063');makePerson(5,5.9,1.8,'#5d8ed0');makePerson(11,-5.9,2.8,'#edc363');makePerson(-11,5.9,4.0,'#b47bd5');makePerson(5,-6.1,5.2,'#f1f0e9');
   const lotsById=new Map(lots.map(l=>[l.loc.id,l]));
-  function clearGroup(g){while(g.children.length){const c=g.children.pop();g.remove(c);c.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material){if(Array.isArray(o.material))o.material.forEach(m=>m.dispose());else o.material.dispose();}});}}
+  function clearGroup(g){while(g.children.length){const c=g.children[0];g.remove(c);c.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material){const list=Array.isArray(o.material)?o.material:[o.material];list.forEach(m=>{if(m.map&&m.map.isCanvasTexture)m.map.dispose();});}});}}
   function syncCity3D(){
    if(!city3D)return;
    for(const lot of city3D.lots){
@@ -728,7 +728,7 @@ function initCity3D(THREE,mount){
     const bOwned=!!b;
     lot.plot.material.color.set(state.selected=== (b&&b.id)||state.selectedSlot===lot.loc.id?'#d3f27e':(bOwned?'#91d88a':(state.land.includes(lot.loc.id)?'#a7dc91':'#edc983')));
     lot.plot.material.emissive.set(state.selected=== (b&&b.id)||state.selectedSlot===lot.loc.id?'#58853a':'#000000');
-    lot.plot.material.emissiveIntensity=state.selected=== (b&&b.id)||state.selectedSlot===lot.loc.id?.25:0;
+    lot.plot.material.emissiveIntensity=(state.selected===(b&&b.id)||state.selectedSlot===lot.loc.id)?0.25:0;
     const frameColor=state.selected=== (b&&b.id)||state.selectedSlot===lot.loc.id?'#fff2a6':(bOwned?'#4baf66':(state.land.includes(lot.loc.id)?'#62b66b':'#cf9a48'));
     lot.frameParts.forEach(o=>o.material.color.set(frameColor));
    }
