@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#13262d">
+<title>Бизнес-империя — версия 0.6</title>
+<style>
+:root{--ink:#172a31;--muted:#718188;--paper:#f4f6f3;--panel:#fff;--line:#e3e9e5;--green:#baf36d;--green-dark:#2e5d3e;--orange:#f3a45d;--blue:#4d7d8a;--shadow:0 8px 24px rgba(27,48,53,.08)}
+*{box-sizing:border-box} html{background:#e8eeea} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);min-height:100vh} button{font:inherit;cursor:pointer;border:0} button:focus-visible{outline:3px solid #7ba7f7;outline-offset:2px} .app{max-width:1060px;margin:0 auto;min-height:100vh;background:var(--paper);padding-bottom:28px}.topbar{background:var(--ink);color:white;padding:18px 18px 17px;border-radius:0 0 24px 24px;position:relative;overflow:hidden}.topbar:after{content:"";position:absolute;width:220px;height:220px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-70px;top:-130px;box-shadow:0 0 0 23px rgba(255,255,255,.025),0 0 0 47px rgba(255,255,255,.025)}.toprow{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:1}.brand{display:flex;align-items:center;gap:11px}.brandmark{height:42px;width:42px;border-radius:14px;background:var(--green);color:#193324;display:grid;place-items:center;font-size:24px;font-weight:900}.eyebrow{text-transform:uppercase;font-size:10px;letter-spacing:.15em;color:#a6b5b8;font-weight:800}.brand h1{font-size:19px;letter-spacing:-.03em;margin:1px 0 0}.datepill{font-size:11px;border:1px solid #385057;background:#203940;color:#e4efea;padding:8px 10px;border-radius:999px;white-space:nowrap}.welcome{margin-top:18px;position:relative;z-index:1}.welcome .greeting{font-size:12px;color:#a6b5b8;margin-bottom:4px}.welcome .headline{font-size:25px;line-height:1.1;letter-spacing:-.04em;font-weight:850}.welcome .headline span{color:var(--green)}.topstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:18px;position:relative;z-index:1}.topstat{background:#203940;border:1px solid #304950;border-radius:15px;padding:11px 10px;min-width:0}.topstat .label{font-size:10px;color:#a6b5b8;display:flex;align-items:center;gap:5px}.topstat .value{font-size:clamp(15px,3.4vw,21px);font-weight:850;letter-spacing:-.04em;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.topstat .sub{font-size:10px;color:#99aaa9;margin-top:3px}.positive{color:var(--green)!important}.negative{color:#ffad95!important}.main{padding:17px 14px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:4px 2px 12px}.section-head h2{font-size:19px;letter-spacing:-.035em;margin:0}.section-head p{font-size:11px;color:var(--muted);margin:4px 0 0}.small-action{font-size:11px;font-weight:800;color:var(--green-dark);background:#e4f5d7;padding:9px 11px;border-radius:10px;white-space:nowrap}.city-card,.content-card{background:var(--panel);border:1px solid var(--line);border-radius:21px;box-shadow:var(--shadow);overflow:hidden}.city-head{display:flex;justify-content:space-between;align-items:center;padding:14px 15px 9px}.city-title{font-size:13px;font-weight:850}.city-weather{font-size:10px;color:var(--muted);background:#f3f6f3;border-radius:999px;padding:6px 8px}.citymap{display:block;width:100%;height:auto;max-height:385px;background:#dce6dc}.map-legend{display:flex;flex-wrap:wrap;gap:12px;padding:10px 15px 13px;font-size:10px;color:var(--muted)}.legend-item{display:flex;align-items:center;gap:6px}.dot{width:8px;height:8px;border-radius:3px;display:inline-block}.dot.owned{background:#8dcc62}.dot.free{background:#f1b36f}.dot.other{background:#89a5ad}.hint{font-size:11px;color:var(--muted);margin:10px 4px 17px;line-height:1.45}.selected-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px;box-shadow:0 4px 14px rgba(27,48,53,.04)}.selected-top{display:flex;gap:11px;align-items:center}.biz-icon{width:47px;height:47px;display:grid;place-items:center;border-radius:15px;font-size:23px;background:#e7f3dc;flex-shrink:0}.biz-title{font-weight:850;font-size:14px;letter-spacing:-.02em}.biz-caption{font-size:10px;color:var(--muted);margin-top:4px}.status{font-size:9px;letter-spacing:.05em;font-weight:900;padding:6px 7px;border-radius:999px;margin-left:auto;align-self:flex-start;white-space:nowrap}.status.owned{background:#e4f5d7;color:#35633e}.status.free{background:#fff0dd;color:#8b5529}.selected-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 12px}.metric{background:#f6f8f5;padding:10px;border-radius:12px;min-width:0}.metric .m-label{color:var(--muted);font-size:9px}.metric .m-value{font-weight:850;font-size:14px;letter-spacing:-.03em;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.button-row{display:flex;gap:8px}.btn{border-radius:12px;padding:12px 13px;font-size:12px;font-weight:850;min-height:43px;transition:transform .12s ease,filter .12s ease}.btn:active{transform:scale(.98)}.btn-primary{background:var(--green);color:#1a3425;flex:1}.btn-secondary{background:#edf1ed;color:#40545a}.btn-danger{background:#fff0eb;color:#994e3b}.nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;background:#fff;border-top:1px solid var(--line);padding:9px 7px calc(9px + env(safe-area-inset-bottom));position:sticky;bottom:0;z-index:10;margin-top:18px}.nav-btn{background:transparent;color:#849296;border-radius:13px;padding:8px 2px 7px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:9px;font-weight:800}.nav-btn .nav-icon{font-size:19px;line-height:1.1}.nav-btn.active{background:#edf6e6;color:#315b39}.tab-pane{display:none}.tab-pane.active{display:block}.content-card{padding:15px;margin-bottom:12px}.card-title{font-weight:900;font-size:15px;letter-spacing:-.03em;margin:0}.muted{color:var(--muted)}.small{font-size:11px;line-height:1.45}.business-row{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid #edf0ed}.business-row:last-child{border-bottom:0;padding-bottom:0}.business-row:first-child{padding-top:0}.business-row .biz-icon{width:43px;height:43px}.row-main{min-width:0;flex:1}.row-name{font-size:12px;font-weight:850}.row-sub{font-size:10px;color:var(--muted);margin-top:4px}.row-profit{text-align:right;font-size:12px;font-weight:900;white-space:nowrap}.row-profit span{display:block;color:var(--muted);font-size:9px;font-weight:600;margin-top:4px}.pill{font-size:9px;padding:5px 7px;border-radius:7px;background:#f0f3f0;color:#627277;display:inline-block}.shop-card{border:1px solid var(--line);border-radius:16px;padding:13px;margin-top:10px;background:#fbfcfa}.shop-top{display:flex;gap:10px;align-items:center}.shop-card .price{font-size:13px;font-weight:900;margin-left:auto;white-space:nowrap}.shop-desc{font-size:10px;line-height:1.5;color:var(--muted);margin:9px 0 11px}.shop-meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:11px}.shop-meta span{font-size:9px;padding:5px 7px;background:#f0f3ef;border-radius:7px;color:#627277}.section-label{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:#8a999b;margin:17px 0 7px}.progress-track{height:7px;border-radius:99px;background:#edf1ec;overflow:hidden;margin:9px 0 5px}.progress-fill{height:100%;background:var(--green-dark);border-radius:99px;transition:width .2s}.team-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #edf0ed}.team-row:last-child{border:0}.avatar{height:39px;width:39px;border-radius:13px;background:#e8eef0;display:grid;place-items:center;font-size:18px}.team-info{flex:1;min-width:0}.team-info strong{display:block;font-size:12px}.team-info span{display:block;font-size:10px;color:var(--muted);margin-top:4px}.salary{font-size:11px;font-weight:850;white-space:nowrap}.finance-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.finance-tile{padding:13px;background:#f5f8f4;border-radius:14px}.finance-tile .label{font-size:10px;color:var(--muted)}.finance-tile strong{display:block;font-size:20px;letter-spacing:-.04em;margin-top:7px}.ledger{margin-top:8px}.ledger-row{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid #edf0ed;font-size:11px}.ledger-row:last-child{border:0}.ledger-row .desc{color:var(--muted);margin-top:3px;font-size:9px}.research-card{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #edf0ed}.research-card:last-child{border:0}.research-icon{width:43px;height:43px;border-radius:14px;background:#e8eef7;display:grid;place-items:center;font-size:21px;flex-shrink:0}.research-info{flex:1;min-width:0}.research-info strong{font-size:12px;display:block}.research-info p{font-size:10px;color:var(--muted);line-height:1.4;margin:5px 0 9px}.research-price{font-weight:900;font-size:11px;margin-right:7px}.notice{padding:11px 12px;background:#f0f7e9;border-radius:12px;color:#446443;font-size:10px;line-height:1.45;margin-top:12px}.toast{position:fixed;z-index:50;bottom:90px;left:50%;transform:translate(-50%,14px);opacity:0;pointer-events:none;background:#1a3036;color:#fff;border-radius:13px;padding:12px 15px;box-shadow:var(--shadow);font-size:12px;font-weight:750;max-width:calc(100vw - 32px);transition:all .22s ease;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-backdrop{position:fixed;inset:0;background:rgba(14,31,35,.48);z-index:40;display:none;align-items:flex-end;justify-content:center;padding:12px}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:24px 24px 18px 18px;width:min(560px,100%);padding:18px;box-shadow:0 20px 70px rgba(0,0,0,.2)}.modal-handle{width:34px;height:4px;background:#dfe5df;border-radius:99px;margin:0 auto 16px}.modal h3{font-size:18px;letter-spacing:-.03em;margin:0 0 7px}.modal p{font-size:11px;line-height:1.5;color:var(--muted);margin:0 0 14px}.modal-actions{display:flex;gap:8px;margin-top:16px}.modal-actions button{flex:1}.footnote{color:#94a0a0;text-align:center;font-size:9px;padding:12px 20px 0}.empty-state{padding:22px 8px;text-align:center}.empty-state .emoji{font-size:27px}.empty-state strong{display:block;font-size:13px;margin-top:8px}.empty-state p{font-size:10px;color:var(--muted);line-height:1.5;max-width:260px;margin:7px auto 0}
+@media(min-width:760px){.app{padding:0 20px 28px}.topbar{border-radius:0 0 26px 26px;padding:22px 26px}.main{padding:22px 4px 0}.dashboard-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:15px;align-items:start}.nav{border:1px solid var(--line);border-radius:18px;position:static;margin:18px 4px 0}.nav-btn{padding:10px}.citymap{max-height:430px}.tab-pane.active#pane-city{display:block}.welcome .headline{font-size:29px}}
+@media(max-width:360px){.topbar{padding-left:13px;padding-right:13px}.main{padding-left:9px;padding-right:9px}.topstats{gap:5px}.topstat{padding:9px 7px}.topstat .label{font-size:9px}.topstat .value{font-size:14px}.nav-btn{font-size:8px}.nav-btn .nav-icon{font-size:17px}.datepill{font-size:10px;padding:7px 8px}}
+
+/* Версия 0.2: перемещение, интерьер предприятий и рыночные события */
+.city-explore.hidden{display:none!important}
+
+
+
+
+.interior-card{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);margin-top:12px}.interior-header{display:flex;align-items:center;gap:11px;padding:15px 15px 12px}.interior-title{flex:1;min-width:0}.interior-title h3{font-size:16px;margin:0;letter-spacing:-.03em}.interior-title p{font-size:10px;color:var(--muted);margin:4px 0 0}.interior-scene{display:block;width:100%;height:auto;background:#e9eee8}.interior-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:12px 14px}.interior-metric{border-radius:12px;background:#f4f7f2;padding:10px;min-width:0}.interior-metric span{display:block;color:var(--muted);font-size:9px}.interior-metric strong{display:block;font-size:13px;margin-top:5px;overflow-wrap:anywhere}.interior-actions{display:flex;flex-wrap:wrap;gap:8px;padding:0 14px 14px}.interior-actions .btn{flex:1;min-width:130px}
+.competition-box{background:#f5f8f3;border-radius:14px;padding:12px;margin-top:10px;display:flex;gap:10px;align-items:flex-start}.competition-symbol{width:36px;height:36px;border-radius:11px;background:#e1eadb;display:grid;place-items:center;font-size:19px;flex-shrink:0}.competition-box strong{font-size:11px;display:block}.competition-box p{font-size:10px;color:var(--muted);line-height:1.45;margin:5px 0 0}.campaign-wrap{border-top:1px solid #edf0ed;margin-top:14px;padding-top:13px}.campaign-wrap .campaign-title{font-size:12px;font-weight:900}.campaign-wrap p{font-size:10px;line-height:1.45;color:var(--muted);margin:5px 0 10px}.team-row{flex-wrap:wrap}.team-row .train-btn{margin-left:auto;min-height:33px;padding:7px 9px;font-size:10px}.footnote{padding-top:14px}
+@media(max-width:440px){.interior-actions .btn{min-width:112px}.interior-metrics{gap:6px;padding:10px}.interior-metric{padding:8px}.interior-metric strong{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.btn,.progress-fill,.toast{transition:none!important}}
+
+
+
+.land-note{padding:11px 12px;background:#fff5e6;border:1px solid #f1dfbf;border-radius:12px;color:#7a572e;font-size:10px;line-height:1.45;margin-top:10px}
+.supply-row{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #edf0ed}
+.supply-row:last-child{border-bottom:0;padding-bottom:0}
+.supply-row .biz-icon{width:41px;height:41px}
+.supply-details{flex:1;min-width:0}
+.supply-details strong{font-size:11px;display:block}
+.supply-details span{font-size:10px;color:var(--muted);display:block;line-height:1.4;margin-top:4px}
+.supply-row .btn{font-size:10px;min-height:36px;padding:8px 9px;flex-shrink:0}
+.production-panel{margin:0 14px 12px!important;box-shadow:none!important}
+.production-controls{display:flex;gap:9px;align-items:center;margin-top:10px}
+.production-controls .btn{padding:9px 12px;min-height:38px}
+.production-price{flex:1;text-align:center;font-size:13px;font-weight:900}
+@media(max-width:390px){.supply-row{align-items:flex-start;flex-wrap:wrap}.supply-row .btn{margin-left:auto}.production-controls{gap:5px}.production-controls .btn{padding:8px 9px}}
+
+/* VERSION 0.5 — illustrated city map, richer storefronts, street surfaces and phone-first proportions. */
+html,body{width:100%;height:100%;min-height:0;margin:0;overscroll-behavior:none}
+body{overflow:hidden;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+button{touch-action:manipulation;-webkit-appearance:none;appearance:none}
+.app{width:100%;max-width:1060px;height:100vh;height:100dvh;min-height:0;margin:0 auto;padding:0;display:flex;flex-direction:column;overflow:hidden;box-shadow:none}
+.topbar{flex:0 0 auto;border-radius:0;padding:8px 12px 9px;overflow:hidden;z-index:20}
+.topbar:after{width:160px;height:160px;right:-60px;top:-100px}
+.toprow{gap:8px;min-height:34px}
+.brand{gap:8px;min-width:0}
+.brandmark{width:32px;height:32px;border-radius:10px;font-size:19px;flex:0 0 32px}
+.eyebrow{font-size:8px;letter-spacing:.12em}
+.brand h1{font-size:16px;line-height:1.05;white-space:nowrap}
+.top-actions{display:flex;align-items:center;gap:6px;flex:0 0 auto}
+.datepill{font-size:10px;padding:7px 8px}
+.day-advance{width:38px;height:38px;min-width:38px;border-radius:12px;background:var(--green);color:#193324;font-size:18px;font-weight:900;display:grid;place-items:center;box-shadow:0 2px 0 rgba(0,0,0,.08)}
+.welcome{display:none}
+.topstats{gap:6px;margin-top:8px}
+.topstat{padding:7px 8px;border-radius:11px;min-height:49px}
+.topstat .label{font-size:9px;gap:3px;white-space:nowrap}
+.topstat .value{font-size:clamp(13px,3.6vw,17px);margin-top:3px}
+.topstat .sub{display:none}
+.main{flex:1 1 auto;min-height:0;overflow:hidden;padding:0;position:relative;display:flex;flex-direction:column}
+.tab-pane{display:none;min-height:0;min-width:0}
+.tab-pane.active{display:flex;flex-direction:column}
+#pane-city.active{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;padding:0;isolation:isolate}
+#pane-city>.city-section-head{display:none}
+#cityExploreArea{position:absolute;inset:0;min-height:0;overflow:hidden}
+#cityExploreArea.hidden{display:none!important}
+.city-card{position:absolute;inset:0;border:0;border-radius:0;box-shadow:none;background:#dce6dc;overflow:hidden}
+.city-head{display:none}
+.citymap{position:absolute;inset:0;display:block;width:100%;height:100%;max-height:none;background:#dce6dc;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.map-loc{cursor:pointer;touch-action:manipulation;outline:none;transform-box:fill-box;transform-origin:center bottom;transition:filter .16s ease}.map-loc .lot-shadow{transition:opacity .16s ease}.map-loc:active{filter:brightness(1.035)}.map-loc.selected-lot .lot-shadow{opacity:.16}.map-loc.selected-lot{filter:drop-shadow(0 1px 1.5px rgba(49,79,49,.12))}@media(hover:hover) and (pointer:fine){.map-loc:hover{filter:brightness(1.045) drop-shadow(0 2px 2px rgba(33,62,45,.12))}}@media(prefers-reduced-motion:reduce){.map-loc,.map-loc *{transition:none!important;animation:none!important}}
+.map-loc:focus-visible rect:first-child{stroke:#1a4f34;stroke-width:3}
+.map-legend,.hint{display:none!important}
+.selected-card{position:absolute;z-index:6;pointer-events:none;left:8px;right:8px;bottom:8px;margin:0;padding:9px 10px;border:1px solid rgba(218,228,219,.92);border-radius:17px;background:rgba(255,255,255,.96);box-shadow:0 8px 26px rgba(20,45,35,.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.selected-top{gap:8px;align-items:center}
+.selected-card .biz-icon{width:36px;height:36px;border-radius:11px;font-size:19px}
+.selected-card .biz-title{font-size:12px;line-height:1.2}
+.selected-card .biz-caption{font-size:9px;line-height:1.25;margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.selected-card .status{font-size:8px;padding:5px 6px}
+.selected-card .selected-metrics{display:none}
+.selected-card>p.small{font-size:10px;line-height:1.35;margin:7px 0 8px!important}
+.selected-card .button-row{display:flex;gap:6px;margin-top:7px!important}
+.selected-card .button-row:first-of-type{margin-top:8px!important}
+.selected-card .button-row .btn{flex:1;min-width:0;min-height:42px;padding:8px 8px;font-size:10px;line-height:1.15;border-radius:11px}
+.selected-card .selected-extra{display:none}
+#interiorPanel[hidden]{display:none!important}
+#interiorPanel:not([hidden]){position:absolute;z-index:7;inset:0;margin:0;border:0;border-radius:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-bottom:calc(14px + env(safe-area-inset-bottom))}
+.interior-header{position:sticky;top:0;z-index:2;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:10px 12px}
+.interior-scene{max-height:210px;object-fit:cover}
+.main>.tab-pane.active:not(#pane-city){display:block;flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:14px 12px calc(14px + env(safe-area-inset-bottom));overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.main>.tab-pane.active:not(#pane-city) .section-head{margin:2px 0 12px;align-items:center}
+.main>.tab-pane.active:not(#pane-city) .section-head h2{font-size:19px}
+.main>.tab-pane.active:not(#pane-city) .content-card{margin-bottom:10px;border-radius:17px;padding:13px}
+.main>.tab-pane.active:not(#pane-city) .btn{min-height:44px}
+.nav{flex:0 0 auto;position:relative;bottom:auto;z-index:20;margin:0;border-radius:0;border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom));gap:4px;background:rgba(255,255,255,.98);box-shadow:0 -4px 16px rgba(27,48,53,.06)}
+.nav-btn{min-height:48px;padding:6px 2px 5px;border-radius:11px;gap:3px;font-size:9px}
+.nav-btn .nav-icon{font-size:18px}
+.footnote{display:none}
+.toast{bottom:calc(70px + env(safe-area-inset-bottom));max-width:calc(100vw - 24px);z-index:60}
+.modal-backdrop{padding:10px 10px calc(10px + env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain}
+.modal{max-height:calc(100dvh - 28px - env(safe-area-inset-top) - env(safe-area-inset-bottom));overflow-y:auto;padding:17px}
+.btn:active,.nav-btn:active,.day-advance:active{filter:brightness(.96);transform:scale(.985)}
+@media(min-width:760px){
+ .app{max-width:1060px;border-left:1px solid #dce4de;border-right:1px solid #dce4de}
+ .topbar{padding:10px 18px 11px}
+ .brandmark{width:36px;height:36px;flex-basis:36px}
+ .brand h1{font-size:18px}
+ .topstats{margin-top:9px}
+ .topstat{padding:8px 11px}
+ .topstat .sub{display:block;font-size:9px}
+ #pane-city .selected-card{left:auto;right:14px;bottom:14px;width:min(430px,calc(100% - 28px));padding:13px}
+ #pane-city .selected-card .selected-metrics{display:grid;gap:5px;margin:9px 0}
+ #pane-city .selected-card .biz-icon{width:42px;height:42px}
+ #pane-city .selected-card .button-row .btn{font-size:11px}
+ #pane-city .selected-card .selected-extra{display:flex}
+}
+@media(max-width:360px){
+ .topbar{padding-left:9px;padding-right:9px}
+ .brandmark{width:29px;height:29px;flex-basis:29px;font-size:17px}
+ .brand h1{font-size:14px}
+ .eyebrow{font-size:7px}
+ .topstats{gap:4px}
+ .topstat{padding:6px 5px;min-height:45px}
+ .topstat .label{font-size:8px}
+ .topstat .value{font-size:13px}
+ .datepill{font-size:9px;padding:6px 7px}
+ .day-advance{width:35px;height:35px;min-width:35px}
+ .nav-btn{font-size:8px}
+ .nav-btn .nav-icon{font-size:17px}
+ .selected-card{left:6px;right:6px;bottom:6px;padding:8px}
+}
+@media(max-height:460px){
+ .topbar{padding:4px 10px 5px}
+ .toprow{min-height:28px}
+ .brandmark{width:27px;height:27px;flex-basis:27px;font-size:16px}
+ .topstats{margin-top:3px}
+ .topstat{padding:4px 6px;min-height:32px}
+ .topstat .sub{display:none!important}
+ .nav-btn{min-height:42px;padding:4px 2px}
+ .nav-btn .nav-icon{font-size:16px}
+ .selected-card{padding:7px 9px;bottom:5px}
+ .selected-card .biz-icon{width:31px;height:31px;font-size:17px}
+ .selected-card .selected-metrics,.selected-card .selected-extra{display:none!important}
+ .selected-card .button-row .btn{min-height:38px;padding:6px;font-size:9px}
+ .interior-scene{max-height:140px}
+}
+@media(max-height:460px) and (orientation:landscape){
+ #pane-city .selected-card{top:8px;bottom:auto;left:auto;right:8px;width:min(270px,42%);padding:7px 9px}
+ #pane-city .selected-card .selected-metrics,#pane-city .selected-card .selected-extra{display:none!important}
+ #pane-city .selected-card{pointer-events:none}
+ #pane-city .selected-card button{pointer-events:auto}
+ #pane-city .selected-card .button-row{margin-top:5px!important}
+ #pane-city .selected-card .button-row .btn{min-height:36px}
+}
+.selected-card button{pointer-events:auto}
+@media(max-width:759px){.topbar{padding-top:calc(8px + env(safe-area-inset-top));padding-left:calc(12px + env(safe-area-inset-left));padding-right:calc(12px + env(safe-area-inset-right))}}
+@media(max-height:460px){.topbar{padding-top:calc(4px + env(safe-area-inset-top));padding-left:calc(10px + env(safe-area-inset-left));padding-right:calc(10px + env(safe-area-inset-right))}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+
+/* VERSION 0.6 — colorful isometric tycoon presentation, inspired by the genre's playful blue-and-lime language. */
+:root{--ink:#173b54;--muted:#728b9a;--paper:#e5eef2;--panel:#f7fbfd;--line:#c8d9e3;--green:#9bea43;--green-dark:#2c7746;--orange:#ffb24a;--blue:#4d91b5;--shadow:0 8px 22px rgba(18,52,75,.17)}
+html{background:#d4e4ed}body{background:#e5eef2;color:#163b55}
+.topbar{background:linear-gradient(180deg,#2d658b 0%,#214d70 52%,#173b58 100%);border-bottom:3px solid #5b9fc0;box-shadow:0 3px 0 rgba(11,42,65,.15)}
+.topbar:after{border-color:rgba(150,220,248,.18);box-shadow:0 0 0 23px rgba(170,225,246,.06),0 0 0 47px rgba(170,225,246,.04)}
+.brandmark{background:linear-gradient(145deg,#c2fa62,#7edb37);color:#1c5439;border:2px solid rgba(255,255,255,.8);box-shadow:0 3px 0 #4c9b44,0 4px 9px rgba(0,0,0,.18);text-shadow:0 1px rgba(255,255,255,.45)}
+.brand h1{font-weight:1000;text-shadow:0 2px 0 rgba(12,37,55,.28);letter-spacing:-.035em}
+.datepill{background:#163d5a;border:1px solid #4c86a8;box-shadow:inset 0 1px rgba(255,255,255,.13);font-weight:850;color:#eaf7ff}
+.day-advance{background:linear-gradient(180deg,#c3fa5f,#86dd37);color:#164c32;border:1px solid #e5ffae;box-shadow:0 3px 0 #4a9e43,0 5px 9px rgba(5,28,45,.2)}
+.topstat{background:linear-gradient(145deg,#2f6688,#214966);border:1px solid #4c82a2;box-shadow:inset 0 1px rgba(255,255,255,.09),0 2px 0 rgba(14,42,63,.28)}
+.topstat .label{color:#d1e9f6;font-weight:800}.topstat .value{color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.16)}.topstat .sub{color:#b7d6e7}
+.positive{color:#b8ff69!important}.negative{color:#ffb49d!important}
+.main{background:linear-gradient(180deg,#e1edf2,#eef5f5)}
+.nav{background:linear-gradient(180deg,#214f70,#183d59);border-top:2px solid #4d85a4;box-shadow:0 -4px 14px rgba(20,55,78,.16);padding-top:7px}
+.nav-btn{color:#bdd5e3;text-shadow:0 1px 0 rgba(0,0,0,.16)}.nav-btn .nav-icon{filter:drop-shadow(0 1px rgba(0,0,0,.12))}.nav-btn.active{background:linear-gradient(180deg,#c6fb6e,#91e043);color:#174b38;box-shadow:inset 0 1px rgba(255,255,255,.8),0 2px 0 #4b9e48;text-shadow:none}
+.btn{border-radius:12px;border:1px solid rgba(255,255,255,.7);box-shadow:0 2px 0 rgba(23,55,76,.12);font-weight:950}.btn-primary{background:linear-gradient(180deg,#c5fa69,#92e23d);color:#164a36;border-color:#dcffa1;box-shadow:0 3px 0 #61af42,0 4px 9px rgba(22,59,46,.12)}.btn-secondary{background:linear-gradient(180deg,#f1f7fa,#d8e7ed);color:#315a72;border-color:#c0d6e0}.btn-danger{background:linear-gradient(180deg,#fff0e8,#ffd9cc);color:#8f3c2b;border-color:#ffe0d4}
+.content-card,.city-card,.selected-card,.interior-card{border-color:#b7cfdd;box-shadow:0 5px 0 rgba(34,81,108,.07),0 9px 20px rgba(24,60,81,.09)}
+.content-card{background:linear-gradient(155deg,#fbfdff,#eff6fa)}
+.card-title,.section-head h2{color:#1a4b6b;font-weight:1000}
+.small-action{background:linear-gradient(180deg,#c4f76b,#9ae343);color:#195239;border:1px solid #e3ffb1;box-shadow:0 2px 0 #72bb49}
+.selected-card{background:linear-gradient(145deg,rgba(46,105,145,.98),rgba(24,66,97,.98));border:2px solid rgba(221,246,255,.92);box-shadow:0 6px 0 rgba(18,53,78,.25),0 13px 25px rgba(11,40,60,.24);color:#fff}
+.selected-card .biz-title{color:#fff;font-weight:1000;text-shadow:0 1px 0 rgba(0,0,0,.18)}.selected-card .biz-caption{color:#d5edf8}.selected-card>p.small{color:#e2f4fb!important}.selected-card .status.owned{background:#c7f879;color:#215b3b}.selected-card .status.free{background:#ffce77;color:#704217}.selected-card .metric{background:rgba(10,42,65,.28);color:#fff}.selected-card .metric .m-label{color:#c7e2f1}.selected-card .metric .m-value{color:#fff}
+.biz-icon{box-shadow:inset 0 1px rgba(255,255,255,.9),0 2px 0 rgba(19,56,76,.12);border:1px solid rgba(255,255,255,.7)}
+.interor-header,.interior-header{background:rgba(239,248,252,.97)}
+.shop-card{background:linear-gradient(145deg,#f9fcff,#eaf3f8);border-color:#c2d8e5}
+.finance-tile,.metric{background:#e4f0f5}.pill{background:#d8e9f1;color:#315b75}
+.progress-track{background:#ccdde5}.progress-fill{background:linear-gradient(90deg,#8ad63c,#c2f66a);box-shadow:0 1px 0 rgba(255,255,255,.6)}
+.toast{background:linear-gradient(145deg,#285e80,#173e5d);border:1px solid #5d9abc;box-shadow:0 5px 0 rgba(19,56,79,.2),0 9px 20px rgba(12,40,59,.25)}
+.modal{background:linear-gradient(145deg,#fafdff,#e6f2f7);border:1px solid #bed5e2}.modal h3{color:#194c6b}
+.citymap{background:#c7dfb9}
+.map-loc{cursor:pointer;touch-action:manipulation;outline:none;transform-box:fill-box;transform-origin:center bottom;transition:filter .16s ease}.map-loc .lot-shadow{transition:opacity .16s ease}.map-loc:active{filter:brightness(1.1) saturate(1.08)}.map-loc.selected-lot{filter:drop-shadow(0 3px 3px rgba(26,70,51,.24))}.map-loc:focus-visible{filter:drop-shadow(0 0 3px #fff47a)}
+@media(hover:hover) and (pointer:fine){.map-loc:hover{filter:brightness(1.08) saturate(1.08) drop-shadow(0 3px 3px rgba(26,70,51,.22))}}
+@media(max-width:759px){.topbar{border-radius:0 0 11px 11px}.selected-card{border-radius:17px}}
+@media(prefers-reduced-motion:reduce){.map-loc,.map-loc *{transition:none!important;animation:none!important}}
+
+</style>
+</head>
+<body>
+<div class="app" id="appRoot">
+  <header class="topbar">
+    <div class="toprow">
+      <div class="brand"><div class="brandmark">B</div><div><div class="eyebrow">TYCOON SIMULATOR</div><h1>Бизнес-империя</h1></div></div>
+      <div class="top-actions"><div class="datepill" id="dayPill">📅 День 1</div><button class="day-advance" type="button" id="nextDayBtn" aria-label="Завершить игровой день" title="Завершить игровой день">⏭</button></div>
+    </div>
+    <div class="welcome"><div class="greeting">Добро пожаловать, основатель</div><div class="headline">Большие дела<br><span>начинаются с малого.</span></div></div>
+    <div class="topstats">
+      <div class="topstat"><div class="label">💰 Капитал</div><div class="value" id="cashStat">100 000 ₽</div><div class="sub">Доступные средства</div></div>
+      <div class="topstat"><div class="label">↗ Прибыль / день</div><div class="value positive" id="profitStat">+5 000 ₽</div><div class="sub">После расходов</div></div>
+      <div class="topstat"><div class="label">🏢 Компания</div><div class="value" id="companyLevel">Уровень 1</div><div class="sub" id="businessCount">1 предприятие</div></div>
+    </div>
+  </header>
+  <main class="main">
+    <section class="tab-pane active" id="pane-city">
+      <div class="section-head city-section-head"><div><h2>Карта активов</h2><p>Выбирай участки, открывай предприятия и развивай недвижимость.</p></div></div>
+      <div id="cityExploreArea" class="city-explore">
+      <div class="city-card">
+        <div class="city-head"><div class="city-title">📍 Центральный район</div><div class="city-weather">☀️ Деловая активность: стабильная</div></div>
+        <svg class="citymap" id="cityMap" viewBox="0 0 420 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Карта города: нажми на здание или участок, чтобы управлять бизнесом"></svg>
+        <div class="map-legend"><span class="legend-item"><i class="dot owned"></i> Твой бизнес</span><span class="legend-item"><i class="dot free"></i> Твой участок</span><span class="legend-item"><i class="dot other"></i> Земля на продажу</span></div>
+      </div>
+      <p class="hint">Нажми на здание, чтобы открыть его управление. Земельные участки сначала нужно приобрести; затем на них можно строить новые предприятия.</p>
+      <div id="selectedBusinessCard" class="selected-card"></div>
+      </div>
+      <div id="interiorPanel" class="interior-card" hidden></div>
+    </section>
+    <section class="tab-pane" id="pane-business">
+      <div class="section-head"><div><h2>Мои предприятия</h2><p>Развивай бизнес и открывай новые направления.</p></div><button class="small-action" type="button" id="businessNextBtn">+ Новый бизнес</button></div>
+      <div class="content-card"><div class="card-title">Портфель компании</div><div class="small muted" style="margin-top:5px">Здесь собраны все действующие предприятия.</div><div id="ownedBusinesses"></div></div>
+      <div class="content-card" id="supplyChainPanel"><div class="card-title">Внутренние поставки</div><div class="small muted" style="margin-top:5px">Свяжи завод с магазинами, клубом и мастерской, чтобы усилить продажи.</div><div id="supplyChainList"></div></div>
+      <div class="content-card" id="businessMarket"><div class="card-title">Возможности для роста</div><div class="small muted" style="margin-top:5px">Выбери направление для следующего шага.</div><div id="shopList"></div></div>
+      <div class="content-card" id="marketCompetition"><div class="card-title">Рынок и конкуренты</div><div class="small muted" style="margin-top:5px">Соперники меняют цены и борются за покупателей. Реагируй на их действия.</div><div id="competitionInfo"></div><div class="campaign-wrap"><div class="campaign-title">📣 Рекламная кампания</div><p>На 3 игровых дня увеличивает выручку всех твоих предприятий на 18%. Хороший способ ответить на скидки конкурентов.</p><button type="button" class="btn btn-primary" id="marketingBtn" data-action="marketing">Запустить · 20 000 ₽</button></div></div>
+    </section>
+    <section class="tab-pane" id="pane-team">
+      <div class="section-head"><div><h2>Команда</h2><p>Хороший бизнес строится людьми.</p></div><button class="small-action" type="button" id="hireBtn">+ Нанять</button></div>
+      <div class="content-card"><div class="card-title">Сотрудники компании</div><div class="small muted" style="margin-top:5px" id="teamSummary"></div><div id="teamList"></div><div class="notice">💡 Управляющий даёт назначенному предприятию +12% к выручке. Его зарплата учитывается каждый день.</div></div>
+    </section>
+    <section class="tab-pane" id="pane-finance">
+      <div class="section-head"><div><h2>Финансы</h2><p>Контролируй деньги, пока они работают на тебя.</p></div><button class="small-action" type="button" id="financeNextBtn">Закрыть день ↗</button></div>
+      <div class="finance-grid" id="financeGrid"></div>
+      <div class="content-card" style="margin-top:12px"><div class="card-title">Последние операции</div><div class="ledger" id="ledgerList"></div></div>
+      <div class="content-card"><div class="card-title">Сохранение</div><p class="small muted">Прогресс автоматически сохраняется в этом браузере на устройстве.</p><button class="btn btn-danger" type="button" id="resetBtn">Начать новую игру</button></div>
+    </section>
+    <section class="tab-pane" id="pane-research">
+      <div class="section-head"><div><h2>Развитие</h2><p>Инвестиции, которые усиливают всю компанию.</p></div><span class="pill" id="researchCount">0 / 3 изучено</span></div>
+      <div class="content-card"><div class="card-title">Технологии и процессы</div><div class="small muted" style="margin-top:5px">Исследования дают постоянные бонусы.</div><div id="researchList"></div></div>
+      <div class="content-card"><div class="card-title">Путь к корпорации</div><div class="small muted">Каждый новый уровень открывает более крупные возможности.</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px"><span class="small muted">Репутация</span><strong id="repValue">4 / 100</strong></div><div class="progress-track"><div class="progress-fill" id="repBar" style="width:4%"></div></div><div class="small muted" id="repHint">Стабильная работа повышает доверие к компании.</div></div>
+    </section>
+  </main>
+  <nav class="nav" aria-label="Основная навигация">
+    <button class="nav-btn active" data-tab="city" type="button"><span class="nav-icon">🏙️</span><span>Город</span></button>
+    <button class="nav-btn" data-tab="business" type="button"><span class="nav-icon">🏢</span><span>Бизнес</span></button>
+    <button class="nav-btn" data-tab="team" type="button"><span class="nav-icon">👥</span><span>Команда</span></button>
+    <button class="nav-btn" data-tab="finance" type="button"><span class="nav-icon">📊</span><span>Финансы</span></button>
+    <button class="nav-btn" data-tab="research" type="button"><span class="nav-icon">🔬</span><span>Развитие</span></button>
+  </nav>
+  <div class="footnote">Версия 0.6 · Изометрический город · Интерфейс для смартфонов · Офлайн</div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><div class="modal-handle"></div><h3 id="modalTitle">Подтвердить действие</h3><p id="modalText"></p><div class="modal-actions"><button class="btn btn-secondary" type="button" id="modalCancel">Отмена</button><button class="btn btn-primary" type="button" id="modalConfirm">Подтвердить</button></div></div></div>
+<script>
+(function(){
+'use strict';
+const SAVE_KEY='business_empire_v06';
+const OLD_SAVE_KEYS=['business_empire_v05','business_empire_v04','business_empire_v03','business_empire_prototype_v02','business_empire_prototype_v01'];
+const fmt=n=>Math.round(n).toLocaleString('ru-RU')+' ₽';
+const nfmt=n=>Math.round(n).toLocaleString('ru-RU');
+const BUSINESS_TYPES={
+  electronics:{name:'Магазин электроники',icon:'🖥️',cost:80000,revenue:18000,baseCosts:7000,staff:2,desc:'Техника, аксессуары и обслуживание покупателей.',color:'#e0edda'},
+  cafe:{name:'Городское кафе',icon:'☕',cost:135000,revenue:27000,baseCosts:10500,staff:2,desc:'Кофе, завтраки и постоянный поток посетителей.',color:'#f8e5ce'},
+  club:{name:'Компьютерный клуб',icon:'🎮',cost:245000,revenue:43000,baseCosts:17500,staff:3,desc:'Почасовая аренда мощных игровых компьютеров.',color:'#e5e7fb'},
+  garage:{name:'Автомастерская',icon:'🔧',cost:335000,revenue:52000,baseCosts:22000,staff:3,desc:'Диагностика, ремонт и обслуживание автомобилей.',color:'#e0edf0'},
+  factory:{name:'Небольшой завод',icon:'🏭',cost:850000,revenue:120000,baseCosts:51000,staff:6,desc:'Производство компонентов для других компаний.',color:'#e6e9e7'}
+};
+const LOCATIONS=[
+ {id:'loc1',x:20,y:10,w:112,h:60}, {id:'loc2',x:288,y:10,w:112,h:60},
+ {id:'loc3',x:18,y:95,w:115,h:59}, {id:'loc4',x:288,y:95,w:114,h:59},
+ {id:'loc5',x:155,y:13,w:86,h:57}, {id:'loc6',x:157,y:97,w:86,h:57},
+ {id:'loc7',x:18,y:179,w:112,h:64}, {id:'loc8',x:155,y:179,w:88,h:64}, {id:'loc9',x:290,y:179,w:112,h:64}
+];
+function initialState(){return {day:1,cash:100000,totalEarned:0,reputation:4,selected:'biz1',selectedSlot:null,activeTab:'city',businesses:[{id:'biz1',type:'electronics',name:BUSINESS_TYPES.electronics.name,level:1,location:'loc1',revenue:18000,baseCosts:7000,upgradeCount:0}],employees:[{id:'emp1',name:'Алина',role:'Продавец',icon:'🧑‍💼',salary:2500,businessId:'biz1',skill:1},{id:'emp2',name:'Максим',role:'Продавец',icon:'🧑‍💼',salary:2500,businessId:'biz1',skill:1}],research:[],contracts:[],land:['loc1'],ledger:[{day:1,title:'Стартовый капитал',detail:'Личные инвестиции основателя',amount:100000,kind:'income'}],events:['Компания открыла первый магазин электроники.'],marketing:0,marketingUntil:0,marketPressure:{type:null,until:0},visitingBusinessId:null}};
+let state=loadState(); let pendingAction=null; let toastTimer=null;
+function normalizeState(s){const d=initialState();s.marketingUntil=Number.isFinite(s.marketingUntil)?s.marketingUntil:0;s.marketPressure=s.marketPressure||{type:null,until:0};s.visitingBusinessId=null;if(!Array.isArray(s.land))s.land=(s.businesses||[]).map(b=>b.location).filter(Boolean);s.land=[...new Set([...s.land,...(s.businesses||[]).map(b=>b.location).filter(Boolean)])];if(!Array.isArray(s.contracts))s.contracts=[];if(!Array.isArray(s.events))s.events=[];if(!Array.isArray(s.research))s.research=[];(s.businesses||[]).forEach(b=>{if(b.type==='factory'){if(!Number.isFinite(b.productionUnits))b.productionUnits=100;if(!Number.isFinite(b.unitPrice))b.unitPrice=1200}});s.contracts=s.contracts.filter(c=>(s.businesses||[]).some(b=>b.id===c.supplierId&&b.type==='factory')&&(s.businesses||[]).some(b=>b.id===c.targetId&&b.id!==c.supplierId));(s.employees||[]).forEach(e=>{if(!Number.isFinite(e.skill))e.skill=1});return Object.assign(d,s);}
+function loadState(){try{let raw=localStorage.getItem(SAVE_KEY);for(const key of OLD_SAVE_KEYS){if(!raw)raw=localStorage.getItem(key)}if(raw){const parsed=JSON.parse(raw);if(parsed&&Array.isArray(parsed.businesses)&&Array.isArray(parsed.employees))return normalizeState(parsed)}}catch(e){}return initialState();}
+function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(state));}catch(e){}}
+function getBiz(id){return state.businesses.find(b=>b.id===id)}
+function getEmployees(bizId){return state.employees.filter(e=>e.businessId===bizId)}
+function isResearched(id){return state.research.includes(id)}
+function researchMultiplier(){return isResearched('sales')?1.15:1}
+function costMultiplier(){return isResearched('automation')?.88:1}
+function productionStats(b){const units=Math.max(1,Math.round(Number(b.productionUnits)||100));const price=Math.max(500,Math.min(3500,Math.round(Number(b.unitPrice)||1200)));const demand=Math.max(.3,Math.min(1.15,1.4-price/3000));const sold=Math.max(1,Math.round(units*demand));return {units,price,demand,sold,revenue:sold*price}}
+function targetContract(b){return state.contracts.find(c=>c.targetId===b.id)||null}
+function supplyCount(b){return state.contracts.filter(c=>c.supplierId===b.id).length}
+function bizRevenue(b){let base=b.type==='factory'?productionStats(b).revenue+supplyCount(b)*4000:b.revenue;if(b.type!=='factory'&&targetContract(b))base=Math.round(base*1.10);let mult=researchMultiplier();if(getEmployees(b.id).some(e=>e.role==='Управляющий'))mult*=1.12;const training=getEmployees(b.id).reduce((sum,e)=>sum+Math.max(0,(Number(e.skill)||1)-1)*.04,0);mult*=1+Math.min(.25,training);if(state.day<=state.marketingUntil)mult*=1.18;if(state.marketPressure&&state.marketPressure.type===b.type&&state.day<=state.marketPressure.until)mult*=.90;return Math.round(base*mult)}
+function bizCosts(b){let operating=b.baseCosts;if(b.type==='factory')operating+=supplyCount(b)*1000;if(targetContract(b))operating+=1500;return Math.round((operating+getEmployees(b.id).reduce((sum,e)=>sum+e.salary,0))*costMultiplier())}
+function bizProfit(b){return bizRevenue(b)-bizCosts(b)}
+function dailyTotals(){const revenue=state.businesses.reduce((sum,b)=>sum+bizRevenue(b),0);const costs=state.businesses.reduce((sum,b)=>sum+bizCosts(b),0);return {revenue,costs,profit:revenue-costs}}
+function level(){return Math.min(20,1+Math.floor(state.reputation/15)+Math.floor(Math.max(0,state.businesses.length-1)/2))}
+function pluralBiz(n){return n===1?'предприятие':(n>=2&&n<=4?'предприятия':'предприятий')}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2500)}
+function switchTab(tab){state.activeTab=tab;document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));document.querySelectorAll('.tab-pane').forEach(p=>p.classList.toggle('active',p.id==='pane-'+tab));render();const pane=document.getElementById('pane-'+tab);if(pane)pane.scrollTop=0;save();}
+function setSelected(id){state.selected=id;state.selectedSlot=null;render();save()}
+function selectSlot(loc){if(!LOCATIONS.some(l=>l.id===loc))return;const b=state.businesses.find(x=>x.location===loc);state.selectedSlot=b?null:loc;state.selected=b?b.id:null;render();save();if(b)toast('Выбрано предприятие: '+b.name);else if(!state.land.includes(loc))toast('Участок доступен для покупки за 15 000 ₽.');else toast('Выбран свободный участок. Можно строить.');}
+function addLedger(title,detail,amount,kind){state.ledger.unshift({day:state.day,title,detail,amount,kind});state.ledger=state.ledger.slice(0,30)}
+function renderHeader(){const t=dailyTotals();document.getElementById('dayPill').textContent='📅 День '+state.day;document.getElementById('cashStat').textContent=fmt(state.cash);const p=document.getElementById('profitStat');p.textContent=(t.profit>=0?'+':'−')+fmt(Math.abs(t.profit));p.className='value '+(t.profit>=0?'positive':'negative');document.getElementById('companyLevel').textContent='Уровень '+level();document.getElementById('businessCount').textContent=state.businesses.length+' '+pluralBiz(state.businesses.length)}
+function escSvg(value){return String(value??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;')}
+function svgBuilding(loc,biz,index){
+ const {cx,cy}=loc, owned=!!biz, landOwned=!!biz||state.land.includes(loc.id);
+ const themes={
+  electronics:{wall:'#e8f2f6',side:'#87b7c7',roof:'#168eae',roof2:'#54c6d7',accent:'#baf5f3',glass:'#1b526b',sign:'TECH'},
+  cafe:{wall:'#f8e1c4',side:'#d99b69',roof:'#e76f3f',roof2:'#ffb15c',accent:'#ffdf8c',glass:'#5b9e9a',sign:'CAFE'},
+  club:{wall:'#d9e0ff',side:'#7b83c7',roof:'#5249b8',roof2:'#8e7af7',accent:'#f6caff',glass:'#192b56',sign:'GAME'},
+  garage:{wall:'#dcebf0',side:'#8aa7b6',roof:'#527d93',roof2:'#8db9cf',accent:'#ffd17d',glass:'#31566d',sign:'AUTO'},
+  factory:{wall:'#d5e6df',side:'#7d9c96',roof:'#547d78',roof2:'#91bbb0',accent:'#ffc66e',glass:'#2b5b63',sign:'WORKS'}
+ };
+ const t=owned?(themes[biz.type]||themes.electronics):null;
+ const glow=(owned&&state.selected===biz.id)||(!biz&&state.selectedSlot===loc.id);
+ const plotFill=glow?'#d8f58b':(landOwned?'#93c97a':'#e9c27e');
+ const plotEdge=glow?'#fff3a6':(landOwned?'#4c965e':'#c48b47');
+ const title=owned?biz.name:(landOwned?'Свободный участок':'Земля на продажу');
+ const short=title.length>15?title.slice(0,14)+'…':title;
+ const baseY=cy-13;
+ const height=owned?(biz.type==='factory'?46:(biz.type==='club'?43:39)):0;
+ const A=[cx-25,baseY-14], B=[cx,baseY], C=[cx+25,baseY-14], D=[cx,baseY-28];
+ const At=[A[0],A[1]-height], Bt=[B[0],B[1]-height], Ct=[C[0],C[1]-height], Dt=[D[0],D[1]-height];
+ let art='';
+ if(owned){
+  const roof=t.roof, roof2=t.roof2;
+  art+=`<ellipse cx="${cx+1}" cy="${baseY-2}" rx="35" ry="14" fill="#203b49" opacity=".2"/>
+   <path d="M${A[0]} ${A[1]} L${B[0]} ${B[1]} L${Bt[0]} ${Bt[1]} L${At[0]} ${At[1]} Z" fill="${t.wall}" stroke="#ffffff" stroke-opacity=".62" stroke-width=".8"/>
+   <path d="M${B[0]} ${B[1]} L${C[0]} ${C[1]} L${Ct[0]} ${Ct[1]} L${Bt[0]} ${Bt[1]} Z" fill="${t.side}" stroke="#365362" stroke-opacity=".2" stroke-width=".8"/>
+   <path d="M${At[0]} ${At[1]} L${Dt[0]} ${Dt[1]} L${Ct[0]} ${Ct[1]} L${Bt[0]} ${Bt[1]} Z" fill="${roof}" stroke="#315b68" stroke-opacity=".28" stroke-width="1"/>
+   <path d="M${At[0]} ${At[1]} L${Dt[0]} ${Dt[1]} L${cx} ${cy-height+2} L${cx-2} ${cy-height+4} Z" fill="${roof2}" opacity=".5"/>
+   <path d="M${At[0]+4} ${At[1]+2} L${Dt[0]} ${Dt[1]+3} M${Dt[0]} ${Dt[1]+3} L${Ct[0]-4} ${Ct[1]+2}" stroke="#ffffff" stroke-width="1.4" opacity=".5" fill="none"/>`;
+  // Type-specific front and side details, designed to read at small phone scale.
+  if(biz.type==='electronics'){
+   art+=`<path d="M${cx-21} ${baseY-height+12} L${cx-7} ${baseY-height+20} L${cx-7} ${baseY-9} L${cx-21} ${baseY-17} Z" fill="${t.glass}" stroke="#d3fbff" stroke-width="1"/><path d="M${cx-18} ${baseY-height+16} l3 -3 l4 5 l2 -2" fill="none" stroke="#7ce8df" stroke-width="1.4"/><path d="M${cx+5} ${baseY-height+15} L${cx+19} ${baseY-height+7} L${cx+19} ${baseY-4} L${cx+5} ${baseY+4} Z" fill="#d7f3f4" stroke="#f5ffff" stroke-width=".8"/>`;
+  }else if(biz.type==='cafe'){
+   art+=`<path d="M${cx-22} ${baseY-height+11} L${cx-5} ${baseY-height+20} L${cx-5} ${baseY-height+27} L${cx-22} ${baseY-height+18} Z" fill="${t.accent}" stroke="#fff0bd" stroke-width=".8"/>${[0,1,2,3].map(i=>`<path d="M${cx-21+i*4} ${baseY-height+12+i*2} l0 6" stroke="#e76f3f" stroke-width="1.2"/>`).join('')}<path d="M${cx+3} ${baseY-height+20} L${cx+17} ${baseY-height+12} L${cx+17} ${baseY-2} L${cx+3} ${baseY+6} Z" fill="${t.glass}"/>`;
+  }else if(biz.type==='club'){
+   art+=`<path d="M${cx-21} ${baseY-height+10} L${cx-6} ${baseY-height+18} L${cx-6} ${baseY-1} L${cx-21} ${baseY-9} Z" fill="${t.glass}" stroke="#bbd0ff" stroke-width="1"/><path d="M${cx-18} ${baseY-height+17} l4 -9 l3 7 l4 -10" fill="none" stroke="#8bf7ff" stroke-width="1.5"/><path d="M${cx+4} ${baseY-height+16} L${cx+18} ${baseY-height+8} L${cx+18} ${baseY-5} L${cx+4} ${baseY+3} Z" fill="#8bf7ff" opacity=".85"/>`;
+  }else if(biz.type==='garage'){
+   art+=`<path d="M${cx-21} ${baseY-height+10} L${cx-6} ${baseY-height+18} L${cx-6} ${baseY-1} L${cx-21} ${baseY-9} Z" fill="#a9ccd8" stroke="#f3ffff" stroke-width="1"/><path d="M${cx-18} ${baseY-height+15} l9 5 M${cx-18} ${baseY-height+20} l9 5 M${cx-18} ${baseY-height+25} l9 5" stroke="#537c91" stroke-width="1.2"/><circle cx="${cx+12}" cy="${baseY-height+4}" r="4" fill="${t.accent}" stroke="#fff1c9" stroke-width=".8"/>`;
+  }else{
+   art+=`<path d="M${cx-21} ${baseY-height+10} L${cx-6} ${baseY-height+18} L${cx-6} ${baseY-2} L${cx-21} ${baseY-10} Z" fill="${t.glass}" stroke="#dbf3e9" stroke-width=".8"/><path d="M${cx-18} ${baseY-height+17} h8 M${cx-18} ${baseY-height+22} h8 M${cx-18} ${baseY-height+27} h8" stroke="#a8ddca" stroke-width="1.2"/><path d="M${cx+11} ${baseY-height+4} L${cx+20} ${baseY-height-2} L${cx+20} ${baseY-height-17} L${cx+11} ${baseY-height-11} Z" fill="#6a8985" stroke="#d9e9dc" stroke-width=".8"/><path d="M${cx+16} ${baseY-height-15} q-4 -5 0 -9 q5 4 1 9" fill="#b2d1ce" opacity=".7"/>`;
+  }
+  // A bold storefront sign, plus an individual level marker.
+  art+=`<path d="M${cx-23} ${baseY-height+4} L${cx-5} ${baseY-height+14} L${cx-5} ${baseY-height+20} L${cx-23} ${baseY-height+10} Z" fill="${t.roof2}" stroke="#fff" stroke-opacity=".55" stroke-width=".65"/><text x="${cx-15}" y="${baseY-height+9}" transform="rotate(29 ${cx-15} ${baseY-height+9})" font-size="4.7" font-weight="1000" fill="#fff">${t.sign}</text>`;
+  if((biz.level||1)>1){art+=`<circle cx="${cx+27}" cy="${baseY-height+5}" r="8" fill="#ffd84b" stroke="#fff7c4" stroke-width="1.4"/><text x="${cx+27}" y="${baseY-height+8}" text-anchor="middle" font-size="8" font-weight="1000" fill="#6d4a14">${Math.min(9,biz.level)}</text>`}
+ }else{
+  const fence=landOwned?'#5b9c61':'#bf8b49';
+  art+=`<ellipse cx="${cx}" cy="${baseY-3}" rx="28" ry="11" fill="#526f50" opacity=".13"/>
+   <path d="M${cx-25} ${baseY-14} L${cx} ${baseY} L${cx+25} ${baseY-14} L${cx} ${baseY-28} Z" fill="${plotFill}" stroke="${plotEdge}" stroke-width="1.2"/>
+   <path d="M${cx-19} ${baseY-14} L${cx} ${baseY-5} L${cx+19} ${baseY-14} L${cx} ${baseY-23} Z" fill="#fff7de" opacity=".42"/>
+   <path d="M${cx-20} ${baseY-13} L${cx-20} ${baseY-22} M${cx-20} ${baseY-22} L${cx-14} ${baseY-19} M${cx+20} ${baseY-13} L${cx+20} ${baseY-22} M${cx+20} ${baseY-22} L${cx+14} ${baseY-19}" fill="none" stroke="${fence}" stroke-width="2" stroke-linecap="round"/>`;
+  if(landOwned){
+   art+=`<path d="M${cx-7} ${baseY-16} L${cx} ${baseY-20} L${cx+7} ${baseY-16} L${cx} ${baseY-12} Z" fill="#76b66c" stroke="#fff3d2" stroke-width=".8"/><path d="M${cx} ${baseY-12} v7" stroke="#598a56" stroke-width="1.5"/>`;
+  }else{
+   art+=`<path d="M${cx-8} ${baseY-16} l8 -5 l8 5 l-8 5 Z" fill="#ffefcb" stroke="#c98c45" stroke-width="1"/><path d="M${cx} ${baseY-18} v8 M${cx-4} ${baseY-14} h8" stroke="#bc823f" stroke-width="1.5" stroke-linecap="round"/>`;
+  }
+ }
+ const badgeFill=owned?(t.roof):(landOwned?'#32965c':'#d58a36');
+ const badgeText=owned?short:(landOwned?'СТРОИТЬ':'КУПИТЬ');
+ const nameFill=owned?'#ffffff':'#fff9e7';
+ return `<g class="map-loc ${owned?'owned-lot':'empty-lot'} ${glow?'selected-lot':''}" data-location="${escSvg(loc.id)}" tabindex="0" role="button" aria-label="${escSvg(title)}">
+  <path class="lot-shadow" d="M${cx} ${cy-30} L${cx+59} ${cy} L${cx} ${cy+30} L${cx-59} ${cy} Z" transform="translate(1 4)" fill="#234651" opacity=".19"/>
+  <path d="M${cx} ${cy-31} L${cx+59} ${cy} L${cx} ${cy+31} L${cx-59} ${cy} Z" fill="#c4d1b2" stroke="#ffffff" stroke-opacity=".8" stroke-width="1.4"/>
+  <path d="M${cx} ${cy-25} L${cx+50} ${cy} L${cx} ${cy+25} L${cx-50} ${cy} Z" fill="${glow?'#c7ee86':(owned?'#9bd18a':(landOwned?'#acd997':'#e4c488'))}" stroke="${glow?'#ffe45c':(owned?'#74b976':(landOwned?'#6daf72':'#d6aa68'))}" stroke-width="${glow?'2.4':'1'}"/>
+  <path d="M${cx-38} ${cy} L${cx} ${cy+19} L${cx+38} ${cy} M${cx} ${cy-19} L${cx} ${cy+19}" stroke="#ffffff" stroke-opacity=".2" stroke-width="1.1" fill="none"/>
+  ${art}
+  <g class="lot-tag"><path d="M${cx-29} ${cy+6} L${cx} ${cy+12} L${cx+29} ${cy+6} L${cx+29} ${cy+15} L${cx} ${cy+21} L${cx-29} ${cy+15} Z" fill="${badgeFill}" stroke="#fff" stroke-opacity=".9" stroke-width=".8"/><text x="${cx}" y="${cy+14.4}" text-anchor="middle" font-size="${owned?'5.9':'6.3'}" font-weight="1000" letter-spacing=".12" fill="${nameFill}">${escSvg(badgeText)}</text></g>
+  ${glow?`<circle cx="${cx+49}" cy="${cy-25}" r="7" fill="#ffd945" stroke="#fff8c8" stroke-width="1.4"/><path d="M${cx+46} ${cy-25} l2 2 l4 -4" fill="none" stroke="#65501a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>`:''}
+ </g>`;
+}
+function renderCity(){
+ const svg=document.getElementById('cityMap');
+ const wide=window.innerWidth>window.innerHeight&&window.innerHeight<520;
+ const landscape=window.innerWidth>window.innerHeight;
+ const locations=LOCATIONS.map((loc,i)=>{
+  const r=Math.floor(i/3),c=i%3;
+  if(wide){return {...loc,cx:650+(c-r)*220,cy:94+(c+r)*48,w:62,h:40};}
+  if(landscape){return {...loc,cx:650+(c-r)*150,cy:88+(c+r)*52,w:62,h:40};}
+  return {...loc,cx:210+(c-r)*68,cy:108+(c+r)*76,w:62,h:42};
+ });
+ const viewBox=wide?'0 0 1300 370':(landscape?'0 0 1300 400':'0 0 420 600');
+ svg.setAttribute('viewBox',viewBox);
+ svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+ const W=wide?1300:(landscape?1300:420), H=wide?370:(landscape?400:600);
+ let base=`<defs>
+  <linearGradient id="isoGround" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d8e9c7"/><stop offset=".5" stop-color="#b8d8a5"/><stop offset="1" stop-color="#91be93"/></linearGradient>
+  <linearGradient id="isoRoad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#657d8b"/><stop offset=".5" stop-color="#425c70"/><stop offset="1" stop-color="#31495f"/></linearGradient>
+  <pattern id="grassSpeckle" width="24" height="24" patternUnits="userSpaceOnUse"><rect width="24" height="24" fill="url(#isoGround)"/><circle cx="4" cy="5" r="1" fill="#f7f5cd" opacity=".5"/><circle cx="17" cy="15" r="1.2" fill="#6ba57c" opacity=".4"/><path d="M8 20 l3 -2 M19 4 l2 1" stroke="#7fb28d" stroke-width=".8" opacity=".5"/></pattern>
+  <g id="isoTree"><ellipse cx="1" cy="12" rx="10" ry="3" fill="#315847" opacity=".22"/><path d="M0 3 l-1 13 h4 L2 4" fill="#99744f"/><path d="M0 4 L-9 0 L-4 -10 L2 -13 L10 -5 L9 2 Z" fill="#33895b" stroke="#28744b" stroke-width="1"/><path d="M-4 -8 L2 -13 L9 -5 L3 -2 Z" fill="#6dc77c"/><circle cx="-4" cy="-4" r="4" fill="#a7df84"/><circle cx="5" cy="-7" r="3.5" fill="#73c979"/></g>
+  <g id="isoCar"><path d="M-15 0 L-3 -7 L13 -1 L3 6 Z" fill="#233c4c" opacity=".3" transform="translate(0 3)"/><path d="M-14 -1 L-3 -7 L13 -1 L2 5 Z" fill="#e9eff1" stroke="#425969" stroke-width="1"/><path d="M-7 -2 L-2 -5 L6 -1 L1 2 Z" fill="#65a7c0"/><path d="M-2 -5 L6 -1" stroke="#f6fbff" stroke-width=".8"/><circle cx="-8" cy="2" r="2" fill="#253845"/><circle cx="6" cy="3" r="2" fill="#253845"/></g>
+ </defs><rect width="${W}" height="${H}" fill="url(#grassSpeckle)"/>`;
+ const roads=wide||landscape?[
+  ['M 40 -55 L 1260 455',72, '#c3c7b6'],['M 40 -55 L 1260 455',59,'url(#isoRoad)'],['M -30 400 L 920 -40',70,'#c3c7b6'],['M -30 400 L 920 -40',57,'url(#isoRoad)'],['M 430 -40 L 1000 420',40,'#d7d8c5'],['M 430 -40 L 1000 420',30,'url(#isoRoad)']
+ ]:[
+  ['M -55 -20 L 500 600',48,'#c6c9b7'],['M -55 -20 L 500 600',39,'url(#isoRoad)'],['M -70 510 L 440 0',49,'#c6c9b7'],['M -70 510 L 440 0',40,'url(#isoRoad)'],['M -40 185 L 460 185',36,'#d2d3c0'],['M -40 185 L 460 185',28,'url(#isoRoad)']
+ ];
+ for(const [d,w,stroke] of roads)base+=`<path d="${d}" stroke="${stroke}" stroke-width="${w}" stroke-linecap="round" fill="none"/>`;
+ // Raised sidewalks and lane markers make the road network readable as a miniature city.
+ const lanes=wide||landscape?['M 40 -55 L 1260 455','M -30 400 L 920 -40','M 430 -40 L 1000 420']:['M -55 -20 L 500 600','M -70 510 L 440 0','M -40 185 L 460 185'];
+ lanes.forEach(d=>base+=`<path d="${d}" stroke="#d8e0d9" stroke-width="1.6" stroke-dasharray="9 11" opacity=".88" fill="none"/>`);
+ // Neighborhood park and scattered streetscape props.
+ if(!landscape){
+  base+=`<g opacity=".98"><path d="M16 475 L57 454 L95 474 L54 496 Z" fill="#a1d29a" stroke="#70b77f" stroke-width="1.3"/><path d="M28 475 l26 -13 l26 13 l-26 13 Z" fill="#cee7a9"/><path d="M28 475 L54 488 L80 475" fill="none" stroke="#f4e8b7" stroke-width="2"/><text x="54" y="475" text-anchor="middle" font-size="7" font-weight="1000" fill="#386b53">ПАРК</text></g>`;
+  [[24,65],[390,105],[28,310],[389,340],[54,520],[370,540],[300,38],[100,428]].forEach(([x,y])=>base+=`<use href="#isoTree" x="${x}" y="${y}"/>`);
+  base+=`<use href="#isoCar" x="36" y="230"/><use href="#isoCar" x="390" y="280" transform="rotate(-28 390 280)"/><use href="#isoCar" x="322" y="490" transform="rotate(35 322 490)"/>`;
+  // tiny zebra crossing at the central intersection
+  base+=Array.from({length:5},(_,i)=>`<path d="M${175+i*8} 175 l8 -8" stroke="#e5eee9" stroke-width="3.3" stroke-linecap="round" opacity=".95"/>`).join('');
+ }else{
+  [[30,58],[1265,110],[75,325],[1215,335],[480,35],[970,360]].forEach(([x,y])=>base+=`<use href="#isoTree" x="${x}" y="${y}"/>`);
+  base+=`<use href="#isoCar" x="110" y="255"/><use href="#isoCar" x="1160" y="240"/><use href="#isoCar" x="800" y="35"/>`;
+ }
+ // Distant, decorative city blocks around the edges, kept behind the interactive lots.
+ if(!landscape){
+  const deco=[{x:4,y:18,c:'#80abb2'},{x:356,y:18,c:'#d27c55'},{x:0,y:390,c:'#7384bc'},{x:348,y:420,c:'#5f9e9b'}];
+  deco.forEach(d=>{base+=`<g opacity=".82"><path d="M${d.x} ${d.y+20} l21 -12 l20 12 l-21 13 Z" fill="#49616c"/><path d="M${d.x} ${d.y+20} l21 13 v18 l-21 -12 Z" fill="${d.c}"/><path d="M${d.x+21} ${d.y+33} l20 -13 v18 l-20 13 Z" fill="#3a596b"/><path d="M${d.x+6} ${d.y+24} l11 7 v8 l-11 -7 Z" fill="#bce4ea"/><path d="M${d.x+25} ${d.y+33} l9 -6 v8 l-9 6 Z" fill="#c7eaf0"/></g>`});
+ }
+ const facades=locations.slice().sort((a,b)=>a.cy-b.cy).map((loc,i)=>{const biz=state.businesses.find(b=>b.location===loc.id);return svgBuilding(loc,biz,i)}).join('');
+ const citySign=landscape?`<g transform="translate(650 340)"><path d="M-70 0 L0 35 L70 0 L0 -35 Z" fill="#80b77c" stroke="#d6ecc4" stroke-width="2" opacity=".92"/><path d="M-52 0 L0 26 L52 0 L0 -26 Z" fill="#a5d28d"/><text x="0" y="4" text-anchor="middle" font-size="12" font-weight="1000" letter-spacing="1.2" fill="#285b48">ДЕЛОВОЙ ЦЕНТР</text></g>`:'';
+ svg.innerHTML=base+facades+citySign;
+}
+function enterBusiness(id){const b=getBiz(id);if(!b){toast('Предприятие не найдено.');return}state.selected=b.id;state.selectedSlot=null;state.visitingBusinessId=id;render();save();toast('Открыто управление предприятием: '+b.name+'.')}
+function interiorScene(type){let items='';if(type==='electronics'){items=`<g><rect x="28" y="32" width="74" height="78" rx="5" fill="#d8e4dc" stroke="#829a8a"/><path d="M36 47 H94 M36 69 H94 M36 91 H94" stroke="#8ca698" stroke-width="5"/><rect x="126" y="39" width="91" height="53" rx="4" fill="#d9e2e9" stroke="#758e98"/><rect x="134" y="47" width="75" height="37" rx="2" fill="#31515b"/><path d="M148 80 L160 60 L172 75 L185 55 L197 80" fill="none" stroke="#baf36d" stroke-width="3"/><rect x="150" y="93" width="45" height="6" rx="3" fill="#87999b"/><rect x="251" y="35" width="102" height="73" rx="4" fill="#e1d8c7" stroke="#9e927d"/><path d="M258 50 H346 M258 67 H346 M258 84 H346" stroke="#c0b39c" stroke-width="5"/><rect x="280" y="48" width="18" height="13" rx="2" fill="#719cbb"/><rect x="306" y="48" width="18" height="13" rx="2" fill="#d6a36a"/></g>`}else if(type==='cafe'){items=`<g fill="#d6b895" stroke="#977958" stroke-width="2"><circle cx="75" cy="65" r="23"/><circle cx="205" cy="58" r="23"/><circle cx="327" cy="68" r="23"/></g><g fill="#7c9984"><circle cx="53" cy="65" r="7"/><circle cx="97" cy="65" r="7"/><circle cx="183" cy="58" r="7"/><circle cx="227" cy="58" r="7"/><circle cx="305" cy="68" r="7"/><circle cx="349" cy="68" r="7"/></g><path d="M25 120 H395" stroke="#b4c1b3" stroke-width="8"/><rect x="145" y="105" width="130" height="22" rx="5" fill="#8b9e90"/><rect x="156" y="109" width="29" height="13" rx="3" fill="#f2dfb9"/><rect x="196" y="109" width="29" height="13" rx="3" fill="#f2dfb9"/><rect x="236" y="109" width="29" height="13" rx="3" fill="#f2dfb9"/>` }else if(type==='club'){items=`<g>${[0,1,2,3].map(i=>`<g transform="translate(${27+i*91} 38)"><rect width="75" height="41" rx="4" fill="#7f929b"/><rect x="5" y="5" width="65" height="30" rx="2" fill="#233e48"/><path d="M12 26 L24 13 L36 21 L51 9 L63 25" fill="none" stroke="#aeea72" stroke-width="2"/><rect x="28" y="41" width="18" height="7" fill="#778e91"/><rect x="-2" y="49" width="79" height="9" rx="3" fill="#adbdbe"/><rect x="8" y="58" width="10" height="16" rx="3" fill="#71858b"/><rect x="58" y="58" width="10" height="16" rx="3" fill="#71858b"/></g>`).join('')}</g>`}else if(type==='garage'){items=`<rect x="48" y="28" width="324" height="99" rx="7" fill="#d5ddd9" stroke="#97a7a0"/><rect x="65" y="40" width="20" height="75" rx="3" fill="#9faeaa"/><rect x="335" y="40" width="20" height="75" rx="3" fill="#9faeaa"/><path d="M95 100 L114 72 Q122 61 145 61 H250 Q272 63 283 80 L299 100 Z" fill="#628e9a" stroke="#38565f" stroke-width="2"/><rect x="137" y="67" width="44" height="19" rx="4" fill="#bad0d3"/><rect x="190" y="67" width="47" height="19" rx="4" fill="#bad0d3"/><circle cx="132" cy="101" r="14" fill="#314148"/><circle cx="262" cy="101" r="14" fill="#314148"/><circle cx="132" cy="101" r="6" fill="#b9c5c6"/><circle cx="262" cy="101" r="6" fill="#b9c5c6"/><rect x="16" y="30" width="25" height="90" rx="4" fill="#bf9e68"/><path d="M20 42 H37 M20 55 H37 M20 68 H37 M20 81 H37" stroke="#7e6849" stroke-width="3"/>` }else{items=`<path d="M20 100 H400" stroke="#839b8e" stroke-width="12"/><path d="M30 100 L56 83 L82 100 L108 83 L134 100 L160 83 L186 100 L212 83 L238 100 L264 83 L290 100 L316 83 L342 100 L368 83 L394 100" fill="none" stroke="#baf36d" stroke-width="4"/><g>${[0,1,2,3].map(i=>`<g transform="translate(${38+i*91} 25)"><rect width="64" height="49" rx="5" fill="#b9cbc0" stroke="#70877a"/><rect x="9" y="8" width="46" height="20" rx="3" fill="#49676c"/><circle cx="21" cy="39" r="4" fill="#f1b36f"/><circle cx="43" cy="39" r="4" fill="#f1b36f"/></g>`).join('')}</g><rect x="156" y="112" width="110" height="12" rx="5" fill="#8a9f92"/>`}
+return `<svg class="interior-scene" viewBox="0 0 420 155" role="img" aria-label="Схематичный интерьер предприятия"><defs><pattern id="floorTiles" width="22" height="18" patternUnits="userSpaceOnUse"><rect width="22" height="18" fill="#e6ebe5"/><path d="M0 18 H22 M22 0 V18" stroke="#d3ddd3" stroke-width="1"/></pattern></defs><rect width="420" height="155" fill="#eff2eb"/><rect y="18" width="420" height="137" fill="url(#floorTiles)"/><rect x="0" y="0" width="420" height="18" fill="#d7e1d7"/><path d="M0 18 H420" stroke="#a6b7ab" stroke-width="2"/><rect x="15" y="5" width="60" height="7" rx="3" fill="#91a99b"/><rect x="337" y="5" width="68" height="7" rx="3" fill="#91a99b"/>${items}<text x="400" y="146" text-anchor="end" font-size="8" font-weight="800" fill="#6a8075">ПЛАН ПОМЕЩЕНИЯ · СХЕМАТИЧНО</text></svg>`}
+function trainEmployee(id){const e=state.employees.find(x=>x.id===id);if(!e)return;const skill=Number(e.skill)||1;if(skill>=5){toast('У сотрудника максимальная квалификация.');return}const cost=10000*skill;if(state.cash<cost){toast('Недостаточно средств на обучение: '+fmt(cost)+'.');return}state.cash-=cost;e.skill=skill+1;addLedger('Обучение: '+e.name,'Квалификация повышена до '+e.skill+'/5',-cost,'expense');state.events.unshift(e.name+' повысил квалификацию до '+e.skill+'/5.');save();render();toast('Обучение завершено. Производительность предприятия выросла.')}
+function launchMarketing(){if(state.day<=state.marketingUntil){toast('Рекламная кампания уже действует.');return}const cost=20000;if(state.cash<cost){toast('Для рекламы нужно '+fmt(cost)+'.');return}state.cash-=cost;state.marketingUntil=state.day+2;addLedger('Рекламная кампания','Рост выручки на 18% на 3 игровых дня',-cost,'expense');state.events.unshift('Запущена рекламная кампания на три дня.');save();render();toast('Реклама запущена: +18% к выручке на 3 дня.')}
+function applyCompetitorEvent(){if(state.marketPressure&&state.day>state.marketPressure.until)state.marketPressure={type:null,until:0};if(state.day<3||state.day%3!==0||Math.random()>.62)return;const types=[...new Set(state.businesses.map(b=>b.type))];if(!types.length)return;const type=types[Math.floor(Math.random()*types.length)];state.marketPressure={type,until:state.day+1};const businessType=BUSINESS_TYPES[type];const news='Конкуренты запустили скидки: '+businessType.name+'. Выручка этого направления снижена на 10% до конца дня '+state.marketPressure.until+'.';state.events.unshift(news);state.events=state.events.slice(0,20);addLedger('Акция конкурента',businessType.name+' · временное снижение продаж',0,'info')}
+function renderSelected(){const container=document.getElementById('selectedBusinessCard');let b=getBiz(state.selected);if(!b&&state.selectedSlot){const ownedPlot=state.land.includes(state.selectedSlot);container.innerHTML=`<div class="selected-top"><div class="biz-icon" style="background:${ownedPlot?'#e3f1dc':'#fff0dc'}">${ownedPlot?'🏗️':'🗺️'}</div><div><div class="biz-title">${ownedPlot?'Твой свободный участок':'Земельный участок'}</div><div class="biz-caption">${ownedPlot?'Можно разместить новое предприятие':'Участок ещё не приобретён'}</div></div><span class="status ${ownedPlot?'owned':'free'}">${ownedPlot?'В СОБСТВЕННОСТИ':'НА ПРОДАЖЕ'}</span></div><p class="small muted" style="margin:12px 0">${ownedPlot?'Выбери направление бизнеса и размести его на этом участке.':'Сначала купи землю, затем выбери тип предприятия и построй здание.'}</p><div class="button-row">${ownedPlot?'<button type="button" class="btn btn-primary" data-action="goto-market">Выбрать предприятие →</button>':`<button type="button" class="btn btn-primary" data-action="buy-land" data-location="${state.selectedSlot}">Купить участок · 15 000 ₽</button>`}</div>`;return;}if(!b){b=state.businesses[0];state.selected=b?.id||null}if(!b){container.innerHTML='';return}const type=BUSINESS_TYPES[b.type];container.innerHTML=`<div class="selected-top"><div class="biz-icon" style="background:${type.color}">${type.icon}</div><div><div class="biz-title">${b.name}</div><div class="biz-caption">${b.level===1?'Первый уровень':'Уровень '+b.level} · ${getEmployees(b.id).length} сотрудн. · прибыль ${bizProfit(b)>=0?'+':'−'}${fmt(Math.abs(bizProfit(b)))}/день</div></div><span class="status owned">РАБОТАЕТ</span></div><div class="selected-metrics"><div class="metric"><div class="m-label">Выручка / день</div><div class="m-value">${fmt(bizRevenue(b))}</div></div><div class="metric"><div class="m-label">Расходы / день</div><div class="m-value">${fmt(bizCosts(b))}</div></div><div class="metric"><div class="m-label">Чистая прибыль</div><div class="m-value ${bizProfit(b)>=0?'positive':'negative'}">${bizProfit(b)>=0?'+':'−'}${fmt(Math.abs(bizProfit(b)))}</div></div></div><div class="button-row"><button type="button" class="btn btn-primary" data-action="enter" data-id="${b.id}">Управлять →</button><button type="button" class="btn btn-secondary" data-action="upgrade" data-id="${b.id}">${b.type==='factory'?'Улучшить линию':'Улучшить'} · ${fmt(upgradeCost(b))}</button></div><div class="button-row selected-extra" style="margin-top:8px"><button type="button" class="btn btn-secondary" data-action="manage" data-id="${b.id}">Финансы и сотрудники</button></div>`;}
+function upgradeCost(b){return Math.round(35000*Math.pow(1.65,b.level-1))}
+function renderOwned(){const box=document.getElementById('ownedBusinesses');if(!state.businesses.length){box.innerHTML='<div class="empty-state"><div class="emoji">🏢</div><strong>Пока нет предприятий</strong><p>Открой первое дело, чтобы начать получать выручку.</p></div>';return}box.innerHTML=state.businesses.map(b=>{const t=BUSINESS_TYPES[b.type];return `<div class="business-row"><div class="biz-icon" style="background:${t.color}">${t.icon}</div><div class="row-main"><div class="row-name">${b.name}</div><div class="row-sub">Уровень ${b.level} · ${getEmployees(b.id).length} сотрудн.</div></div><div class="row-profit ${bizProfit(b)>=0?'positive':'negative'}">${bizProfit(b)>=0?'+':'−'}${fmt(Math.abs(bizProfit(b)))}<span>прибыль / день</span></div><button class="btn btn-secondary" style="padding:9px 10px;min-height:36px" data-action="select-biz" data-id="${b.id}" type="button">Открыть</button></div>`}).join('')}
+function renderMarket(){const box=document.getElementById('shopList');const available=Object.entries(BUSINESS_TYPES);const used=new Set(state.businesses.map(b=>b.location));let loc=state.selectedSlot||LOCATIONS.find(l=>state.land.includes(l.id)&&!used.has(l.id))?.id||'';const locOwned=!!loc&&state.land.includes(loc);const hasSlot=!!loc&&locOwned&&!used.has(loc);box.innerHTML=available.map(([type,t])=>{const affordable=state.cash>=t.cost;const ownedCount=state.businesses.filter(b=>b.type===type).length;const caption=ownedCount?'Новый филиал · уже открыто: '+ownedCount:'Первое предприятие';const canBuy=affordable&&hasSlot;const buttonText=!loc?'Выбери участок на карте':!locOwned?'Сначала купи землю':!hasSlot?'Участок уже занят':affordable?(ownedCount?'Построить филиал':'Построить предприятие'):'Не хватает '+fmt(t.cost-state.cash);return `<div class="shop-card"><div class="shop-top"><div class="biz-icon" style="background:${t.color}">${t.icon}</div><div class="row-main"><div class="row-name">${t.name}</div><div class="row-sub">${caption} · штат ${t.staff} чел.</div></div><div class="price">${fmt(t.cost)}</div></div><div class="shop-desc">${t.desc}</div><div class="shop-meta"><span>Выручка ${fmt(t.revenue)}/день${type==='factory'?' · 100 шт./день':''}</span><span>Расходы ${fmt(t.baseCosts+t.staff*2500)}/день*</span></div><button type="button" class="btn ${canBuy?'btn-primary':'btn-secondary'}" style="width:100%" data-action="buy" data-type="${type}" data-location="${loc}" ${canBuy?'':'disabled'}>${buttonText}</button></div>`}).join('')+`<div class="land-note">Выбранный участок: ${loc?(locOwned?'в собственности':'ещё не приобретён'):'не выбран'}. Земля стоит 15 000 ₽. Новые предприятия строятся на принадлежащих тебе пустых участках.</div><div class="small muted" style="margin-top:10px">*До бонусов исследований, внутренних поставок и управления.</div>`}
+function renderSupplyChain(){const box=document.getElementById('supplyChainList');if(!box)return;const factories=state.businesses.filter(b=>b.type==='factory');if(!factories.length){box.innerHTML='<div class="notice">Внутренние поставки откроются после покупки завода. Завод сможет снабжать другие предприятия компонентами и получать дополнительные заказы.</div>';return}const targets=state.businesses.filter(b=>b.type!=='factory');if(!targets.length){box.innerHTML='<div class="small muted" style="margin-top:10px">Пока нет предприятий, которым можно поставлять продукцию. Открой магазин, клуб, кафе или мастерскую.</div>';return}box.innerHTML=targets.map(target=>{const c=targetContract(target);const t=BUSINESS_TYPES[target.type];if(c){const supplier=getBiz(c.supplierId);return `<div class="supply-row"><div class="biz-icon" style="background:${t.color}">${t.icon}</div><div class="supply-details"><strong>${target.name}</strong><span>Поставщик: ${supplier?supplier.name:'завод'} · +10% к выручке · логистика ${fmt(1500)}/день</span></div><button type="button" class="btn btn-secondary" data-action="cancel-contract" data-id="${c.id}">Расторгнуть</button></div>`}const supplier=factories[0];const can=state.cash>=25000;return `<div class="supply-row"><div class="biz-icon" style="background:${t.color}">${t.icon}</div><div class="supply-details"><strong>${target.name}</strong><span>Нет договора. Завод может снабжать это предприятие; ожидаемый бонус: +10% к выручке.</span></div><button type="button" class="btn ${can?'btn-primary':'btn-secondary'}" data-action="contract" data-supplier-id="${supplier.id}" data-target-id="${target.id}" ${can?'':'disabled'}>Договор · 25 000 ₽</button></div>`}).join('')+`<div class="small muted" style="margin-top:10px">Каждый активный договор добавляет заводу заказы на ${fmt(4000)}/день, но требует ${fmt(1000)}/день производственных расходов. У получателя выручка выше на 10%, логистика стоит ${fmt(1500)}/день.</div>`}
+function renderTeam(){document.getElementById('teamSummary').textContent=state.employees.length+' сотрудников · фонд оплаты '+fmt(state.employees.reduce((s,e)=>s+e.salary,0))+' в день';const box=document.getElementById('teamList');if(!state.employees.length){box.innerHTML='<div class="empty-state"><div class="emoji">👥</div><strong>Команда пока пуста</strong><p>Найми сотрудников, чтобы запустить предприятия.</p></div>';return}box.innerHTML=state.employees.map(e=>{const b=getBiz(e.businessId);const skill=Number(e.skill)||1;const trainingCost=skill>=5?0:10000*skill;return `<div class="team-row"><div class="avatar">${e.icon}</div><div class="team-info"><strong>${e.name} · ${e.role}</strong><span>${b?b.name:'Центральный офис'} · квалификация ${skill}/5</span><div class="progress-track" style="max-width:150px;margin:7px 0 0"><div class="progress-fill" style="width:${skill*20}%"></div></div></div><div class="salary">${fmt(e.salary)}<div class="muted" style="font-size:9px;font-weight:600;text-align:right">в день</div></div><button type="button" class="btn btn-secondary train-btn" data-action="train" data-id="${e.id}" ${skill>=5?'disabled':''}>${skill>=5?'Максимум':'Обучить · '+fmt(trainingCost)}</button></div>`}).join('')}
+function renderFinance(){const t=dailyTotals();document.getElementById('financeGrid').innerHTML=`<div class="finance-tile"><div class="label">Доступный капитал</div><strong>${fmt(state.cash)}</strong></div><div class="finance-tile"><div class="label">Выручка за день</div><strong>${fmt(t.revenue)}</strong></div><div class="finance-tile"><div class="label">Расходы за день</div><strong>${fmt(t.costs)}</strong></div><div class="finance-tile"><div class="label">Чистая прибыль / день</div><strong class="${t.profit>=0?'positive':'negative'}">${t.profit>=0?'+':'−'}${fmt(Math.abs(t.profit))}</strong></div>`;const box=document.getElementById('ledgerList');box.innerHTML=state.ledger.slice(0,8).map(l=>`<div class="ledger-row"><div><strong>${l.title}</strong><div class="desc">День ${l.day} · ${l.detail}</div></div><strong class="${l.kind==='income'?'positive':l.kind==='expense'?'negative':''}">${l.amount>=0?'+':'−'}${fmt(Math.abs(l.amount))}</strong></div>`).join('')||'<div class="small muted">Операций пока нет.</div>'}
+const RESEARCH=[
+{id:'sales',name:'Аналитика продаж',icon:'📈',price:60000,desc:'Точнее понимать спрос и повышать выручку всех предприятий на 15%.',effect:'+15% к выручке'},
+{id:'automation',name:'Умная автоматизация',icon:'⚙️',price:125000,desc:'Оптимизировать закупки, энергию и процессы. Сокращает текущие расходы на 12%.',effect:'−12% к расходам'},
+{id:'brand',name:'Сильный бренд',icon:'✦',price:200000,desc:'Повысить доверие клиентов. Открывает более быстрый рост репутации.',effect:'+2 репутации за день'}
+];
+function renderResearch(){document.getElementById('researchCount').textContent=state.research.length+' / '+RESEARCH.length+' изучено';document.getElementById('researchList').innerHTML=RESEARCH.map(r=>{const done=isResearched(r.id),can=state.cash>=r.price;return `<div class="research-card"><div class="research-icon">${r.icon}</div><div class="research-info"><strong>${r.name} ${done?'<span class="pill" style="background:#e4f5d7;color:#35633e">ИЗУЧЕНО</span>':''}</strong><p>${r.desc}<br><b>${r.effect}</b></p>${done?'<span class="small positive">Постоянный бонус активен</span>':`<button type="button" class="btn ${can?'btn-primary':'btn-secondary'}" style="padding:9px 11px;min-height:35px" data-action="research" data-id="${r.id}" ${can?'':'disabled'}>Исследовать · ${fmt(r.price)}</button>`}</div></div>`}).join('');document.getElementById('repValue').textContent=state.reputation+' / 100';document.getElementById('repBar').style.width=Math.min(100,state.reputation)+'%';document.getElementById('repHint').textContent=state.reputation<15?'Следующая цель: завоевать доверие первых клиентов.':state.reputation<45?'О компании начинают говорить в городе.':'Компания становится заметным игроком рынка.'}
+function renderCompetition(){const info=document.getElementById('competitionInfo');if(!info)return;let htmlInfo='';if(state.marketPressure&&state.day<=state.marketPressure.until){const type=BUSINESS_TYPES[state.marketPressure.type];htmlInfo=`<div class="competition-box"><div class="competition-symbol">⚠️</div><div><strong>Конкурент снижает цены: ${type?type.name:'рынок'}</strong><p>Соперник запустил скидки. Выручка твоих предприятий этого направления снижена на 10% до конца дня ${state.marketPressure.until}. Реклама помогает компенсировать давление.</p></div></div>`}else{htmlInfo='<div class="competition-box"><div class="competition-symbol">🤝</div><div><strong>Рынок спокоен</strong><p>Пока конкуренты не проводят агрессивные скидки. Используй спокойный период, чтобы развивать команду и усиливать бизнес.</p></div></div>'}if(state.events&&state.events.length){htmlInfo+=`<div class="small muted" style="margin-top:10px">Последнее событие: ${state.events[0]}</div>`}info.innerHTML=htmlInfo;const btn=document.getElementById('marketingBtn');if(btn){const active=state.day<=state.marketingUntil;btn.disabled=active||state.cash<20000;btn.textContent=active?'Кампания активна · до конца дня '+state.marketingUntil:(state.cash<20000?'Не хватает '+fmt(20000-state.cash):'Запустить · 20 000 ₽')}}
+function renderInterior(){const panel=document.getElementById('interiorPanel');const explore=document.getElementById('cityExploreArea');const b=getBiz(state.visitingBusinessId);if(!b){panel.hidden=true;explore.classList.remove('hidden');state.visitingBusinessId=null;return}explore.classList.add('hidden');panel.hidden=false;const t=BUSINESS_TYPES[b.type];const staff=getEmployees(b.id);const manager=staff.some(e=>e.role==='Управляющий');panel.innerHTML=`<div class="interior-header"><div class="biz-icon" style="background:${t.color}">${t.icon}</div><div class="interior-title"><h3>${b.name}</h3><p>Управление предприятием · уровень ${b.level} · ${staff.length} сотрудн.</p></div><button type="button" class="btn btn-secondary" data-action="exit">← К карте</button></div>${interiorScene(b.type)}<div class="interior-metrics"><div class="interior-metric"><span>Выручка / день</span><strong>${fmt(bizRevenue(b))}</strong></div><div class="interior-metric"><span>Расходы / день</span><strong>${fmt(bizCosts(b))}</strong></div><div class="interior-metric"><span>Чистая прибыль</span><strong class="${bizProfit(b)>=0?'positive':'negative'}">${bizProfit(b)>=0?'+':'−'}${fmt(Math.abs(bizProfit(b)))}</strong></div></div>${b.type==='factory'?`<div class="content-card production-panel"><div class="card-title">Производственная линия</div><p class="small muted" style="margin:6px 0 0">Управляй ценой компонентов: высокая цена увеличивает доход с единицы, но снижает спрос.</p><div class="finance-grid" style="margin-top:11px"><div class="finance-tile"><div class="label">Мощность</div><strong>${nfmt(productionStats(b).units)} шт./день</strong></div><div class="finance-tile"><div class="label">Продажи</div><strong>${nfmt(productionStats(b).sold)} шт./день</strong></div><div class="finance-tile"><div class="label">Спрос</div><strong>${Math.round(productionStats(b).demand*100)}%</strong></div><div class="finance-tile"><div class="label">Выручка линии</div><strong>${fmt(productionStats(b).revenue)}</strong></div></div><div class="production-controls"><button type="button" class="btn btn-secondary" data-action="price-adjust" data-id="${b.id}" data-delta="-100">− 100 ₽</button><div class="production-price">Цена: ${fmt(productionStats(b).price)} / шт.</div><button type="button" class="btn btn-secondary" data-action="price-adjust" data-id="${b.id}" data-delta="100">+ 100 ₽</button></div><div class="small muted" style="margin-top:9px">Цена регулируется от 500 до 3 500 ₽. Улучшение завода увеличивает мощность линии.</div></div>`:''}<div class="content-card" style="margin:0 14px 12px;box-shadow:none"><div class="card-title">Смена и персонал</div><p class="small muted" style="margin:6px 0 9px">${staff.length} сотрудн. на смене. ${manager?'Управляющий контролирует работу предприятия.':'Пока без управляющего — можно назначить управляющего из раздела команды.'}</p><div class="small">${staff.slice(0,4).map(e=>`${e.icon} ${e.name} · ${e.role} · квалификация ${Number(e.skill)||1}/5`).join('<br>')}${staff.length>4?`<br>Ещё ${staff.length-4} сотрудн.`:''}</div></div><div class="interior-actions"><button type="button" class="btn btn-primary" data-action="upgrade" data-id="${b.id}">${b.type==='factory'?'Улучшить линию':'Улучшить предприятие'} · ${fmt(upgradeCost(b))}</button><button type="button" class="btn btn-secondary" data-action="manage" data-id="${b.id}">Открыть финансы</button><button type="button" class="btn btn-secondary" data-action="marketing">Реклама компании</button></div>`}
+function render(){renderHeader();renderCity();renderSelected();renderOwned();renderMarket();renderSupplyChain();renderTeam();renderFinance();renderResearch();renderCompetition();renderInterior();document.querySelectorAll('.tab-pane').forEach(p=>p.classList.toggle('active',p.id==='pane-'+state.activeTab));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===state.activeTab));}
+function openModal(title,text,confirmLabel,action){document.getElementById('modalTitle').textContent=title;document.getElementById('modalText').textContent=text;document.getElementById('modalConfirm').textContent=confirmLabel||'Подтвердить';pendingAction=action;document.getElementById('modalBackdrop').classList.add('show')}
+function closeModal(){document.getElementById('modalBackdrop').classList.remove('show');pendingAction=null}
+function buyLand(location){if(!LOCATIONS.some(l=>l.id===location)){toast('Неизвестный участок.');return}if(state.businesses.some(b=>b.location===location)){toast('На этом участке уже стоит предприятие.');return}if(state.land.includes(location)){toast('Этот участок уже принадлежит компании.');return}const cost=15000;if(state.cash<cost){toast('Для покупки земли нужно '+fmt(cost)+'.');return}state.cash-=cost;state.land.push(location);state.selectedSlot=location;state.selected=null;addLedger('Покупка земли','Участок '+location,-cost,'expense');state.events.unshift('Приобретён новый земельный участок.');save();render();toast('Земля приобретена. Теперь можно выбрать предприятие для строительства.');}
+function createSupplyContract(supplierId,targetId){const supplier=getBiz(supplierId),target=getBiz(targetId);if(!supplier||supplier.type!=='factory'||!target||target.type==='factory'){toast('Для договора нужен завод и подходящее предприятие-получатель.');return}if(targetContract(target)){toast('У этого предприятия уже есть договор поставки.');return}const cost=25000;if(state.cash<cost){toast('Для заключения договора нужно '+fmt(cost)+'.');return}state.cash-=cost;state.contracts.push({id:'contract'+Date.now(),supplierId,targetId,startedDay:state.day});addLedger('Договор поставки',supplier.name+' → '+target.name,-cost,'expense');state.events.unshift('Запущены внутренние поставки: '+target.name+' получает компоненты от завода.');save();render();toast('Договор заключён: выручка получателя +10%.');}
+function cancelSupplyContract(id){const contract=state.contracts.find(c=>c.id===id);if(!contract)return;const target=getBiz(contract.targetId);state.contracts=state.contracts.filter(c=>c.id!==id);addLedger('Расторжение поставки',target?target.name:'Предприятие',0,'info');state.events.unshift('Внутренний договор поставки расторгнут.');save();render();toast('Договор поставки расторгнут; ежедневные расходы отменены.');}
+function adjustFactoryPrice(id,delta){const b=getBiz(id);if(!b||b.type!=='factory')return;const old=productionStats(b).price;const next=Math.max(500,Math.min(3500,old+Number(delta||0)));if(next===old){toast('Цена уже достигла допустимого предела.');return}b.unitPrice=next;state.events.unshift('Цена компонентов изменена: '+fmt(old)+' → '+fmt(next)+' за единицу.');save();render();toast('Цена продукции обновлена. Проверь прогноз продаж.');}
+function buyBusiness(type,location){const t=BUSINESS_TYPES[type];if(!t){toast('Неизвестный тип предприятия.');return}if(!location||state.businesses.some(b=>b.location===location)){location=LOCATIONS.find(l=>state.land.includes(l.id)&&!state.businesses.some(b=>b.location===l.id))?.id}if(!location){toast('Сначала приобрети свободный участок на карте.');return}if(!state.land.includes(location)){toast('Сначала купи выбранный участок.');return}if(state.cash<t.cost){toast('Недостаточно средств для строительства: нужно '+fmt(t.cost)+'.');return}state.cash-=t.cost;const id='biz'+Date.now();const branchNo=state.businesses.filter(x=>x.type===type).length+1;const bizName=branchNo>1?t.name+' · филиал '+branchNo:t.name;const b={id,type,name:bizName,level:1,location,revenue:t.revenue,baseCosts:t.baseCosts,upgradeCount:0};if(type==='factory'){b.productionUnits=100;b.unitPrice=1200}state.businesses.push(b);const role=type==='factory'?'Техник':type==='garage'?'Механик':type==='cafe'?'Бариста':type==='club'?'Администратор':'Продавец';for(let i=0;i<t.staff;i++){state.employees.push({id:'emp'+Date.now()+'_'+i,name:['Данил','София','Марк','Ева','Илья','Мира','Тимур','Лейла'][state.employees.length%8],role,icon:type==='factory'?'🧑‍🏭':type==='garage'?'🧑‍🔧':type==='cafe'?'🧑‍🍳':'🧑‍💼',salary:type==='factory'?3200:type==='garage'?3000:type==='cafe'?2600:2500,businessId:id,skill:1})}addLedger('Строительство: '+t.name,'Открытие нового предприятия',-t.cost,'expense');state.reputation=Math.min(100,state.reputation+4);state.selected=id;state.selectedSlot=null;state.visitingBusinessId=null;state.events.unshift('Построено новое предприятие: '+t.name+'.');save();render();toast('Предприятие построено! Сотрудники наняты автоматически.');switchTab('city')}
+function upgradeBusiness(id){const b=getBiz(id);if(!b)return;const cost=upgradeCost(b);if(state.cash<cost){toast('Недостаточно средств для улучшения.');return}state.cash-=cost;b.level++;if(b.type==='factory'){b.productionUnits=Math.round((b.productionUnits||100)*1.25);b.revenue=Math.round(b.revenue*1.28)}else b.revenue=Math.round(b.revenue*1.28);b.baseCosts=Math.round(b.baseCosts*1.08);b.upgradeCount++;addLedger('Улучшение: '+b.name,b.type==='factory'?'Мощность линии увеличена до '+nfmt(b.productionUnits)+' шт./день':'Уровень '+b.level,-cost,'expense');state.reputation=Math.min(100,state.reputation+2);save();render();toast(b.type==='factory'?'Производственная мощность увеличена на 25%.':'Предприятие улучшено: выручка выросла на 28%.')}
+function research(id){const r=RESEARCH.find(x=>x.id===id);if(!r||isResearched(id))return;if(state.cash<r.price){toast('Недостаточно средств для исследования.');return}state.cash-=r.price;state.research.push(id);addLedger('Исследование: '+r.name,'Постоянный бонус компании',-r.price,'expense');if(id==='brand')state.reputation=Math.min(100,state.reputation+8);save();render();toast('Исследование завершено: '+r.name)}
+function nextDay(){const t=dailyTotals();state.day++;state.cash+=t.profit;state.totalEarned+=Math.max(0,t.profit);applyCompetitorEvent();if(t.profit>=0){state.reputation=Math.min(100,state.reputation+(isResearched('brand')?2:1)+(state.businesses.length>1?1:0));addLedger('Доходы за день','Выручка '+fmt(t.revenue)+', расходы '+fmt(t.costs),t.profit,t.profit>=0?'income':'expense');}else{state.reputation=Math.max(0,state.reputation-1);addLedger('Убыток за день','Расходы превысили выручку',t.profit,'expense')};if(state.cash<0){state.events.unshift('Внимание: отрицательный капитал. Пересмотри расходы или открой прибыльное направление.');toast('Капитал ушёл в минус. Нужно исправить экономику!')}else toast('День закрыт. Результат: '+(t.profit>=0?'+':'−')+fmt(Math.abs(t.profit)));state.events.unshift('День '+state.day+': финансовый результат '+(t.profit>=0?'+':'−')+fmt(Math.abs(t.profit))+'.');state.events=state.events.slice(0,20);save();render()}
+function hireManager(){const cost=45000;if(state.cash<cost){toast('Для найма управляющего нужно '+fmt(cost)+'.');return}if(!state.businesses.length){toast('Сначала открой предприятие.');return}const b=getBiz(state.selected)||state.businesses[0];state.cash-=cost;state.employees.push({id:'emp'+Date.now(),name:'Алексей',role:'Управляющий',icon:'🧑‍💼',salary:5500,businessId:b.id,skill:1});addLedger('Найм управляющего',b.name+' · разовая комиссия',-cost,'expense');state.reputation=Math.min(100,state.reputation+1);save();render();toast('Управляющий назначен: выручка предприятия увеличена на 12%.')}
+function handleAction(btn){const a=btn.dataset.action;if(a==='enter'){enterBusiness(btn.dataset.id);return}if(a==='exit'){state.visitingBusinessId=null;render();save();toast('Возврат к карте активов.');return}if(a==='train'){trainEmployee(btn.dataset.id);return}if(a==='marketing'){launchMarketing();return}if(a==='goto-market'){switchTab('business');return}if(a==='upgrade'){upgradeBusiness(btn.dataset.id);return}if(a==='manage'){state.selected=btn.dataset.id;state.selectedSlot=null;state.visitingBusinessId=null;switchTab('business');return}if(a==='select-biz'){setSelected(btn.dataset.id);switchTab('city');return}if(a==='buy'){buyBusiness(btn.dataset.type,btn.dataset.location);return}if(a==='buy-land'){buyLand(btn.dataset.location);return}if(a==='contract'){createSupplyContract(btn.dataset.supplierId,btn.dataset.targetId);return}if(a==='cancel-contract'){cancelSupplyContract(btn.dataset.id);return}if(a==='price-adjust'){adjustFactoryPrice(btn.dataset.id,Number(btn.dataset.delta));return}if(a==='research'){research(btn.dataset.id);return}}
+document.addEventListener('click',e=>{const tab=e.target.closest('.nav-btn');if(tab){switchTab(tab.dataset.tab);return}const action=e.target.closest('[data-action]');if(action){handleAction(action);return}const mapLoc=e.target.closest('[data-location]');if(mapLoc){selectSlot(mapLoc.dataset.location);return}});
+document.getElementById('cityMap').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-location]')){e.preventDefault();selectSlot(e.target.dataset.location)}});
+let mapResizeTimer=null;window.addEventListener('resize',()=>{clearTimeout(mapResizeTimer);mapResizeTimer=setTimeout(renderCity,80)});
+document.getElementById('nextDayBtn').addEventListener('click',nextDay);document.getElementById('financeNextBtn').addEventListener('click',nextDay);document.getElementById('businessNextBtn').addEventListener('click',()=>{switchTab('business');document.getElementById('businessMarket').scrollIntoView({behavior:'smooth',block:'start'})});document.getElementById('hireBtn').addEventListener('click',()=>openModal('Нанять управляющего','Разовая комиссия — 45 000 ₽. Зарплата — 5 500 ₽ в день. Управляющий повышает выручку выбранного предприятия на 12%.','Нанять',hireManager));document.getElementById('resetBtn').addEventListener('click',()=>openModal('Начать новую игру?','Текущий прогресс будет удалён. Начнёшь заново со стартовым капиталом 100 000 ₽.','Сбросить',()=>{state=initialState();save();render();toast('Новая игра началась.')}));document.getElementById('modalCancel').addEventListener('click',closeModal);document.getElementById('modalConfirm').addEventListener('click',()=>{const action=pendingAction;closeModal();if(action)action()});document.getElementById('modalBackdrop').addEventListener('click',e=>{if(e.target.id==='modalBackdrop')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+// Event delegation for action buttons inserted by render().
+// Version 0.6: isometric cartoon city, richer architectural silhouettes, colorful mobile tycoon UI. Core economy and saves retained.
+const oldRender=render;render=function(){oldRender();};
+// Patch the manager confirmation for explicit insufficient-funds handling.
+const baseHire=hireManager;hireManager=function(){if(state.cash<45000){toast('Для найма управляющего нужно '+fmt(45000)+'.');return}baseHire()};
+render();save();
+})();
+</script>
+</body>
+</html>
