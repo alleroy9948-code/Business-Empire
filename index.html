@@ -468,7 +468,6 @@ function initCity3D(THREE,mount){
   renderer.domElement.setAttribute('aria-label','Объёмная 3D-карта города. Нажми на участок или здание, чтобы выбрать.');
   renderer.domElement.style.cssText='position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab;outline:none;';
   renderer.domElement.tabIndex=0;
-  mount.querySelectorAll('.city3d-status').forEach(el=>el.remove());
   mount.querySelectorAll('.city3d-canvas-wrap').forEach(el=>el.remove());
   const wrap=document.createElement('div');wrap.className='city3d-canvas-wrap';wrap.style.cssText='position:absolute;inset:0;overflow:hidden;';
   wrap.appendChild(renderer.domElement);mount.prepend(wrap);
@@ -709,6 +708,7 @@ function initCity3D(THREE,mount){
     const b=state.businesses.find(x=>x.location===lot.loc.id);
     const signature=b?(b.id+'|'+b.type+'|'+b.level):('empty|'+(state.land.includes(lot.loc.id)?'owned':'free'));
     if(signature!==lot.signature){
+     city3D.pickables=city3D.pickables.filter(o=>o===lot.plot||o.userData.location!==lot.loc.id);
      clearGroup(lot.content);lot.signature=signature;lot.building=null;
      if(b){
       lot.building=createBuilding(lot.loc,b);lot.content.add(lot.building);
@@ -736,7 +736,7 @@ function initCity3D(THREE,mount){
   function resizeCity3D(){
    if(!city3D)return;
    const width=Math.max(1,mount.clientWidth),height=Math.max(1,mount.clientHeight),aspect=width/height;
-   const frustum=aspect>1.5?23.5:30.5;
+   const frustum=zoom || (aspect>1.5?23.5:30.5);
    camera.left=-frustum*aspect/2;camera.right=frustum*aspect/2;camera.top=frustum/2;camera.bottom=-frustum/2;camera.updateProjectionMatrix();
    renderer.setSize(width,height,false);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.6));
    renderer.render(scene,camera);
@@ -783,6 +783,7 @@ function initCity3D(THREE,mount){
   function aspectSafeZoom(){return mount.clientWidth/Math.max(1,mount.clientHeight)>1.5?23.5:30.5;}
   zoom=aspectSafeZoom();updateCamera();
   city3D={THREE,scene,camera,renderer,root:mount,lots,pickables,moving,leafGroups,smokeGroups,people,cars,lights:{sun},resize:resizeCity3D,sync:syncCity3D};
+  city3DLoading=false;
   syncCity3D();renderCityAccessibleLots();
   if(status)status.hidden=true;
   let last=performance.now();
