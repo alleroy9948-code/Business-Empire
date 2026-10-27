@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#13262d">
-<title>Бизнес-империя — версия 0.9</title>
+<title>Бизнес-империя — версия 1.0</title>
 <style>
 :root{--ink:#172a31;--muted:#718188;--paper:#f4f6f3;--panel:#fff;--line:#e3e9e5;--green:#baf36d;--green-dark:#2e5d3e;--orange:#f3a45d;--blue:#4d7d8a;--shadow:0 8px 24px rgba(27,48,53,.08)}
 *{box-sizing:border-box} html{background:#e8eeea} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);min-height:100vh} button{font:inherit;cursor:pointer;border:0} button:focus-visible{outline:3px solid #7ba7f7;outline-offset:2px} .app{max-width:1060px;margin:0 auto;min-height:100vh;background:var(--paper);padding-bottom:28px}.topbar{background:var(--ink);color:white;padding:18px 18px 17px;border-radius:0 0 24px 24px;position:relative;overflow:hidden}.topbar:after{content:"";position:absolute;width:220px;height:220px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-70px;top:-130px;box-shadow:0 0 0 23px rgba(255,255,255,.025),0 0 0 47px rgba(255,255,255,.025)}.toprow{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:1}.brand{display:flex;align-items:center;gap:11px}.brandmark{height:42px;width:42px;border-radius:14px;background:var(--green);color:#193324;display:grid;place-items:center;font-size:24px;font-weight:900}.eyebrow{text-transform:uppercase;font-size:10px;letter-spacing:.15em;color:#a6b5b8;font-weight:800}.brand h1{font-size:19px;letter-spacing:-.03em;margin:1px 0 0}.datepill{font-size:11px;border:1px solid #385057;background:#203940;color:#e4efea;padding:8px 10px;border-radius:999px;white-space:nowrap}.welcome{margin-top:18px;position:relative;z-index:1}.welcome .greeting{font-size:12px;color:#a6b5b8;margin-bottom:4px}.welcome .headline{font-size:25px;line-height:1.1;letter-spacing:-.04em;font-weight:850}.welcome .headline span{color:var(--green)}.topstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:18px;position:relative;z-index:1}.topstat{background:#203940;border:1px solid #304950;border-radius:15px;padding:11px 10px;min-width:0}.topstat .label{font-size:10px;color:#a6b5b8;display:flex;align-items:center;gap:5px}.topstat .value{font-size:clamp(15px,3.4vw,21px);font-weight:850;letter-spacing:-.04em;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.topstat .sub{font-size:10px;color:#99aaa9;margin-top:3px}.positive{color:var(--green)!important}.negative{color:#ffad95!important}.main{padding:17px 14px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:4px 2px 12px}.section-head h2{font-size:19px;letter-spacing:-.035em;margin:0}.section-head p{font-size:11px;color:var(--muted);margin:4px 0 0}.small-action{font-size:11px;font-weight:800;color:var(--green-dark);background:#e4f5d7;padding:9px 11px;border-radius:10px;white-space:nowrap}.city-card,.content-card{background:var(--panel);border:1px solid var(--line);border-radius:21px;box-shadow:var(--shadow);overflow:hidden}.city-head{display:flex;justify-content:space-between;align-items:center;padding:14px 15px 9px}.city-title{font-size:13px;font-weight:850}.city-weather{font-size:10px;color:var(--muted);background:#f3f6f3;border-radius:999px;padding:6px 8px}.citymap{display:block;width:100%;height:auto;max-height:385px;background:#dce6dc}.map-legend{display:flex;flex-wrap:wrap;gap:12px;padding:10px 15px 13px;font-size:10px;color:var(--muted)}.legend-item{display:flex;align-items:center;gap:6px}.dot{width:8px;height:8px;border-radius:3px;display:inline-block}.dot.owned{background:#8dcc62}.dot.free{background:#f1b36f}.dot.other{background:#89a5ad}.hint{font-size:11px;color:var(--muted);margin:10px 4px 17px;line-height:1.45}.selected-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px;box-shadow:0 4px 14px rgba(27,48,53,.04)}.selected-top{display:flex;gap:11px;align-items:center}.biz-icon{width:47px;height:47px;display:grid;place-items:center;border-radius:15px;font-size:23px;background:#e7f3dc;flex-shrink:0}.biz-title{font-weight:850;font-size:14px;letter-spacing:-.02em}.biz-caption{font-size:10px;color:var(--muted);margin-top:4px}.status{font-size:9px;letter-spacing:.05em;font-weight:900;padding:6px 7px;border-radius:999px;margin-left:auto;align-self:flex-start;white-space:nowrap}.status.owned{background:#e4f5d7;color:#35633e}.status.free{background:#fff0dd;color:#8b5529}.selected-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 12px}.metric{background:#f6f8f5;padding:10px;border-radius:12px;min-width:0}.metric .m-label{color:var(--muted);font-size:9px}.metric .m-value{font-weight:850;font-size:14px;letter-spacing:-.03em;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.button-row{display:flex;gap:8px}.btn{border-radius:12px;padding:12px 13px;font-size:12px;font-weight:850;min-height:43px;transition:transform .12s ease,filter .12s ease}.btn:active{transform:scale(.98)}.btn-primary{background:var(--green);color:#1a3425;flex:1}.btn-secondary{background:#edf1ed;color:#40545a}.btn-danger{background:#fff0eb;color:#994e3b}.nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;background:#fff;border-top:1px solid var(--line);padding:9px 7px calc(9px + env(safe-area-inset-bottom));position:sticky;bottom:0;z-index:10;margin-top:18px}.nav-btn{background:transparent;color:#849296;border-radius:13px;padding:8px 2px 7px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:9px;font-weight:800}.nav-btn .nav-icon{font-size:19px;line-height:1.1}.nav-btn.active{background:#edf6e6;color:#315b39}.tab-pane{display:none}.tab-pane.active{display:block}.content-card{padding:15px;margin-bottom:12px}.card-title{font-weight:900;font-size:15px;letter-spacing:-.03em;margin:0}.muted{color:var(--muted)}.small{font-size:11px;line-height:1.45}.business-row{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid #edf0ed}.business-row:last-child{border-bottom:0;padding-bottom:0}.business-row:first-child{padding-top:0}.business-row .biz-icon{width:43px;height:43px}.row-main{min-width:0;flex:1}.row-name{font-size:12px;font-weight:850}.row-sub{font-size:10px;color:var(--muted);margin-top:4px}.row-profit{text-align:right;font-size:12px;font-weight:900;white-space:nowrap}.row-profit span{display:block;color:var(--muted);font-size:9px;font-weight:600;margin-top:4px}.pill{font-size:9px;padding:5px 7px;border-radius:7px;background:#f0f3f0;color:#627277;display:inline-block}.shop-card{border:1px solid var(--line);border-radius:16px;padding:13px;margin-top:10px;background:#fbfcfa}.shop-top{display:flex;gap:10px;align-items:center}.shop-card .price{font-size:13px;font-weight:900;margin-left:auto;white-space:nowrap}.shop-desc{font-size:10px;line-height:1.5;color:var(--muted);margin:9px 0 11px}.shop-meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:11px}.shop-meta span{font-size:9px;padding:5px 7px;background:#f0f3ef;border-radius:7px;color:#627277}.section-label{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:#8a999b;margin:17px 0 7px}.progress-track{height:7px;border-radius:99px;background:#edf1ec;overflow:hidden;margin:9px 0 5px}.progress-fill{height:100%;background:var(--green-dark);border-radius:99px;transition:width .2s}.team-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #edf0ed}.team-row:last-child{border:0}.avatar{height:39px;width:39px;border-radius:13px;background:#e8eef0;display:grid;place-items:center;font-size:18px}.team-info{flex:1;min-width:0}.team-info strong{display:block;font-size:12px}.team-info span{display:block;font-size:10px;color:var(--muted);margin-top:4px}.salary{font-size:11px;font-weight:850;white-space:nowrap}.finance-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.finance-tile{padding:13px;background:#f5f8f4;border-radius:14px}.finance-tile .label{font-size:10px;color:var(--muted)}.finance-tile strong{display:block;font-size:20px;letter-spacing:-.04em;margin-top:7px}.ledger{margin-top:8px}.ledger-row{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid #edf0ed;font-size:11px}.ledger-row:last-child{border:0}.ledger-row .desc{color:var(--muted);margin-top:3px;font-size:9px}.research-card{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #edf0ed}.research-card:last-child{border:0}.research-icon{width:43px;height:43px;border-radius:14px;background:#e8eef7;display:grid;place-items:center;font-size:21px;flex-shrink:0}.research-info{flex:1;min-width:0}.research-info strong{font-size:12px;display:block}.research-info p{font-size:10px;color:var(--muted);line-height:1.4;margin:5px 0 9px}.research-price{font-weight:900;font-size:11px;margin-right:7px}.notice{padding:11px 12px;background:#f0f7e9;border-radius:12px;color:#446443;font-size:10px;line-height:1.45;margin-top:12px}.toast{position:fixed;z-index:50;bottom:90px;left:50%;transform:translate(-50%,14px);opacity:0;pointer-events:none;background:#1a3036;color:#fff;border-radius:13px;padding:12px 15px;box-shadow:var(--shadow);font-size:12px;font-weight:750;max-width:calc(100vw - 32px);transition:all .22s ease;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-backdrop{position:fixed;inset:0;background:rgba(14,31,35,.48);z-index:40;display:none;align-items:flex-end;justify-content:center;padding:12px}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:24px 24px 18px 18px;width:min(560px,100%);padding:18px;box-shadow:0 20px 70px rgba(0,0,0,.2)}.modal-handle{width:34px;height:4px;background:#dfe5df;border-radius:99px;margin:0 auto 16px}.modal h3{font-size:18px;letter-spacing:-.03em;margin:0 0 7px}.modal p{font-size:11px;line-height:1.5;color:var(--muted);margin:0 0 14px}.modal-actions{display:flex;gap:8px;margin-top:16px}.modal-actions button{flex:1}.footnote{color:#94a0a0;text-align:center;font-size:9px;padding:12px 20px 0}.empty-state{padding:22px 8px;text-align:center}.empty-state .emoji{font-size:27px}.empty-state strong{display:block;font-size:13px;margin-top:8px}.empty-state p{font-size:10px;color:var(--muted);line-height:1.5;max-width:260px;margin:7px auto 0}
@@ -463,10 +463,10 @@ function initCity3D(THREE,mount){
   const renderer=new THREE.WebGLRenderer({antialias:window.devicePixelRatio<=1.5,alpha:false,powerPreference:'high-performance'});
   renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.6));
   renderer.shadowMap.enabled=true;
-  renderer.shadowMap.type=THREE.PCFShadowMap;
+  renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.outputColorSpace=THREE.SRGBColorSpace;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure=1.08;
+  renderer.toneMappingExposure=1.02;
   renderer.domElement.setAttribute('aria-label','Объёмная 3D-карта города. Нажми на участок или здание, чтобы выбрать.');
   renderer.domElement.style.cssText='position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab;outline:none;';
   renderer.domElement.tabIndex=0;
@@ -476,12 +476,12 @@ function initCity3D(THREE,mount){
   const status=mount.querySelector('.city3d-status');
   if(status)status.hidden=true;
   mount.classList.add('city3d-ready');
-  const hemi=new THREE.HemisphereLight('#f6ffff','#71996b',2.0);scene.add(hemi);
-  const sun=new THREE.DirectionalLight('#fff1d2',3.2);
+  const hemi=new THREE.HemisphereLight('#f6ffff','#71996b',1.7);scene.add(hemi);
+  const sun=new THREE.DirectionalLight('#fff0d8',3.5);
   sun.position.set(-16,27,18);sun.castShadow=true;
-  sun.shadow.mapSize.set(1536,1536);
+  sun.shadow.mapSize.set(2048,2048);sun.shadow.radius=3.5;
   sun.shadow.camera.left=-24;sun.shadow.camera.right=24;sun.shadow.camera.top=24;sun.shadow.camera.bottom=-24;
-  sun.shadow.camera.near=.5;sun.shadow.camera.far=90;sun.shadow.bias=-.0004;sun.shadow.normalBias=.025;
+  sun.shadow.camera.near=.5;sun.shadow.camera.far=90;sun.shadow.bias=-.00025;sun.shadow.normalBias=.035;
   scene.add(sun);scene.add(sun.target);
   const fill=new THREE.DirectionalLight('#b5e5ff',.8);fill.position.set(17,12,-16);scene.add(fill);
   const mat=(color,roughness=.85,metalness=0,extra={})=>new THREE.MeshStandardMaterial(Object.assign({color,roughness,metalness},extra));
@@ -521,14 +521,14 @@ function initCity3D(THREE,mount){
   const gtex=new THREE.CanvasTexture(groundTexCanvas);gtex.wrapS=gtex.wrapT=THREE.RepeatWrapping;gtex.repeat.set(5,5);gtex.colorSpace=THREE.SRGBColorSpace;
   const ground=new THREE.Mesh(new THREE.PlaneGeometry(90,90),new THREE.MeshStandardMaterial({map:gtex,roughness:1}));
   ground.rotation.x=-Math.PI/2;ground.position.y=-.14;ground.receiveShadow=true;scene.add(ground);
-  box(scene,31,.35,29,mat('#73b56e'),0,-.28,0,{cast:false});
+  box(scene,34,.35,32,mat('#73b56e'),0,-.28,0,{cast:false});
   // A low-poly park and water feature soften the edge of the business district.
   const park=new THREE.Group();park.position.set(-14,-.03,10);scene.add(park);
   box(park,5,.16,5,mat('#6fbd77'),0,0,0,{cast:false});
   const pond=new THREE.Mesh(new THREE.CylinderGeometry(1.05,1.18,.12,12),mat('#74cfe8',.2,.1));pond.position.set(0,.14,0);pond.receiveShadow=true;park.add(pond);
   const fountain=new THREE.Mesh(new THREE.CylinderGeometry(.16,.24,.55,8),mat('#f6e9c9'));fountain.position.set(0,.42,0);park.add(fountain);
   const fountainJet=new THREE.Mesh(new THREE.CylinderGeometry(.045,.07,.62,7),mat('#a4e9f7',.25,.1));fountainJet.position.set(0,.8,0);park.add(fountainJet);
-  const lots=[],pickables=[],moving=[],leafGroups=[],smokeGroups=[],people=[],cars=[],waterRipples=[],signalGroups=[];
+  const lots=[],pickables=[],moving=[],leafGroups=[],smokeGroups=[],people=[],cars=[],boats=[],waterRipples=[],signalGroups=[];
   const lotMaterial=mat('#a8d98f'), lotOwned=mat('#89d37e'), lotFree=mat('#f4cf8a');
   function addTree(x,z,scale=1){
    const group=new THREE.Group();group.position.set(x,0,z);group.scale.setScalar(scale);scene.add(group);
@@ -546,21 +546,26 @@ function initCity3D(THREE,mount){
    return group;
   }
   // Road surfaces have curbs, lane dashes and pedestrian crossings.
+  const sidewalk=mat('#d8ddcf',.98);
   function roadAlongX(z){
-   box(scene,36,.13,2.65,curb,0,-.055,z,{cast:false});
-   box(scene,36,.08,2.2,road,0,.015,z,{cast:false});
+   const boulevard=Math.abs(z-4.5)<.2,curbW=boulevard?2.9:2.65,roadW=boulevard?2.45:2.2;
+   box(scene,36,.13,curbW,curb,0,-.055,z,{cast:false});
+   box(scene,36,.08,roadW,road,0,.015,z,{cast:false});
    for(let x=-17;x<18;x+=2.5)box(scene,.95,.025,.065,lane,x,.069,z,{cast:false});
-   for(let x=-15.2;x<16;x+=2.5){flat(scene,.75,.025,.045, '#fff6dc',x,.07,z-0.88);flat(scene,.75,.025,.045,'#fff6dc',x,.07,z+.88);}
+   for(let x=-15.2;x<16;x+=2.5){flat(scene,.75,.025,.045,'#fff6dc',x,.07,z-roadW/2+.25);flat(scene,.75,.025,.045,'#fff6dc',x,.07,z+roadW/2-.25);}
+   for(const side of [-1,1])box(scene,36,.035,.32,sidewalk,0,.025,z+side*(curbW/2+.28),{cast:false});
   }
   function roadAlongZ(x){
-   box(scene,2.65,.13,31,curb,x,-.055,0,{cast:false});
-   box(scene,2.2,.08,30.5,road,x,.015,0,{cast:false});
+   const boulevard=Math.abs(x-4.5)<.2,curbW=boulevard?2.9:2.65,roadW=boulevard?2.45:2.2;
+   box(scene,curbW,.13,31,curb,x,-.055,0,{cast:false});
+   box(scene,roadW,.08,30.5,road,x,.015,0,{cast:false});
    for(let z=-14;z<15;z+=2.4)box(scene,.065,.025,.92,lane,x,.069,z,{cast:false});
+   for(const side of [-1,1])box(scene,.32,.035,31,sidewalk,x+side*(curbW/2+.28),.025,0,{cast:false});
   }
-  roadAlongX(-4.1);roadAlongX(4.1);roadAlongZ(-4.25);roadAlongZ(4.25);
+  roadAlongX(-4.5);roadAlongX(4.5);roadAlongZ(-4.5);roadAlongZ(4.5);
   // Painted crosswalks mark the four intersections.
-  for(const z of [-4.1,4.1])for(let i=-3;i<=3;i++)box(scene,.33,.026,.95,white,i*.43,.075,z+(z<0?1.25:-1.25),{cast:false});
-  for(const x of [-4.25,4.25])for(let i=-3;i<=3;i++)box(scene,.95,.026,.33,white,x+(x<0?1.25:-1.25),.075,i*.43,{cast:false});
+  for(const z of [-4.5,4.5])for(let i=-3;i<=3;i++)box(scene,.33,.026,.95,white,i*.43,.075,z+(z<0?1.25:-1.25),{cast:false});
+  for(const x of [-4.5,4.5])for(let i=-3;i<=3;i++)box(scene,.95,.026,.33,white,x+(x<0?1.25:-1.25),.075,i*.43,{cast:false});
   // A narrow canal and two low bridges give the map a recognisable waterfront edge.
   const canalBed=mat('#9bb9a1'),canalWater=mat('#55bad9',.19,.12,{emissive:'#1c718d',emissiveIntensity:.22});
   box(scene,1.9,.12,29.3,canalBed,15.15,-.19,0,{cast:false});
@@ -572,8 +577,19 @@ function initCity3D(THREE,mount){
    const ripple=box(scene,.24,.012,.035,rippleMat,14.75+(i%4)*.25,-.058,-13.2+i*1.55,{cast:false,receive:false});
    waterRipples.push({obj:ripple,phase:rnd()*28});
   }
+  // A small electric delivery boat glides through the canal, with a compact cabin and cargo deck.
+  function makeCanalBoat(){
+   const group=new THREE.Group();
+   box(group,.62,.2,1.38,mat('#e7f2e9',.42,.05),0,.04,0,{cast:true});
+   box(group,.44,.32,.54,mat('#4f9bb1',.32,.08),0,.28,-.2,{cast:true});
+   box(group,.38,.19,.035,mat('#a8dce9',.2,.05,{emissive:'#174b60',emissiveIntensity:.12}),0,.31,.09,{cast:false});
+   box(group,.36,.17,.32,mat('#e4bd68',.7),0,.22,.48,{cast:false});
+   box(group,.055,.38,.055,mat('#d5e1d7'),.2,.48,-.2,{cast:false});
+   scene.add(group);boats.push({group,baseX:15.15,baseZ:-12,speed:.78,phase:rnd()*6});
+  }
+  makeCanalBoat();
   // Bridge parapets, bollards and reflected highlights make the avenue visibly cross the water.
-  for(const bz of [-4.1,4.1]){
+  for(const bz of [-4.5,4.5]){
    for(const side of [-1,1]){
     box(scene,1.7,.075,.075,mat('#e3e9da'),15.15,.39,bz+side*1.08,{cast:false});
     for(const bx of [14.42,14.9,15.4,15.88])box(scene,.065,.48,.09,mat('#e3e9da'),bx,.22,bz+side*1.08,{cast:false});
@@ -581,6 +597,18 @@ function initCity3D(THREE,mount){
    box(scene,.36,.22,.16,mat('#f3c76c'),14.18,.18,bz,{cast:false});
    box(scene,.36,.22,.16,mat('#f3c76c'),16.12,.18,bz,{cast:false});
   }
+  // A new paved waterfront promenade links the district to the two bridges.
+  const promenade=mat('#d7ddcf',.98),promenadeEdge=mat('#91a99a',.9);
+  box(scene,1.05,.065,28.8,promenade,12.72,-.045,0,{cast:false});
+  box(scene,.065,.13,28.8,promenadeEdge,13.34,.015,0,{cast:false});
+  for(const z of [-10.5,-2.0,6.5,11.5])addLamp(12.98,z);
+  function addWaterfrontBench(x,z){
+   const bench=new THREE.Group();bench.position.set(x,0,z);bench.rotation.y=Math.PI/2;scene.add(bench);
+   box(bench,.95,.13,.26,mat('#bb8754'),0,.43,0,{cast:false});
+   for(const xx of [-.34,.34])box(bench,.08,.42,.08,dark,xx,.23,0,{cast:false});
+   for(const zz of [-.12,.12])box(bench,.95,.055,.07,mat('#ba885c'),0,.6,zz,{cast:false});
+  }
+  for(const z of [-8.0,0,8.0])addWaterfrontBench(12.55,z);
   // A small transit stop, benches and planted beds make the outer district feel lived-in.
   const stop=new THREE.Group();stop.position.set(-13.1,0,-8.4);scene.add(stop);
   box(stop,2.55,.12,1.05,mat('#d5d8c5'),0,.08,0,{cast:false});
@@ -612,7 +640,7 @@ function initCity3D(THREE,mount){
    }
    signalGroups.push({lamps,phase:rnd()*8});
   }
-  [[-5.62,-5.48],[5.62,-5.48],[-5.62,5.48],[5.62,5.48]].forEach(p=>addTrafficSignal(p[0],p[1]));
+  [[-6.15,-6.15],[6.15,-6.15],[-6.15,6.15],[6.15,6.15]].forEach(p=>addTrafficSignal(p[0],p[1]));
   // Small plaza furniture and flower planters visually separate the business blocks.
   for(const p of [[-12,-1.2],[-12,1.2],[12,-1.2],[12,1.2]]){
    const bench=new THREE.Group();bench.position.set(p[0],0,p[1]);scene.add(bench);
@@ -677,6 +705,15 @@ function initCity3D(THREE,mount){
    box(group,1.12,.7,.065,glass,.43,.83,d/2+.075,{cast:false});
    box(group,1.18,.08,.09,accent,.43,1.22,d/2+.12,{cast:false});
    const signPlane=addLabel(group,t.sign,t.roof2,'#ffffff',1.75);signPlane.position.set(.23,Math.min(h-.22,1.72),d/2+.105);
+   // New architectural pass: corner pilasters, a raised entrance step and a deep striped canopy.
+   const pilaster=mat(t.side,.72);
+   for(const sx of [-1,1])box(group,.075,Math.max(.9,h-.28),.065,pilaster,sx*(w/2-.075),h/2+.03,d/2+.045,{cast:false});
+   box(group,.86,.075,.24,mat('#b9c8c4'),-.92,.16,d/2+.16,{cast:false});
+   if(biz.type!=='cafe'){
+    box(group,1.65,.105,.54,roofMat,.27,1.39,d/2+.28,{cast:true});
+    for(let i=0;i<5;i++)box(group,.30,.035,.54,mat(i%2?t.accent:t.roof2,.7),-.37+i*.32,1.46,d/2+.28,{cast:false});
+    for(const sx of [-.38,.92])box(group,.055,.45,.055,side,sx,.91,d/2+.46,{cast:false});
+   }
    // Strongly differentiated silhouettes make each business readable at a glance.
    if(biz.type==='electronics'){
     box(group,1.05,.14,.78,mat('#314d5b'),-.7,h+.3,-.12,{cast:false});
@@ -743,12 +780,13 @@ function initCity3D(THREE,mount){
    }
    scene.add(group);const car={group,axis,dir,speed,phase,x,z,wheels:group.children.filter(o=>o.geometry&&o.geometry.type==='CylinderGeometry')};cars.push(car);return car;
   }
-  makeCar('#f3fbf7',-4.78,-12,'z',1,3.6,0);makeCar('#ee8a57',4.78,11,'z',-1,2.8,3);
-  makeCar('#4da9c1',-13,-4.62,'x',1,4.0,2);makeCar('#f0c65a',12,4.62,'x',-1,3.1,5);
-  makeCar('#8f85d7',-3.72,2,'z',-1,2.5,1.5);makeCar('#70bd79',3.72,-1,'z',1,2.1,4.5);
-  makeBus('#f1c45b',9.5,3.58,'x',1,1.65);
+  makeCar('#f3fbf7',-4.98,-12,'z',1,3.6,0);makeCar('#ee8a57',4.98,11,'z',-1,2.8,3);
+  makeCar('#4da9c1',-13,-4.98,'x',1,4.0,2);makeCar('#f0c65a',12,4.98,'x',-1,3.1,5);
+  makeCar('#8f85d7',-4.0,2,'z',-1,2.5,1.5);makeCar('#70bd79',4.0,-1,'z',1,2.1,4.5);
+  makeBus('#f1c45b',9.5,3.98,'x',1,1.65);
   // Each lot has a selectable raised footprint, a landscaped verge and its own 3D building model.
-  const positions=LOCATIONS.map((loc,i)=>Object.assign({},loc,{x:(i%3-1)*8.5,z:(Math.floor(i/3)-1)*8.2}));
+  const lotLayout=[[-9,-9.0],[0,-9.25],[9,-9.0],[-9.25,0],[0.2,.15],[9.15,-.1],[-9.0,9.0],[.15,9.25],[9.0,8.95]];
+  const positions=LOCATIONS.map((loc,i)=>Object.assign({},loc,{x:lotLayout[i][0],z:lotLayout[i][1]}));
   for(let i=0;i<positions.length;i++){
    const loc=positions[i],root=new THREE.Group();root.position.set(loc.x,0,loc.z);root.userData.location=loc.id;scene.add(root);
    const plot=new THREE.Mesh(new THREE.BoxGeometry(5.2,.16,4.9),lotMaterial.clone());plot.position.y=-.015;plot.receiveShadow=true;root.add(plot);pickables.push(plot);plot.userData.location=loc.id;
@@ -763,7 +801,7 @@ function initCity3D(THREE,mount){
   }
   // Trees and streetlights are deliberately placed along the sidewalks, never blocking lots.
   [[-13,-13],[-11,12],[12,-12],[13,12],[-13,3],[11,-4],[-1,-13],[2,13],[-11,-4],[11,5],[-15,0]].forEach((p,i)=>addTree(p[0],p[1],i%3===0?1.05:.78));
-  [[-5.62,-5.48],[5.62,-5.48],[-5.62,5.48],[5.62,5.48],[-14,0],[0,-13],[0,13]].forEach(p=>addLamp(p[0],p[1]));
+  [[-6.45,-6.45],[6.45,-6.45],[-6.45,6.45],[6.45,6.45],[-14,0],[0,-13],[0,13]].forEach(p=>addLamp(p[0],p[1]));
   // Small strolling citizens follow sidewalk paths and gently bob as the city runs.
   function makePerson(x,z,phase,color,route){
    const group=new THREE.Group();group.position.set(x,0,z);
@@ -774,7 +812,7 @@ function initCity3D(THREE,mount){
    for(let i=0;i<2;i++){const l=new THREE.Mesh(new THREE.BoxGeometry(.07,.28,.09),leg);l.position.set(i?.075:-.075,.18,0);group.add(l);legs.push(l);}
    scene.add(group);people.push({group,phase,color,legs,baseX:x,baseZ:z,route:route||[[x-0.8,z],[x+0.8,z]]});
   }
-  makePerson(-5.62,-10.4,0,'#e98063',[[-5.62,-10.4],[-5.62,10.4]]);makePerson(5.62,10.4,1.8,'#5d8ed0',[[5.62,10.4],[5.62,-10.4]]);makePerson(-12.2,-5.48,2.8,'#edc363',[[-12.2,-5.48],[12.2,-5.48]]);makePerson(12.2,5.48,4.0,'#b47bd5',[[12.2,5.48],[-12.2,5.48]]);makePerson(-13,-6.5,5.2,'#f1f0e9',[[-13,-6.5],[-13,-9.5]]);
+  makePerson(-6.2,-10.4,0,'#e98063',[[-6.2,-10.4],[-6.2,10.4]]);makePerson(6.2,10.4,1.8,'#5d8ed0',[[6.2,10.4],[6.2,-10.4]]);makePerson(-12.2,-6.1,2.8,'#edc363',[[-12.2,-6.1],[12.2,-6.1]]);makePerson(12.2,6.1,4.0,'#b47bd5',[[12.2,6.1],[-12.2,6.1]]);makePerson(-13,-6.5,5.2,'#f1f0e9',[[-13,-6.5],[-13,-9.5]]);
   const lotsById=new Map(lots.map(l=>[l.loc.id,l]));
   function clearGroup(g){while(g.children.length){const c=g.children[0];g.remove(c);c.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material){const list=Array.isArray(o.material)?o.material:[o.material];list.forEach(m=>{if(m.map&&m.map.isCanvasTexture)m.map.dispose();});}});}}
   function syncCity3D(){
@@ -867,10 +905,11 @@ function initCity3D(THREE,mount){
    const dt=Math.min(.05,(now-last)/1000);last=now;
    if(!document.hidden&&!cityReducedMotion){
     for(const car of cars){
-     if(car.axis==='z'){car.group.position.set(car.x,.02,((car.z+12+now/1000*car.speed*car.dir)%24+24)%24-12);car.group.rotation.y=car.dir>0?0:Math.PI;}
-     else{car.group.position.set(((car.x+14+now/1000*car.speed*car.dir)%28+28)%28-14,.02,car.z);car.group.rotation.y=car.dir>0?Math.PI/2:-Math.PI/2;}
+     if(car.axis==='z'){car.group.position.set(car.x,.02,((car.z+14+now/1000*car.speed*car.dir)%28+28)%28-14);car.group.rotation.y=car.dir>0?0:Math.PI;}
+     else{car.group.position.set(((car.x+17+now/1000*car.speed*car.dir)%34+34)%34-17,.02,car.z);car.group.rotation.y=car.dir>0?Math.PI/2:-Math.PI/2;}
      car.wheels.forEach(w=>{w.rotation.x+=dt*car.speed*5;});
     }
+    boats.forEach(b=>{b.group.position.set(b.baseX,-.005,((b.baseZ+14+now/1000*b.speed)%28+28)%28-14);b.group.rotation.y=Math.sin(now/1900+b.phase)*.055;});
     people.forEach(p=>{
      const route=p.route||[[p.baseX-.8,p.baseZ],[p.baseX+.8,p.baseZ]],dx=route[1][0]-route[0][0],dz=route[1][1]-route[0][1],len=Math.max(.1,Math.hypot(dx,dz));
      const progress=((now/1000*.62+p.phase)% (len*2));const f=progress<=len?progress/len:2-progress/len;
@@ -1001,7 +1040,7 @@ document.getElementById('city3dMap').addEventListener('keydown',e=>{if((e.key===
 let mapResizeTimer=null;window.addEventListener('resize',()=>{clearTimeout(mapResizeTimer);mapResizeTimer=setTimeout(renderCity,80)});
 document.getElementById('nextDayBtn').addEventListener('click',nextDay);document.getElementById('financeNextBtn').addEventListener('click',nextDay);document.getElementById('businessNextBtn').addEventListener('click',()=>{switchTab('business');document.getElementById('businessMarket').scrollIntoView({behavior:'smooth',block:'start'})});document.getElementById('hireBtn').addEventListener('click',()=>openModal('Нанять управляющего','Разовая комиссия — 45 000 ₽. Зарплата — 5 500 ₽ в день. Управляющий повышает выручку выбранного предприятия на 12%.','Нанять',hireManager));document.getElementById('resetBtn').addEventListener('click',()=>openModal('Начать новую игру?','Текущий прогресс будет удалён. Начнёшь заново со стартовым капиталом 100 000 ₽.','Сбросить',()=>{state=initialState();save();render();toast('Новая игра началась.')}));document.getElementById('modalCancel').addEventListener('click',closeModal);document.getElementById('modalConfirm').addEventListener('click',()=>{const action=pendingAction;closeModal();if(action)action()});document.getElementById('modalBackdrop').addEventListener('click',e=>{if(e.target.id==='modalBackdrop')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 // Event delegation for action buttons inserted by render().
-// Version 0.9: redesigned 3D city layout, wider walkable blocks, riverside bridges, traffic signals, animated transit and pedestrians; economy and local saves retained.
+// Version 1.0: re-planned city grid, wider avenues and connected sidewalks, waterfront promenade, richer building facades and animated canal traffic; economy and local saves retained.
 const oldRender=render;render=function(){oldRender();};
 // Patch the manager confirmation for explicit insufficient-funds handling.
 const baseHire=hireManager;hireManager=function(){if(state.cash<45000){toast('Для найма управляющего нужно '+fmt(45000)+'.');return}baseHire()};
