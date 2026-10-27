@@ -612,7 +612,7 @@ function initCity3D(THREE,mount){
    }
    signalGroups.push({lamps,phase:rnd()*8});
   }
-  [[-5.15,-5.1],[5.15,-5.1],[-5.15,5.1],[5.15,5.1]].forEach(p=>addTrafficSignal(p[0],p[1]));
+  [[-5.62,-5.48],[5.62,-5.48],[-5.62,5.48],[5.62,5.48]].forEach(p=>addTrafficSignal(p[0],p[1]));
   // Small plaza furniture and flower planters visually separate the business blocks.
   for(const p of [[-12,-1.2],[-12,1.2],[12,-1.2],[12,1.2]]){
    const bench=new THREE.Group();bench.position.set(p[0],0,p[1]);scene.add(bench);
@@ -763,7 +763,7 @@ function initCity3D(THREE,mount){
   }
   // Trees and streetlights are deliberately placed along the sidewalks, never blocking lots.
   [[-13,-13],[-11,12],[12,-12],[13,12],[-13,3],[11,-4],[-1,-13],[2,13],[-11,-4],[11,5],[-15,0]].forEach((p,i)=>addTree(p[0],p[1],i%3===0?1.05:.78));
-  [[-5.15,-5.1],[5.15,-5.1],[-5.15,5.1],[5.15,5.1],[-14,0],[0,-13],[0,13]].forEach(p=>addLamp(p[0],p[1]));
+  [[-5.62,-5.48],[5.62,-5.48],[-5.62,5.48],[5.62,5.48],[-14,0],[0,-13],[0,13]].forEach(p=>addLamp(p[0],p[1]));
   // Small strolling citizens follow sidewalk paths and gently bob as the city runs.
   function makePerson(x,z,phase,color,route){
    const group=new THREE.Group();group.position.set(x,0,z);
@@ -774,7 +774,7 @@ function initCity3D(THREE,mount){
    for(let i=0;i<2;i++){const l=new THREE.Mesh(new THREE.BoxGeometry(.07,.28,.09),leg);l.position.set(i?.075:-.075,.18,0);group.add(l);legs.push(l);}
    scene.add(group);people.push({group,phase,color,legs,baseX:x,baseZ:z,route:route||[[x-0.8,z],[x+0.8,z]]});
   }
-  makePerson(-5,-6.1,0,'#e98063',[[-5.05,-10.4],[-5.05,10.4]]);makePerson(5,5.9,1.8,'#5d8ed0',[[5.05,10.4],[5.05,-10.4]]);makePerson(11,-5.9,2.8,'#edc363',[[-12.2,-5.12],[12.2,-5.12]]);makePerson(-11,5.9,4.0,'#b47bd5',[[12.2,5.12],[-12.2,5.12]]);makePerson(5,-6.1,5.2,'#f1f0e9',[[-12.2,-6.1],[12.2,-6.1]]);
+  makePerson(-5.62,-10.4,0,'#e98063',[[-5.62,-10.4],[-5.62,10.4]]);makePerson(5.62,10.4,1.8,'#5d8ed0',[[5.62,10.4],[5.62,-10.4]]);makePerson(-12.2,-5.48,2.8,'#edc363',[[-12.2,-5.48],[12.2,-5.48]]);makePerson(12.2,5.48,4.0,'#b47bd5',[[12.2,5.48],[-12.2,5.48]]);makePerson(-13,-6.5,5.2,'#f1f0e9',[[-13,-6.5],[-13,-9.5]]);
   const lotsById=new Map(lots.map(l=>[l.loc.id,l]));
   function clearGroup(g){while(g.children.length){const c=g.children[0];g.remove(c);c.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material){const list=Array.isArray(o.material)?o.material:[o.material];list.forEach(m=>{if(m.map&&m.map.isCanvasTexture)m.map.dispose();});}});}}
   function syncCity3D(){
